@@ -1,3 +1,9 @@
+# What is this?
+
+This repository represent my website `https://eriksturesson.se`
+
+Currently this project is only frontend-code so the only used firebase feature is hosting for now (so no db, auth or other parts used from firebase for this simple website)
+
 # To host and test this on your own, do this:
 
 1. Create a firebase project at firebase.com to host the website (it's free)
