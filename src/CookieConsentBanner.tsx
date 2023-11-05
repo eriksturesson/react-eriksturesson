@@ -18,11 +18,12 @@ export default function CookieConsentBanner() {
       onAccept={(acceptedByScrolling) => {
         if (acceptedByScrolling) {
           // triggered if user scrolls past threshold
-
-          const analytics = getAnalytics(app);
+          //It does not feel valid to use analytics if user does not accept
+          //const analytics = getAnalytics(app);
         } else {
           // triggered if user clicks accept button
           const analytics = getAnalytics(app);
+          //TODO: Add analytics
         }
       }}
     >
