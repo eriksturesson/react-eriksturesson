@@ -1,34 +1,34 @@
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import AutoModeIcon from "@mui/icons-material/AutoMode";
+import CodeIcon from "@mui/icons-material/Code";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import LaptopIcon from "@mui/icons-material/Laptop";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import Timeline from "@mui/lab/Timeline";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import { CardActionArea, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, useMediaQuery, useTheme } from "@mui/material";
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import CodeIcon from "@mui/icons-material/Code";
-import AutoModeIcon from "@mui/icons-material/AutoMode";
-import DataObjectIcon from "@mui/icons-material/DataObject";
-import LaptopIcon from "@mui/icons-material/Laptop";
-import raspberrypiImage from "./img/raspberryPi-logo.png";
-import adminImg from "./img/adminImg.png";
-import rotarywebsida from "./img/rotarywebsida.png";
-import ScheduleIcon from "@mui/icons-material/Schedule";
-import powershellLogo from "./img/powershell-logo.png";
-import databaseImg from "./img/database.png";
-import mysqlLogo from "./img/mysql-logo.png";
-import schemalaggningsAppImage from "./img/schemalaggningsapp.png";
-import typescriptLogo from "./img/typescript-logo.png";
-import techleadersboat from "./img/techleadersboat.png";
-import reactLogo from "./img/react-icon.png";
-import gears from "./img/gears.jpg";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import "./css/index.css";
+import adminImg from "./img/adminImg.png";
+import databaseImg from "./img/database.png";
+import gears from "./img/gears.jpg";
+import mysqlLogo from "./img/mysql-logo.png";
+import powershellLogo from "./img/powershell-logo.png";
+import raspberrypiImage from "./img/raspberryPi-logo.png";
+import reactLogo from "./img/react-icon.png";
+import rotarywebsida from "./img/rotarywebsida.png";
+import schemalaggningsAppImage from "./img/schemalaggningsapp.png";
+import techleadersboat from "./img/techleadersboat.png";
+import typescriptLogo from "./img/typescript-logo.png";
 
 export interface CardItem {
   image: any;
@@ -41,14 +41,14 @@ export interface CardItem {
   headerText: string;
   descriptionText: string;
 
-  year: number;
+  year: string;
 }
 const cardItems: CardItem[] = [
   {
     image: powershellLogo,
     icon: CodeIcon,
     alt: `powershellLogo`,
-    year: 2015,
+    year: "2015",
     height: "100%",
     headerText: "Powershell",
     descriptionText:
@@ -58,7 +58,7 @@ const cardItems: CardItem[] = [
     image: databaseImg,
     icon: DataObjectIcon,
     alt: `databaseImg`,
-    year: 2019,
+    year: "2019",
     height: "100%",
     headerText: "GDPR-script i Powershell",
     descriptionText:
@@ -68,7 +68,7 @@ const cardItems: CardItem[] = [
     image: mysqlLogo,
     icon: DataObjectIcon,
     alt: `MySQL`,
-    year: 2020,
+    year: "2020",
     height: "100%",
     headerText: "MySQL",
     descriptionText:
@@ -78,7 +78,7 @@ const cardItems: CardItem[] = [
     image: rotarywebsida,
     icon: LaptopIcon,
     alt: `Rotary Website`,
-    year: 2020,
+    year: "2020",
     height: "100%",
     headerText: "Rotary Website",
     descriptionText:
@@ -88,7 +88,7 @@ const cardItems: CardItem[] = [
     image: techleadersboat,
     icon: LaptopIcon,
     alt: `Tech Leaders Boat`,
-    year: 2020,
+    year: "2020",
     height: "100%",
     headerText: "Tech Leaders Boat",
     descriptionText:
@@ -98,7 +98,7 @@ const cardItems: CardItem[] = [
     image: raspberrypiImage,
     icon: CodeIcon,
     alt: `RaspberryPi`,
-    year: 2021,
+    year: "2021",
     height: "100%",
     headerText: "Automatisering av script",
     descriptionText: "Konfiguration och kod integrerat till Linux i syfte att automatisera köra dagliga script.",
@@ -107,7 +107,7 @@ const cardItems: CardItem[] = [
     image: schemalaggningsAppImage,
     icon: ScheduleIcon,
     alt: `Schemaläggningsapp`,
-    year: 2022,
+    year: "2022",
     height: "100%",
     headerText: "Bokning",
     descriptionText:
@@ -117,7 +117,7 @@ const cardItems: CardItem[] = [
     image: typescriptLogo,
     icon: CodeIcon,
     alt: `Typescriptlogo`,
-    year: 2022,
+    year: "2022",
     height: "100%",
     headerText: "Typescript",
     descriptionText:
@@ -127,7 +127,7 @@ const cardItems: CardItem[] = [
     image: gears,
     icon: AutoModeIcon,
     alt: `AutoModeIcon`,
-    year: 2022,
+    year: "2022",
     height: "100%",
     headerText: "Matchning",
     descriptionText: "Automatisering av kandidatmatchning till jobb i olika system [kan inte berätta mer än så].",
@@ -136,7 +136,7 @@ const cardItems: CardItem[] = [
     image: adminImg,
     icon: AdminPanelSettingsIcon,
     alt: `Reactlogo`,
-    year: 2023,
+    year: "2023",
     height: "100%",
     headerText: "Admin system",
     descriptionText:
@@ -147,11 +147,11 @@ const cardItems: CardItem[] = [
     cssClass: `App-logo`,
     icon: CodeIcon,
     alt: `Reactlogo`,
-    year: 2023,
+    year: "2023 - 2024",
     height: "100%",
     headerText: "Ombyggnad",
     descriptionText:
-      "Bygger om 9 års gammal kodbas i Student Node från vanilla JS och Node till Typescript, React och MUI-ramverket.",
+      "10 år av kod i Student Node ombyggt på 9 månder från vanilla JS och Node till Typescript, React och MUI-ramverket.",
   },
 ];
 

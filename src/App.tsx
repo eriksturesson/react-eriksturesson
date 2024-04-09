@@ -1,14 +1,9 @@
-import "./css/App.css";
-import { Box, CircularProgress, ThemeProvider } from "@mui/material";
-import NavBar from "./NavBar";
-import About from "./About";
-import Header from "./Header";
-import Footer from "./Footer";
-import CookieConsentBanner from "./CookieConsentBanner";
-import Projects from "./Projects";
-import { eriksTheme } from "./constsAndFunctions";
+import { Box, ThemeProvider } from "@mui/material";
 import { Suspense, lazy } from "react";
+import CookieConsentBanner from "./CookieConsentBanner";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { eriksTheme } from "./constsAndFunctions";
+import "./css/App.css";
 const LazyNavBar = lazy(() => import("./NavBar"));
 const LazyAbout = lazy(() => import("./About"));
 const LazyHeader = lazy(() => import("./Header"));
