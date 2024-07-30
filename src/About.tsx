@@ -1,14 +1,15 @@
-import { ImageList, ImageListItem } from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Button, ImageList, ImageListItem } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import gcpLogo from "./img/GCP.webp";
 import api from "./img/api.png";
 import cloud_functions from "./img/cloud_functions.png";
 import compute_engine from "./img/compute_engine.png";
 import erikprofilbild from "./img/erik-sturesson-profilbild-2024-04-08.jpg";
 import firebaseLogo from "./img/firebase-logo.png";
 import firestore from "./img/firestore.png";
+import gcpLogo from "./img/GCP.webp";
 import muiLogo from "./img/mui-logo.png";
 import nodejsLogo from "./img/nodejs-logo.png";
 import reactLogo from "./img/react-icon.png";
@@ -50,6 +51,22 @@ export default function About() {
           <div id="profilbildDiv">
             <img id="profilbild" src={erikprofilbild} alt="profilbild" style={{ borderRadius: "50%" }} />
           </div>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h5" textAlign="center">
+            För att se en detaljerad översikt av min karriär, besök min LinkedIn-profil:
+          </Typography>
+          <Box display="flex" justifyContent="center" mt={2}>
+            <Button
+              variant="contained"
+              color="success"
+              href={"https://www.linkedin.com/in/eriksturesson"}
+              target="_blank"
+              startIcon={<LinkedInIcon />}
+            >
+              Besök min LinkedIn-profil
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Box>
