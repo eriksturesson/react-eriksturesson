@@ -1,5 +1,5 @@
-import CookieConsent from "react-cookie-consent";
 import { getAnalytics } from "firebase/analytics";
+import CookieConsent from "react-cookie-consent";
 import { app } from "./firebaseFunctions";
 
 export default function CookieConsentBanner() {
@@ -8,8 +8,8 @@ export default function CookieConsentBanner() {
       location="bottom"
       buttonText="Accept"
       cookieName="standardCookies"
-      style={{ background: "#2B373B" }}
-      buttonStyle={{ background: "green", color: "white" }}
+      style={{ background: "white" }}
+      buttonStyle={{ background: "green", color: "black" }}
       expires={150}
       enableDeclineButton
       onDecline={() => {

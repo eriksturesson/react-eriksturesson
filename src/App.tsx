@@ -1,6 +1,5 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { Suspense, lazy } from "react";
-import CookieConsentBanner from "./CookieConsentBanner";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { eriksTheme } from "./constsAndFunctions";
 import "./css/App.css";
@@ -15,7 +14,7 @@ function App() {
     <Suspense fallback={<LoadingSpinner />}>
       <ThemeProvider theme={eriksTheme}>
         <Box>
-          <CookieConsentBanner />
+          {/* <CookieConsentBanner /> */}
 
           <div className="navAndHeaderDiv" id="Home">
             <LazyNavBar />
