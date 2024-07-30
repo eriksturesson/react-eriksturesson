@@ -41,14 +41,14 @@ export interface CardItem {
   headerText: string;
   descriptionText: string;
 
-  year: string;
+  year: number;
 }
 const cardItems: CardItem[] = [
   {
     image: powershellLogo,
     icon: CodeIcon,
     alt: `powershellLogo`,
-    year: "2015",
+    year: 2015,
     height: "100%",
     headerText: "Powershell",
     descriptionText:
@@ -58,7 +58,7 @@ const cardItems: CardItem[] = [
     image: databaseImg,
     icon: DataObjectIcon,
     alt: `databaseImg`,
-    year: "2019",
+    year: 2019,
     height: "100%",
     headerText: "GDPR-script i Powershell",
     descriptionText:
@@ -68,7 +68,7 @@ const cardItems: CardItem[] = [
     image: mysqlLogo,
     icon: DataObjectIcon,
     alt: `MySQL`,
-    year: "2020",
+    year: 2020,
     height: "100%",
     headerText: "MySQL",
     descriptionText:
@@ -78,7 +78,7 @@ const cardItems: CardItem[] = [
     image: rotarywebsida,
     icon: LaptopIcon,
     alt: `Rotary Website`,
-    year: "2020",
+    year: 2020,
     height: "100%",
     headerText: "Rotary Website",
     descriptionText:
@@ -88,7 +88,7 @@ const cardItems: CardItem[] = [
     image: techleadersboat,
     icon: LaptopIcon,
     alt: `Tech Leaders Boat`,
-    year: "2020",
+    year: 2020,
     height: "100%",
     headerText: "Tech Leaders Boat",
     descriptionText:
@@ -98,7 +98,7 @@ const cardItems: CardItem[] = [
     image: raspberrypiImage,
     icon: CodeIcon,
     alt: `RaspberryPi`,
-    year: "2021",
+    year: 2021,
     height: "100%",
     headerText: "Automatisering av script",
     descriptionText: "Konfiguration och kod integrerat till Linux i syfte att automatisera köra dagliga script.",
@@ -107,7 +107,7 @@ const cardItems: CardItem[] = [
     image: schemalaggningsAppImage,
     icon: ScheduleIcon,
     alt: `Schemaläggningsapp`,
-    year: "2022",
+    year: 2022,
     height: "100%",
     headerText: "Bokning",
     descriptionText:
@@ -117,7 +117,7 @@ const cardItems: CardItem[] = [
     image: typescriptLogo,
     icon: CodeIcon,
     alt: `Typescriptlogo`,
-    year: "2022",
+    year: 2022,
     height: "100%",
     headerText: "Typescript",
     descriptionText:
@@ -127,7 +127,7 @@ const cardItems: CardItem[] = [
     image: gears,
     icon: AutoModeIcon,
     alt: `AutoModeIcon`,
-    year: "2022",
+    year: 2022,
     height: "100%",
     headerText: "Matchning",
     descriptionText: "Automatisering av kandidatmatchning till jobb i olika system [kan inte berätta mer än så].",
@@ -136,7 +136,7 @@ const cardItems: CardItem[] = [
     image: adminImg,
     icon: AdminPanelSettingsIcon,
     alt: `Reactlogo`,
-    year: "2023",
+    year: 2023,
     height: "100%",
     headerText: "Admin system",
     descriptionText:
@@ -147,7 +147,7 @@ const cardItems: CardItem[] = [
     cssClass: `App-logo`,
     icon: CodeIcon,
     alt: `Reactlogo`,
-    year: "2023 - 2024",
+    year: 2024,
     height: "100%",
     headerText: "Ombyggnad",
     descriptionText:
@@ -162,43 +162,45 @@ export default function ProjectTimeline(): JSX.Element {
     <Timeline position={matches ? "alternate" : "left"} sx={{ margin: "10vw" }}>
       <Box sx={{ p: "1rem" }}>
         <Typography sx={{ textAlign: "center" }} variant="h2">
-          Några IT-projekt
+          Min IT-resa
         </Typography>
-        {cardItems.map((cardObject: CardItem, i) => (
-          <TimelineItem key={i}>
-            <TimelineOppositeContent sx={{ m: "auto 0" }} align="right" variant="body2">
-              År {cardObject.year}
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineConnector />
-              <TimelineDot>
-                <cardObject.icon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent sx={{ py: "12px", px: 2 }}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    className={cardObject.cssClass}
-                    height={cardObject.height}
-                    image={cardObject.image}
-                    alt={cardObject.alt}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {cardObject.headerText}
-                    </Typography>
-                    <Typography variant="body2" color="text.primary">
-                      {cardObject.descriptionText}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </TimelineContent>
-          </TimelineItem>
-        ))}
+        {cardItems
+          .sort((a: CardItem, b: CardItem) => b.year - a.year)
+          .map((cardObject: CardItem, i) => (
+            <TimelineItem key={i}>
+              <TimelineOppositeContent sx={{ m: "auto 0" }} align="right" variant="body2">
+                År {cardObject.year}
+              </TimelineOppositeContent>
+              <TimelineSeparator>
+                <TimelineConnector />
+                <TimelineDot>
+                  <cardObject.icon />
+                </TimelineDot>
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent sx={{ py: "12px", px: 2 }}>
+                <Card sx={{ pt: "1.5rem" }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      className={cardObject.cssClass}
+                      height={cardObject.height}
+                      image={cardObject.image}
+                      alt={cardObject.alt}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {cardObject.headerText}
+                      </Typography>
+                      <Typography variant="body2" color="text.primary">
+                        {cardObject.descriptionText}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
       </Box>
     </Timeline>
   );

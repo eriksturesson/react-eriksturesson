@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./css/App.css";
-import eldstad from "./videos/eldstad.mp4";
-import { Box, Container, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import CircularProgress from "@mui/material/CircularProgress";
-import { LoadingSpinner } from "./LoadingSpinner";
+import { Box, Container, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import "./css/App.css";
+import backdropErikSmallScreen from "./img/backdrop-erik-small-screen.jpg";
+import backdropErik from "./img/backdrop-erik.jpg";
 
 const headerStyle: React.CSSProperties = {
   position: "relative",
@@ -17,6 +16,11 @@ const headerStyle: React.CSSProperties = {
   alignItems: "center",
 };
 
+const arrowStyle: React.CSSProperties = {
+  fontSize: 48,
+  animation: "bounce 4s infinite",
+};
+
 const videoStyle: React.CSSProperties = {
   position: "absolute",
   width: "100%",
@@ -24,37 +28,53 @@ const videoStyle: React.CSSProperties = {
   objectFit: "cover",
 };
 
-const textOverlayStyle: React.CSSProperties = {
-  padding: "20px",
-  position: "relative",
-  display: "flex", // Center content both horizontally and vertically
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
-const arrowStyle: React.CSSProperties = {
-  fontSize: 48,
-  animation: "bounce 4s infinite",
-};
-
 function Header() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const responsiveWidthLimit = 700;
+
+  const textOverlayStyle: React.CSSProperties = {
+    padding: "20px",
+    position: "relative",
+    display: windowWidth < responsiveWidthLimit ? "none" : "flex", // Center content both horizontally and vertically
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    //top: windowWidth < responsiveWidthLimit ? 0 : "", // Adjust position based on screen width
+  };
   return (
     <Box id="header" style={headerStyle}>
-      <video autoPlay loop muted playsInline style={videoStyle}>
+      {/* <ResponsiveImage smallScreenImage={backdropErikSmallScreen} largeScreenImage={backdropErik} /> */}
+      <img
+        src={windowWidth < responsiveWidthLimit ? backdropErikSmallScreen : backdropErik}
+        alt="Bakgrundsbild med Erik Sturesson, avslappnad bild"
+        style={videoStyle}
+      />
+      {/* <video autoPlay loop muted playsInline style={videoStyle}>
         <source src={eldstad} type="video/mp4" />
-      </video>
+      </video> */}
       <Box style={textOverlayStyle} color={"white"}>
         <Container>
           <Typography variant="h3" component="h3" align="center" gutterBottom>
             VÄLKOMMEN!
           </Typography>
-          <Typography variant="h3" component="h3" align="center" gutterBottom>
-            Vem är jag?
-          </Typography>
-          <Typography variant="h3" component="h3" align="center" gutterBottom>
-            Ta en titt!
-          </Typography>
+          {windowWidth > responsiveWidthLimit && (
+            <Typography variant="h5" component="h5" align="center" gutterBottom>
+              Vem är jag?
+            </Typography>
+          )}
         </Container>
         <Box>
           <KeyboardArrowDownIcon style={arrowStyle} />
