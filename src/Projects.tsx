@@ -179,9 +179,10 @@ export default function ProjectTimeline(): JSX.Element {
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent sx={{ py: "12px", px: 2 }}>
-                <Card sx={{ pt: "1.5rem" }}>
+                <Card>
                   <CardActionArea>
                     <CardMedia
+                      sx={{ mt: "2.7vw", mb: "2.7vw" }}
                       component="img"
                       className={cardObject.cssClass}
                       height={cardObject.height}
