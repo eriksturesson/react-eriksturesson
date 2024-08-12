@@ -1,25 +1,15 @@
 {
-	"short_name": "Erik Sturesson",
-	"name": "Erik Sturessons homepage",
-	"icons": [
-		{
-			"src": "erik-sturesson-profilbild.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		},
-		{
-			"src": "logo192.png",
-			"type": "image/png",
-			"sizes": "192x192"
-		},
-		{
-			"src": "logo512.png",
-			"type": "image/png",
-			"sizes": "512x512"
-		}
-	],
-	"start_url": ".",
-	"display": "standalone",
-	"theme_color": "#000000",
-	"background_color": "#ffffff"
+  "short_name": "Erik Sturesson",
+  "name": "Erik Sturessons homepage",
+  "icons": [
+    {
+      "src": "erik-sturesson-profilbild-2024-07-30.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
