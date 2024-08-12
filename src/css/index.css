@@ -36,8 +36,8 @@ code {
 }
 
 .containers {
-  margin: 2vw, 1vw, 1vw, 1vw;
-  position: realtive;
+  margin: 2vw 1vw 1vw 1vw;
+  position: relative;
   width: 100%;
 }
 
