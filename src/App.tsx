@@ -1,13 +1,14 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { Suspense, lazy } from "react";
-import { LoadingSpinner } from "./LoadingSpinner";
-import { eriksTheme } from "./constsAndFunctions";
-import "./css/App.css";
-const LazyNavBar = lazy(() => import("./NavBar"));
-const LazyAbout = lazy(() => import("./About"));
-const LazyHeader = lazy(() => import("./Header"));
-const LazyProjects = lazy(() => import("./Projects"));
-const LazyFooter = lazy(() => import("./Footer"));
+import "./assets/css/App.css";
+import { LoadingSpinner } from "./components/LoadingSpinner";
+import { eriksTheme } from "./utils/theme";
+const LazyNavBar = lazy(() => import("./components/NavBar"));
+const LazyAbout = lazy(() => import("./components/About"));
+const LazyHeader = lazy(() => import("./components/Header"));
+const LazyProjects = lazy(() => import("./components/Projects"));
+const LazyPortfolio = lazy(() => import("./components/Portfolio"));
+const LazyFooter = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <div className="containers" id="About">
             <LazyAbout />
           </div>
+          <div className="containers" id="Portfolio">
+            <LazyPortfolio />
+          </div>
+
           <div className="containers" id="Projects">
             <LazyProjects />
           </div>
