@@ -13,86 +13,85 @@ import orderSystem from "../assets/img/orderHistory.png";
 import talentReachEMail from "../assets/img/talentReachEmail.png";
 const portfolioItems = [
   {
-    title: "Student Node – Plattformen",
+    title: "Student Node – Mässplattformen",
     description:
-      "En komplett karriärplattform för studenter och företag. Skapad från idé till lansering – inklusive backend, frontend, design och UX.",
+      "En komplett SaaS-plattform för karriärmässor, riktad mot både utställande arbetsgivare och studenter. Jag var med och affärsutvecklade plattformen och ledde ombyggnaden av systemet tillsammans med ett team av IT-konsulter. Plattformen innehåller viktiga funktioner såsom bokningssystem för intervjuer, olika adminbehörigheter, samt statistik och kandidatdata som gör det möjligt för arbetsgivare att enkelt följa upp och matcha rätt kandidater. Genom att kombinera tekniska lösningar med användarcentrerad design, har vi skapat en effektiv och skalbar lösning för karriärmässor. När jag slutade hade vi i monopol på Sveriges lärosäten med över 50st arbetsmarknadsdagar som använde systemet.",
     image: studentNodePlatform,
     link: "#",
   },
   {
     title: "Poolia & Student Node – Eventhemsidor",
     description:
-      "Responsiva eventhemsidor byggda för att hantera kundevent. På vissa av Student Nodes eventen bjöd jag själv in merparten av deltagarna även när vi var en del av Poolia.",
+      "Responsiva eventhemsidor för kundevent. Jag designade och utvecklade eventhemsidor för både Poolia och Student Node. Jag var även ansvarig för inbjudningar och hantering av deltagare på flera av Student Nodes events, vilket gav mig värdefull erfarenhet av eventhantering och kundinteraktion.",
     image: eventPageTLB,
     link: "#",
   },
   {
     title: "API för jobbannonser",
     description:
-      "Byggde ett internt API för att matcha kandidater mot jobb med externa system. Dokumenterat och produktionssatt. Hög prestanda, låg latens.",
+      "Effektivt API för att matcha kandidater mot jobb med externa system. Effektivt API för att matcha kandidater mot jobb med externa system. Jag byggde och dokumenterade ett API som integrerade med externa plattformar, vilket säkerställde hög prestanda och låg latens. Systemet användes för att automatisera jobbmatchning och förbättra kandidatflödet.",
     image: matchingApiDocs,
     link: "#",
   },
   {
-    title: "API för uppdatering av utställare på mässplattformen",
+    title: "API för uppdatering av utställare på mässplattformen.",
     description:
-      "Byggde ett internt API för att matcha kandidater mot jobb med externa system. Dokumenterat och produktionssatt. Hög prestanda, låg latens.",
+      "Automatiserad uppdatering av utställare på mässplattformen. Byggde ett API som möjliggjorde enkel och effektiv hantering av utställarinformation på vår mässplattform, vilket sparade tid och förbättrade användarupplevelsen för alla inblandade parter.",
     image: matchingApiDocs,
     link: "#",
   },
   {
     title: "Talent Reach",
-    description:
-      "Byggde ett internt API för att matcha kandidater mot jobb med externa system. Dokumenterat och produktionssatt. Hög prestanda, låg latens.",
+    description: "Automatiserat system för jobbmatchning.",
     image: talentReachEMail,
     link: "#",
   },
   {
-    title: "Student Node – Faktureringssystem",
+    title: "Faktureringssystem i mässplattformen",
     description:
-      "Designade och byggde ett faktureringssystem för att hantera tusentals användare, företagskonton och olika prismodeller.",
+      "Faktureringssystem för hantering av tusentals användare och olika prismodeller. Jag utvecklade ett faktureringssystem som möjliggjorde enkel hantering av användarkonton och prismodeller, vilket var avgörande för att stödja företagets tillväxt och effektivitet.",
     image: fakturaSystem,
     link: "#",
   },
   {
-    title: "Student Node – Jobbannonsering",
+    title: "Jobbannonsering i mässplattformen",
     description:
-      "Utvecklade ett system för att publicera jobbannonser via adminportalen direkt till våra hemsidor. Med statistik, uppföljning och filtrering.",
+      "System för publicering av jobbannonser och uppföljning. Jag utvecklade ett system som lät användare publicera jobbannonser direkt genom adminportalen. Systemet inkluderade funktioner för statistik, uppföljning och filtrering, vilket gav värdefull insikt i arbetsmarknaden.",
     image: jobPostingSystem,
     link: "#",
   },
   {
-    title: "Student Node – Bokningssystem",
+    title: "Intervjubokningssystem för studenter i mässplattformen",
     description:
-      "Användarvänligt bokningssystem där företag kunde boka in sig på events, intervjutider och andra resurser direkt via adminportalen.",
+      "Ett användarvänligt bokningssystem där studenter kan ansöka om intervjutider med arbetsgivare på karriärmässor. Jag utvecklade ett bokningssystem där studenter enkelt kan ansöka om intervjutider och andra resurser på mässor. Systemet skickar automatiska bekräftelsemail med detaljer om schemat för valda intervjuer, vilket gör det smidigt för studenter att planera och hålla koll på sina möten. Detta system integreras sömlöst med vår adminportal, vilket gör processen för både studenter och arbetsgivare både effektiv och användarvänlig.",
     image: bookingSystem,
     link: "#",
   },
   {
-    title: "Student Node – Bokningssystem för admin",
+    title: "Antagningssystem för arbetsgivarna i mässplattformen",
     description:
-      "Användarvänligt bokningssystem där företag kunde boka in sig på events, intervjutider och andra resurser direkt via adminportalen.",
+      "Ett kraftfullt system för arbetsgivare att hantera ansökningar, sortera och boka intervjutider med studenter. Som en del av mässplattformen utvecklade jag ett system som gav arbetsgivare möjlighet att hantera alla ansökningar från studenter, samt att överskåda, sortera och välja de mest relevanta kandidaterna för intervjuer. Arbetsgivare kunde också specificera vilka tider som skulle vara tillgängliga för intervjuer, ta bort pauser för raster och justera bokningsbara tider, vilket gav stor flexibilitet och kontroll. Systemet var integrerat med adminportalen för att göra bokningsprocessen snabb och effektiv.",
     image: bookingSystemAdmin,
     link: "#",
   },
   {
-    title: "Student Node - Automatisk statistikgenerering",
+    title: "Automatisk statistikgenerering i mässystemet",
     description:
-      "Utvecklade datadrivna dashboards och rapporter som genererades automatiskt baserat på användarbeteende och företagsaktiviteter.",
+      "Datadrivna dashboards och automatiserade rapporter. Jag utvecklade ett system som genererade automatiserade statistiska rapporter baserat på användarbeteende och företagsaktiviteter. Detta gav oss detaljerad insikt i plattformens prestanda och användarinteraktioner.",
     image: automatiseradStatistik,
     link: "#",
   },
   {
-    title: "Student Node – Adminportal",
+    title: "Adminportal i mässsystemet",
     description:
-      "Skapade en kraftfull portal för både intern administration och företagsanvändare. Rollstyrning, statistik, export, och mer.",
+      "En kraftfull och flexibel portal för hantering av alla funktioner relaterade till mässan.Jag skapade en avancerad adminportal där mässarrangörer hade full kontroll över eventets administration. Portalen gav möjlighet att skapa upp till fyra olika typer av adminkonton med olika nivåer av åtkomst – från arrangörer till företag. Funktionaliteten inkluderade hantering av bokningar, statistik, och möjlighet att ändra texter och bilder på eventhemsidan. Arrangörerna kunde även lägga till och redigera utställande företag, som i sin tur fick möjlighet att logga in och uppdatera sina egna profiler. Företagen kunde dessutom se studenternas CV:n och de som var intresserade av deras erbjudanden. Denna portal var avgörande för att ge både interna och externa användare den flexibilitet och användarvänlighet som krävdes för en effektiv hantering av event och deltagare.",
     image: adminDashboard,
     link: "#",
   },
   {
     title: "Ordersystem",
     description:
-      "Skapade en kraftfull portal för både intern administration och företagsanvändare. Rollstyrning, statistik, export, och mer.",
+      "Komplett system för att hantera beställningar och fakturering. Utvecklade ett ordersystem som lät eventarrangören skapa och följa upp beställningar av adminkonton samt hantera översyn av fakturering och köp av utställande företag.",
     image: orderSystem,
     link: "#",
   },
