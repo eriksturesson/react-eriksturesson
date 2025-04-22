@@ -42,7 +42,8 @@ const portfolioItems = [
   },
   {
     title: "Talent Reach",
-    description: "Automatiserat system för jobbmatchning.",
+    description:
+      "Automatiserat system för jobbmatchning.Jag designade och byggde Talent Reach – en plattform som automatiskt matchade kandidater med relevanta jobbannonser. Systemet integrerade med externa API:er och användes framgångsrikt i storföretagsmiljön inom PION Group där Student Nod tillsatte 10 % av alla konsulter inom segmentet studenter och 'young professionals' med upp till 5 års erfarenhet.",
     image: talentReachEMail,
     link: "#",
   },
