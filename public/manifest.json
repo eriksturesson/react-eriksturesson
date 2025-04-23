@@ -1,9 +1,9 @@
 {
   "short_name": "Erik Sturesson",
-  "name": "Erik Sturessons homepage",
+  "name": "Erik Sturesson | Product Manager & Tech-ledare",
   "icons": [
     {
-      "src": "erik-sturesson-profilbild-2024-07-30.ico",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
