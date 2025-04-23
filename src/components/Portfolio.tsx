@@ -1,4 +1,5 @@
 // components/PortfolioSection.tsx
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import jobPostingSystem from "../assets/img/admin-jobs.section.png";
 import bookingSystemAdmin from "../assets/img/adminBookingPrintscreen.png";
@@ -9,6 +10,7 @@ import bookingSystem from "../assets/img/bokningssystem.png";
 import studentNodePlatform from "../assets/img/careerFairChalmers.png";
 import eventPageTLB from "../assets/img/eventPageTLB.png";
 import fakturaSystem from "../assets/img/invoice-studentnode-example.png";
+
 import orderSystem from "../assets/img/orderHistory.png";
 import talentReachEMail from "../assets/img/talentReachEmail.png";
 const portfolioItems = [
@@ -110,30 +112,26 @@ export default function Portfolio() {
       <Grid container spacing={4}>
         {portfolioItems.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ borderRadius: 4, boxShadow: 3 }}>
+            <Card sx={{ borderRadius: 4, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column" }}>
               <CardMedia
                 component="img"
                 height="180"
                 image={item.image}
                 alt={item.title}
                 sx={{
-                  height: 180,
-                  width: "100%",
-                  objectFit: "cover", // This will crop the image and ensure it covers the full width and height
-                  objectPosition: "top", // This will keep the center of the image in view
+                  objectFit: "cover",
+                  objectPosition: "top",
                 }}
               />
-              <CardContent>
+              <CardContent sx={{ flexGrow: 1, px: 3, py: 2 }}>
                 <Typography gutterBottom variant="h6" component="div">
                   {item.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {item.description}
-                </Typography>
+                <Typography variant="body2">{item.description}</Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small" href={item.link}>
-                  Läs mer
+              <CardActions sx={{ px: 3, pb: 2 }}>
+                <Button startIcon={<LockOutlinedIcon />} disabled size="small" href={item.link} variant="contained">
+                  Läs mer (kommer snart)
                 </Button>
               </CardActions>
             </Card>
