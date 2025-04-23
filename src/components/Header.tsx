@@ -2,8 +2,10 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "../assets/css/App.css";
-import backdropErikSmallScreen from "../assets/img/backdrop-erik-small-screen.jpg";
-import backdropErik from "../assets/img/backdrop-erik.jpg";
+//import backdropErikSmallScreen from "../assets/img/backdrop-erik-small-screen.jpg";
+//import backdropErik from "../assets/img/backdrop-erik.jpg";
+import heroSmallScreen from "../assets/img/hero-small-screen.jpg";
+import hero from "../assets/img/hero.jpg";
 
 const headerStyle: React.CSSProperties = {
   position: "relative",
@@ -58,7 +60,7 @@ function Header() {
     <Box id="header" style={headerStyle}>
       {/* <ResponsiveImage smallScreenImage={backdropErikSmallScreen} largeScreenImage={backdropErik} /> */}
       <img
-        src={windowWidth < responsiveWidthLimit ? backdropErikSmallScreen : backdropErik}
+        src={windowWidth < responsiveWidthLimit ? heroSmallScreen : hero}
         alt="Bakgrundsbild med Erik Sturesson, avslappnad bild"
         style={videoStyle}
       />
