@@ -28,7 +28,7 @@ export default function PortfolioCard({
         height="180"
         image={item.image.src}
         alt={"alt" in item.image ? item.image.alt : item.title}
-        sx={{ objectFit: "contain", p: 2 }}
+        sx={{ objectFit: "contain", pt: 2 }}
       />
       <CardContent sx={{ flexGrow: 1, px: 2, py: 2 }}>
         <Typography gutterBottom variant="h6">
