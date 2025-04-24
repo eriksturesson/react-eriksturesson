@@ -1,14 +1,14 @@
-import jobPostingSystem from "../../assets/img/admin-jobs.section.png";
-import bookingSystemAdmin from "../../assets/img/adminBookingPrintscreen.png";
-import adminDashboard from "../../assets/img/admins-layout.png";
-import automatiseradStatistik from "../../assets/img/adminStatisticsPrintscreen.png";
-import matchingApiDocs from "../../assets/img/apiDocs.png";
-import bookingSystem from "../../assets/img/bokningssystem.png";
-import studentNodePlatform from "../../assets/img/careerFairChalmers.png";
-import eventPageTLB from "../../assets/img/eventPageTLB.png";
-import fakturaSystem from "../../assets/img/invoice-studentnode-example.png";
-import orderSystem from "../../assets/img/orderHistory.png";
-import talentReachEMail from "../../assets/img/talentReachEmail.png";
+import jobPostingSystem from "../assets/img/admin-jobs.section.png";
+import bookingSystemAdmin from "../assets/img/adminBookingPrintscreen.png";
+import adminDashboard from "../assets/img/admins-layout.png";
+import automatiseradStatistik from "../assets/img/adminStatisticsPrintscreen.png";
+import matchingApiDocs from "../assets/img/apiDocs.png";
+import bookingSystem from "../assets/img/bokningssystem.png";
+import studentNodePlatform from "../assets/img/careerFairChalmers.png";
+import eventPageTLB from "../assets/img/eventPageTLB.png";
+import fakturaSystem from "../assets/img/invoice-studentnode-example.png";
+import orderSystem from "../assets/img/orderHistory.png";
+import talentReachEMail from "../assets/img/talentReachEmail.png";
 import { PortfolioItem } from "../types/portfolio";
 
 export const portfolioItems: PortfolioItem[] = [

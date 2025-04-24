@@ -1,0 +1,12 @@
+import api from "../assets/img/api.png";
+import cloud_functions from "../assets/img/cloud_functions.png";
+import compute_engine from "../assets/img/compute_engine.png";
+import firebaseLogo from "../assets/img/firebase-logo.png";
+import firestore from "../assets/img/firestore.png";
+import gcpLogo from "../assets/img/GCP.webp";
+import muiLogo from "../assets/img/mui-logo.png";
+import nodejsLogo from "../assets/img/nodejs-logo.png";
+import reactLogo from "../assets/img/react-icon.png";
+import typescriptLogo from "../assets/img/typescript-logo.png";
+export const aboutData = [typescriptLogo, firebaseLogo, nodejsLogo, muiLogo, reactLogo];
+export const aboutData2 = [gcpLogo, firestore, compute_engine, cloud_functions, api];

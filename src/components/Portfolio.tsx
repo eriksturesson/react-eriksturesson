@@ -2,9 +2,9 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { portfolioItems } from "../data/portfolioItems";
+import { PortfolioItem } from "../types/portfolio";
 import PortfolioModal from "./PortfolioModal";
-import { portfolioItems } from "./data/portfolioItems";
-import { PortfolioItem } from "./types/portfolio";
 
 export default function PortfolioSection() {
   const [open, setOpen] = useState(false);

@@ -9,13 +9,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { CardItem } from "./Projects";
+import { ProjectCardItem } from "../types/projects";
 
 // Props för modalen
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  content: CardItem | null; // Om ingen modal är vald
+  content: ProjectCardItem | null; // Om ingen modal är vald
 }
 
 export const ModalForProjectItems: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {

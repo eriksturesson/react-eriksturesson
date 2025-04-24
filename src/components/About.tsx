@@ -3,19 +3,9 @@ import { Button, ImageList, ImageListItem } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import api from "../assets/img/api.png";
-import cloud_functions from "../assets/img/cloud_functions.png";
-import compute_engine from "../assets/img/compute_engine.png";
 import erikprofilbild from "../assets/img/erik-sturesson-profilbild-2024-04-08.jpg";
-import firebaseLogo from "../assets/img/firebase-logo.png";
-import firestore from "../assets/img/firestore.png";
-import gcpLogo from "../assets/img/GCP.webp";
-import muiLogo from "../assets/img/mui-logo.png";
-import nodejsLogo from "../assets/img/nodejs-logo.png";
-import reactLogo from "../assets/img/react-icon.png";
-import typescriptLogo from "../assets/img/typescript-logo.png";
-const itemData = [typescriptLogo, firebaseLogo, nodejsLogo, muiLogo, reactLogo];
-const itemData2 = [gcpLogo, firestore, compute_engine, cloud_functions, api];
+import { aboutData, aboutData2 } from "../data/aboutItems";
+
 function LogoGrid({ itemData }: { itemData: string[] }) {
   return (
     <ImageList cols={itemData.length > 5 ? 5 : itemData.length}>
@@ -39,8 +29,8 @@ export default function About() {
           <Typography variant="h3" component={"h3"} mx={"2vw"} my={"2vw"} align="center">
             Min Stack
           </Typography>
-          <LogoGrid itemData={itemData} />
-          <LogoGrid itemData={itemData2} />
+          <LogoGrid itemData={aboutData} />
+          <LogoGrid itemData={aboutData2} />
           <Typography variant="h5" component="h5" mt={"4vw"} mb={"2vw"} mx={"2vw"}>
             Medgrundare av Student Node år 2014. Då fokus på affärsutveckling, sälj och kundkontakt. Från år 2017 även
             programmering av våra IT-system. Från år 2019 när vi blev uppköpta av PION Group (då Poolia) har jag även

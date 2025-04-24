@@ -1,7 +1,7 @@
 // components/PortfolioModal.tsx
 import { Alert, Box, Button, Modal, Snackbar, Typography } from "@mui/material";
 import { useState } from "react";
-import { PortfolioItem } from "./types/portfolio";
+import { PortfolioItem } from "../types/portfolio";
 
 interface Props {
   open: boolean;

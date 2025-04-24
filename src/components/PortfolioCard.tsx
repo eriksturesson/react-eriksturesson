@@ -1,6 +1,6 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import { PortfolioItem } from "./types/portfolio";
+import { PortfolioItem } from "../types/portfolio";
 
 export default function PortfolioCard({
   item,
