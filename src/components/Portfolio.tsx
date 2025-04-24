@@ -80,10 +80,14 @@ export default function Portfolio() {
 
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
-      <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
-        Portfolio
-      </Typography>
-
+      <Box sx={{ textAlign: "center", mb: 4 }}>
+        <Typography variant="h4" gutterBottom fontWeight="bold">
+          Portfolio
+        </Typography>
+        <Typography variant="caption" component="i">
+          (Fortfarande under utveckling)
+        </Typography>
+      </Box>
       {/* Render Tag Filters */}
       <Box mb={4} sx={{ textAlign: "center" }}>
         <Typography variant="body1" fontWeight="bold" mb={1} align="center">
@@ -95,7 +99,7 @@ export default function Portfolio() {
           <Typography component="span" color="blue" fontWeight="bold">
             Tools
           </Typography>
-          , or{" "}
+          , eller{" "}
           <Typography component="span" color="orange" fontWeight="bold">
             Platforms
           </Typography>
