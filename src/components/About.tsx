@@ -1,3 +1,4 @@
+import GitHubIcon from "@mui/icons-material/GitHub"; // Kom ihåg att importera GitHub-ikonen
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, ImageList, ImageListItem } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -44,7 +45,7 @@ export default function About() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" component="h5" textAlign="center">
-            För att se en detaljerad översikt av min karriär, besök min LinkedIn-profil:
+            För karriärinfo, besök min LinkedIn:
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button
@@ -55,6 +56,22 @@ export default function About() {
               startIcon={<LinkedInIcon />}
             >
               Besök min LinkedIn-profil
+            </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 4 }}>
+          <Typography variant="h5" component="h5" textAlign="center">
+            Se min kod för eriksturesson.se på GitHub:
+          </Typography>
+          <Box display="flex" justifyContent="center" mt={2}>
+            <Button
+              variant="contained"
+              color="success"
+              href={"https://github.com/eriksturesson/react-eriksturesson"} // Byt ut denna URL med rätt GitHub-repository-länk
+              target="_blank"
+              startIcon={<GitHubIcon />}
+            >
+              Kolla in GitHub-projektet
             </Button>
           </Box>
         </Grid>

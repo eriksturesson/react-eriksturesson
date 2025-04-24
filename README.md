@@ -1,14 +1,28 @@
 # What is this?
 
-This repository represent my website `https://eriksturesson.se`
+This repository contains the source code for my personal website: eriksturesson.se. The website showcases my professional background, skills, and portfolio.
 
-Currently this project is only frontend-code so the only used firebase feature is hosting for now (so no db, auth or other parts used from firebase for this simple website)
+Currently, it is a simple frontend-only project using React, Material-UI, and TypeScript. The only Firebase feature used is hosting for now (no database, authentication, or other Firebase services).
 
-# To host and test this on your own, do this:
+# Setting Up Locally
 
-1. Create a firebase project at firebase.com to host the website (it's free)
-2. Create a config.ts in your src-folder and declare the firebase config object with `export const firebaseConfig = {/* your object */}`
-3. When you run firebase init, make sure you get a .firebaserc in the root folder. It will loke like this:
+To host and test the website locally:
+
+1. Create a Firebase project at firebase.com to host the website (it’s free).
+2. Create a `config.ts` file in your `src` folder and add your Firebase configuration:
+
+```
+export const firebaseConfig = {
+  apiKey: 'your-api-key',
+  authDomain: 'your-project-id.firebaseapp.com',
+  projectId: 'your-project-id',
+  storageBucket: 'your-project-id.appspot.com',
+  messagingSenderId: 'your-sender-id',
+  appId: 'your-app-id'
+};
+```
+
+3. Run `firebase init` to set up Firebase hosting. Make sure to get the `.firebaserc` file in your root folder, which will look like this:
 
 ```
 {
