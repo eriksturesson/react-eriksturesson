@@ -1,6 +1,6 @@
 import { Box, Chip, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { portfolioItems } from "../data/portfolioItems";
 import { getCategoryColor } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
@@ -13,6 +13,7 @@ export default function Portfolio() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const location = useLocation();
+  const navigate = useNavigate(); // För att uppdatera URL:en när modal stängs
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -34,11 +35,15 @@ export default function Portfolio() {
   const handleOpen = (item: PortfolioItem) => {
     setSelectedItem(item);
     setOpen(true);
+    // Uppdatera URL med parameter för öppnat kort
+    navigate(`?portfolio=${encodeURIComponent(item.title)}`, { replace: true });
   };
 
   const handleClose = () => {
     setOpen(false);
     setSelectedItem(null);
+    // Nollställ URL:en när modal stängs
+    navigate("", { replace: true }); // Detta tar bort query-parametern och återställer URL:en
   };
 
   const handleTagClick = (tag: string) => {
