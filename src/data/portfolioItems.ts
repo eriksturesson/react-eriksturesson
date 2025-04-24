@@ -18,9 +18,9 @@ export const portfolioItems: PortfolioItem[] = [
       "En komplett SaaS-plattform för karriärmässor, riktad mot både utställande arbetsgivare och studenter. Jag var med och affärsutvecklade plattformen och ledde ombyggnaden av systemet tillsammans med ett team av IT-konsulter. Plattformen innehåller viktiga funktioner såsom bokningssystem för intervjuer, olika adminbehörigheter, samt statistik och kandidatdata som gör det möjligt för arbetsgivare att enkelt följa upp och matcha rätt kandidater.",
     image: { type: "image", src: studentNodePlatform, alt: "Student Node Dashboard" },
     tags: {
-      programmingLanguages: ["TypeScript"],
-      tools: ["React", "MUI", "Docker", "Firebase Cloud Functions"],
-      platforms: ["Firebase Realtime DB", "Firebase Authentication", "GCP"],
+      programmingLanguages: ["TypeScript", "JavaScript", "Node.js"],
+      tools: ["React", "MUI", "Firebase Cloud Functions"],
+      platforms: ["Firebase Realtime DB", "Firebase Authentication", "Firebase Hosting", "GCP"],
     },
   },
   {
@@ -30,8 +30,8 @@ export const portfolioItems: PortfolioItem[] = [
     image: { type: "image", src: eventPageTLB, alt: "Event Page" },
     tags: {
       programmingLanguages: ["HTML", "CSS", "JavaScript"],
-      tools: ["React", "MUI"],
-      platforms: ["Firebase", "GCP"],
+      tools: [],
+      platforms: ["Firebase"],
     },
   },
   {
@@ -40,9 +40,9 @@ export const portfolioItems: PortfolioItem[] = [
       "Effektivt API för att matcha kandidater mot jobb med externa system. Jag byggde och dokumenterade ett API som integrerade med externa plattformar, vilket säkerställde hög prestanda och låg latens. Systemet användes för att automatisera jobbmatchning och förbättra kandidatflödet.",
     image: { type: "image", src: matchingApiDocs, alt: "API Documentation" },
     tags: {
-      programmingLanguages: ["TypeScript", "JavaScript", "Node.js"],
-      tools: ["Express", "Docker"],
-      platforms: ["Firebase", "GCP"],
+      programmingLanguages: ["TypeScript", "Node.js"],
+      tools: ["Express", "Docker", "Swagger"],
+      platforms: ["Firebase Reaktime Database", "GCP"],
     },
   },
   {
@@ -52,8 +52,8 @@ export const portfolioItems: PortfolioItem[] = [
     image: { type: "image", src: matchingApiDocs, alt: "API Update for Exhibitors" },
     tags: {
       programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      tools: ["Express", "Docker", "Swagger"],
+      platforms: ["Firebase Reaktime Database", "GCP"],
     },
   },
   {
