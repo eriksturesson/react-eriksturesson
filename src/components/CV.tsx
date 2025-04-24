@@ -1,5 +1,5 @@
 // CVSection.tsx
-import { Box, Button, Card, CardContent, Divider, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Divider, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import cvFullstack from "../assets/pdf/cvFullstack.pdf";
 import cvProduktagare from "../assets/pdf/cvProduktagare.pdf";
 
@@ -14,7 +14,8 @@ const CVSection = () => {
       file: cvFullstack,
     },
   ];
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // xs och sm = true
   return (
     <Box id="CV" sx={{ px: 4, py: 8 }}>
       <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
@@ -27,17 +28,33 @@ const CVSection = () => {
             <Card>
               <CardContent>
                 <Typography variant="h4">{cv.title}</Typography>
-                <Button variant="contained" color="success" href={cv.file} download sx={{ mt: 2 }}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  href={cv.file}
+                  download
+                  sx={{
+                    mt: 2,
+                    display: isSmallScreen ? "flex" : "inline-flex",
+                    justifyContent: isSmallScreen ? "center" : "flex-start",
+                    mx: isSmallScreen ? "auto" : 0, // horizontal centering
+                  }}
+                >
                   Ladda ner PDF
                 </Button>
-                <Divider sx={{ pb: "10px" }} />
-                <embed
-                  src={cv.file}
-                  type="application/pdf"
-                  width="100%"
-                  height="600px"
-                  style={{ borderRadius: "8px", marginBottom: "1rem" }}
-                />
+
+                {!isSmallScreen && (
+                  <>
+                    <Divider sx={{ pb: "10px" }} />
+                    <embed
+                      src={cv.file}
+                      type="application/pdf"
+                      width="100%"
+                      height="600px"
+                      style={{ borderRadius: "8px", marginBottom: "1rem" }}
+                    />
+                  </>
+                )}
               </CardContent>
             </Card>
           </Grid>
