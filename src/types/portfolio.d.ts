@@ -6,10 +6,16 @@ export type MediaItem =
 export interface PortfolioItem {
   title: string;
   description: string;
-  longDescription?: string;
   image: MediaItem;
+  tags: PortfolioTags;
   modal?: {
     description?: string;
     media?: MediaItem[];
   };
+}
+
+export interface PortfolioTags {
+  programmingLanguages: string[];
+  tools: string[];
+  platforms: string[];
 }

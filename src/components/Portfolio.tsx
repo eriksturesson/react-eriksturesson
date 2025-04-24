@@ -1,14 +1,16 @@
-// components/PortfolioSection.tsx
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Box, Chip, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { portfolioItems } from "../data/portfolioItems";
+import { getCategoryColor } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
+import PortfolioCard from "./PortfolioCard";
 import PortfolioModal from "./PortfolioModal";
 
-export default function PortfolioSection() {
+export default function Portfolio() {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const location = useLocation();
 
@@ -39,43 +41,85 @@ export default function PortfolioSection() {
     setSelectedItem(null);
   };
 
+  const handleTagClick = (tag: string) => {
+    setSelectedTags((prevTags) => (prevTags.includes(tag) ? prevTags.filter((t) => t !== tag) : [...prevTags, tag]));
+  };
+
+  const filterPortfolioItems = (items: PortfolioItem[]) => {
+    if (selectedTags.length === 0) return items; // Return all items if no tag is selected
+    return items.filter((item) =>
+      selectedTags.some(
+        (tag) =>
+          item.tags.programmingLanguages.includes(tag) ||
+          item.tags.tools.includes(tag) ||
+          item.tags.platforms.includes(tag)
+      )
+    );
+  };
+
+  // Collect all unique tags grouped by category
+  const programmingLanguages = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.programmingLanguages)));
+  const tools = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.tools)));
+  const platforms = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.platforms)));
+
+  // Define the categories and their corresponding colors
+  const categories: {
+    name: "Languages" | "Tools" | "Platforms";
+    tags: string[];
+    color: "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning";
+  }[] = [
+    { name: "Languages", tags: programmingLanguages, color: "success" },
+    { name: "Tools", tags: tools, color: "info" },
+    { name: "Platforms", tags: platforms, color: "warning" },
+  ];
+
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
       <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
-        Min Portfolio
+        Portfolio
       </Typography>
-      <Typography variant="subtitle1" align="center" mb={6}>
-        Här är några av produkterna och projekten jag lett och utvecklat
-      </Typography>
-      <Grid container spacing={4}>
-        {portfolioItems.map((item, index) => (
+
+      {/* Render Tag Filters */}
+      <Box mb={4} sx={{ textAlign: "center" }}>
+        <Typography variant="body1" fontWeight="bold" mb={1} align="center">
+          Filter by{" "}
+          <Typography component="span" color="green" fontWeight="bold">
+            Languages
+          </Typography>
+          ,{" "}
+          <Typography component="span" color="blue" fontWeight="bold">
+            Tools
+          </Typography>
+          , or{" "}
+          <Typography component="span" color="orange" fontWeight="bold">
+            Platforms
+          </Typography>
+        </Typography>
+
+        {/* Loop through each category and render its tags */}
+        {categories.map((category) => (
+          <Box mb={2} key={category.name}>
+            <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center" alignItems="center">
+              {category.tags.map((tag) => (
+                <Chip
+                  key={tag}
+                  label={tag}
+                  onClick={() => handleTagClick(tag)}
+                  color={getCategoryColor(category.name)}
+                  variant={selectedTags.includes(tag) ? "filled" : "outlined"}
+                  sx={{ cursor: "pointer" }}
+                />
+              ))}
+            </Stack>
+          </Box>
+        ))}
+      </Box>
+
+      {/* Filtered Portfolio Items */}
+      <Grid container spacing={4} justifyContent="center">
+        {filterPortfolioItems(portfolioItems).map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ borderRadius: 4, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardMedia
-                component="img"
-                height="180"
-                image={item.image.src}
-                alt={item.image.type === "image" ? item.image.alt || item.title : item.title}
-                sx={{ objectFit: "cover", objectPosition: "top" }}
-              />
-              <CardContent sx={{ flexGrow: 1, px: 3, py: 2 }}>
-                <Typography gutterBottom variant="h6" component="div">
-                  {item.title}
-                </Typography>
-                <Typography variant="body2">{item.description}</Typography>
-              </CardContent>
-              <CardActions sx={{ px: 3, pb: 2 }}>
-                {item.modal && Object.keys(item.modal).length > 0 ? (
-                  <Button size="small" variant="contained" color="success" onClick={() => handleOpen(item)}>
-                    Läs mer
-                  </Button>
-                ) : (
-                  <Button disabled size="small" variant="contained">
-                    Läs mer (kommer snart)
-                  </Button>
-                )}
-              </CardActions>
-            </Card>
+            <PortfolioCard item={item} onClick={() => handleOpen(item)} />
           </Grid>
         ))}
       </Grid>
