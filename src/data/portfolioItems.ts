@@ -83,7 +83,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Express", "Docker", "Swagger"],
+      tools: ["Express", "Docker", "Swagger", "API Integration"],
       platforms: ["Firebase Realtime Database", "GCP"],
     },
   },
@@ -99,7 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Express", "Docker", "Swagger"],
+      tools: ["Express", "Docker", "Swagger", "API Integration"],
       platforms: ["Firebase Realtime Database", "GCP"],
     },
   },
@@ -147,7 +147,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
+      tools: ["React", "MUI", "Firebase Cloud Functions", "API Integration"],
       platforms: ["Firebase", "GCP"],
     },
   },
