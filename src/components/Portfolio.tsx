@@ -99,7 +99,7 @@ export default function Portfolio() {
         {/* Loop through each category and render its tags */}
         {categories.map((category) => (
           <Box mb={2} key={category.name}>
-            <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center" alignItems="center">
+            <Stack direction="row" flexWrap="wrap" justifyContent="center" alignItems="center" gap={0.5}>
               {category.tags.map((tag) => (
                 <Chip
                   key={tag}

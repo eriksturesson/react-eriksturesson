@@ -19,8 +19,8 @@ export const portfolioItems: PortfolioItem[] = [
     image: { type: "image", src: studentNodePlatform, alt: "Student Node Dashboard" },
     tags: {
       programmingLanguages: ["TypeScript"],
-      tools: ["React", "MUI", "Docker"],
-      platforms: ["Firebase Realtime DB", "Firebase Cloud Functions", "Firebase Authentication", "GCP"],
+      tools: ["React", "MUI", "Docker", "Firebase Cloud Functions"],
+      platforms: ["Firebase Realtime DB", "Firebase Authentication", "GCP"],
     },
   },
   {
@@ -41,7 +41,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: { type: "image", src: matchingApiDocs, alt: "API Documentation" },
     tags: {
       programmingLanguages: ["TypeScript", "JavaScript", "Node.js"],
-      tools: ["Express", "Postman", "Docker"],
+      tools: ["Express", "Docker"],
       platforms: ["Firebase", "GCP"],
     },
   },

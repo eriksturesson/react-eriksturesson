@@ -53,10 +53,10 @@ export default function PortfolioModal({ open, item, onClose }: Props) {
               </Typography>
               <Typography variant="body1">{item.modal.description || item.description}</Typography>
               <Divider sx={{ pt: 2, mb: 2 }} />
-              <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+              <Stack direction="column" sx={{ width: "100%" }}>
                 {Object.entries(item.tags).map(([category, tags], index) => (
                   <Box key={category}>
-                    <Stack direction="row" spacing={1} flexWrap="wrap">
+                    <Stack direction="row" flexWrap="wrap" gap={0.5}>
                       {tags.map((tag: string) => (
                         <Chip
                           key={`${category}-${tag}`}
