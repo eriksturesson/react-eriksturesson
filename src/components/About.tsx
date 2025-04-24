@@ -45,7 +45,7 @@ export default function About() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" component="h5" textAlign="center">
-            För karriärinfo, besök min LinkedIn:
+            Karriärinformation:
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button
@@ -61,7 +61,7 @@ export default function About() {
         </Grid>
         <Grid item xs={12} sx={{ mt: 4 }}>
           <Typography variant="h5" component="h5" textAlign="center">
-            Se min kod för eriksturesson.se på GitHub:
+            Se min kod för eriksturesson.se:
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button

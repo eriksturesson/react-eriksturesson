@@ -87,7 +87,7 @@ export default function Portfolio() {
       {/* Render Tag Filters */}
       <Box mb={4} sx={{ textAlign: "center" }}>
         <Typography variant="body1" fontWeight="bold" mb={1} align="center">
-          Filter by{" "}
+          Filtrera på{" "}
           <Typography component="span" color="green" fontWeight="bold">
             Languages
           </Typography>

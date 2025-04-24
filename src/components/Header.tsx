@@ -20,7 +20,7 @@ const headerStyle: React.CSSProperties = {
 
 const arrowStyle: React.CSSProperties = {
   fontSize: 48,
-  animation: "bounce 4s infinite",
+  animation: "bounce 1.5s infinite",
 };
 
 const videoStyle: React.CSSProperties = {
@@ -32,7 +32,12 @@ const videoStyle: React.CSSProperties = {
 
 function Header() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const handleScroll = () => {
+    const aboutSection = document.getElementById("About");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -78,7 +83,7 @@ function Header() {
             </Typography>
           )}
         </Container>
-        <Box>
+        <Box onClick={handleScroll} style={{ cursor: "pointer" }}>
           <KeyboardArrowDownIcon style={arrowStyle} />
         </Box>
       </Box>
