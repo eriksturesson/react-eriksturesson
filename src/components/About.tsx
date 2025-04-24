@@ -9,7 +9,7 @@ import { aboutData, aboutData2 } from "../data/aboutItems";
 
 function LogoGrid({ itemData }: { itemData: string[] }) {
   return (
-    <ImageList cols={itemData.length > 5 ? 5 : itemData.length}>
+    <ImageList sx={{ pl: 2, pr: 2 }} cols={itemData.length > 5 ? 5 : itemData.length}>
       {itemData.map((item, i) => (
         <ImageListItem key={i}>
           <img src={item} alt={"code-logos"} loading="lazy" width="100%" />
@@ -25,17 +25,18 @@ export default function About() {
       <Grid container width="100%" sx={{ display: "flex", flexDirection: "row" }}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Typography variant="h2" component="h2" mx={"2vw"} my={"2vw"} textAlign="center">
-            Entreprenör & Fullstack
+            Tech-ledare
           </Typography>
-          <Typography variant="h3" component={"h3"} mx={"2vw"} my={"2vw"} align="center">
+          <Typography variant="h3" component="h3" mx={"2vw"} my={"2vw"} align="center">
             Min Stack
           </Typography>
           <LogoGrid itemData={aboutData} />
           <LogoGrid itemData={aboutData2} />
-          <Typography variant="h5" component="h5" mt={"4vw"} mb={"2vw"} mx={"2vw"}>
-            Medgrundare av Student Node år 2014. Då fokus på affärsutveckling, sälj och kundkontakt. Från år 2017 även
-            programmering av våra IT-system. Från år 2019 när vi blev uppköpta av PION Group (då Poolia) har jag även
-            byggt automatiseringar internt i koncernen.
+          <Typography variant="h5" component="h5" mt={"4vw"} mb={"2vw"} mx={"2vw"} pl={2} pr={2}>
+            Grundat och lett utvecklingen av Sveriges ledande SaaS-plattform för karriärmässor. Ansvarat för att aligna
+            produkter med kunders behov och skapa lösningar som effektiviserar och skapar värde. Företaget (Student Node
+            AB) blev uppköpt av Poolia 2019, där jag stannade i 6 år. Jag trivs i rollen som brygga mellan teknik, affär
+            och användare – med ansvar för kravställning, roadmap och leverans.
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -45,7 +46,7 @@ export default function About() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" component="h5" textAlign="center">
-            Karriärinformation:
+            Karriärinformation
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button
@@ -61,7 +62,7 @@ export default function About() {
         </Grid>
         <Grid item xs={12} sx={{ mt: 4 }}>
           <Typography variant="h5" component="h5" textAlign="center">
-            Se min kod för eriksturesson.se:
+            Se koden för eriksturesson.se
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button

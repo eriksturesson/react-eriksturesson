@@ -42,33 +42,39 @@ function Footer() {
           Hitta:
         </Typography>
         <BottomNavigation sx={{ backgroundColor: "lightgray" }}>
-          <BottomNavigationAction showLabel label="Home" href="#Home" sx={{ color: "inherit" }} icon={<HomeIcon />} />
+          <BottomNavigationAction
+            showLabel
+            label="Home"
+            href="#Home"
+            sx={{ color: "inherit", minWidth: 60 }}
+            icon={<HomeIcon />}
+          />
           <BottomNavigationAction
             showLabel
             label="About"
             href="#About"
-            sx={{ color: "inherit" }}
+            sx={{ color: "inherit", minWidth: 60 }}
             icon={<PersonIcon />}
           />
           <BottomNavigationAction
             showLabel
             label="Portfolio"
             href="#Portfolio"
-            sx={{ color: "inherit" }}
+            sx={{ color: "inherit", minWidth: 60 }}
             icon={<FolderIcon />}
           />
           <BottomNavigationAction
             showLabel
             label="Projects"
             href="#Projects"
-            sx={{ color: "inherit" }}
+            sx={{ color: "inherit", minWidth: 60 }}
             icon={<AccountTreeIcon />}
           />
           <BottomNavigationAction
             showLabel
             label="CV"
             href="#CV"
-            sx={{ color: "inherit" }}
+            sx={{ color: "inherit", minWidth: 60 }}
             icon={<DescriptionIcon />}
           />
         </BottomNavigation>

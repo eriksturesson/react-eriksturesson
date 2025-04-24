@@ -27,7 +27,7 @@ const CVSection = () => {
           <Grid item xs={12} md={6} key={cv.title}>
             <Card>
               <CardContent>
-                <Typography variant="h4">{cv.title}</Typography>
+                <Typography variant="h5">{cv.title}</Typography>
                 <Button
                   variant="contained"
                   color="success"
