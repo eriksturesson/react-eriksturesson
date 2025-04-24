@@ -1,5 +1,7 @@
 import { Instagram, LinkedIn, YouTube } from "@mui/icons-material/";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import DescriptionIcon from "@mui/icons-material/Description"; // För CV
+import FolderIcon from "@mui/icons-material/Folder"; // För Portfolio
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import { BottomNavigation, BottomNavigationAction, Grid, Typography } from "@mui/material";
@@ -9,9 +11,10 @@ import "../assets/css/App.css";
 //<img src={logo} className="App-logo" alt="logo" />
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <Grid container sx={{ backgroundColor: "lightgray", p: 4 }}>
-      <Grid item xs={12} sm={12} md={4} sx={{ textAlign: "center", pb: "2rem" }}>
+      <Grid item xs={12} md={12} lg={4} sx={{ textAlign: "center", pb: "2rem" }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, pb: "1rem" }}>
           Kontakt:
         </Typography>
@@ -25,14 +28,14 @@ function Footer() {
       <Grid
         item
         xs={12}
-        sm={12}
-        md={4}
+        md={12}
+        lg={4}
         sx={{
           textAlign: "center",
           pb: "2rem",
-          borderLeft: { md: "solid" },
-          borderRight: { md: "solid" },
-          borderColor: { md: "white" },
+          borderLeft: { lg: "solid", md: "none" }, // Visa border på lg och inte på md eller xs
+          borderRight: { lg: "solid", md: "none" },
+          borderColor: { lg: "white", md: "transparent" }, // Vita gränser på lg och transparent på md/xs
         }}
       >
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, pb: "1rem" }}>
@@ -52,7 +55,7 @@ function Footer() {
             label="Portfolio"
             href="#Portfolio"
             sx={{ color: "inherit" }}
-            icon={<AccountTreeIcon />}
+            icon={<FolderIcon />}
           />
           <BottomNavigationAction
             showLabel
@@ -61,9 +64,16 @@ function Footer() {
             sx={{ color: "inherit" }}
             icon={<AccountTreeIcon />}
           />
+          <BottomNavigationAction
+            showLabel
+            label="CV"
+            href="#CV"
+            sx={{ color: "inherit" }}
+            icon={<DescriptionIcon />}
+          />
         </BottomNavigation>
       </Grid>
-      <Grid item xs={12} sm={12} md={4} sx={{ textAlign: "center", pb: "2rem" }}>
+      <Grid item xs={12} md={12} lg={4} sx={{ textAlign: "center", pb: "2rem" }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, pb: "1rem" }}>
           Sociala medier:
         </Typography>
@@ -101,7 +111,7 @@ function Footer() {
           alignItems: "center",
         }}
       >
-        <Typography variant="caption">Copyright © 2023 eriksturesson.se</Typography>
+        <Typography variant="caption">Copyright © {currentYear} eriksturesson.se</Typography>
       </Grid>
     </Grid>
   );

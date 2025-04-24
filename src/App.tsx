@@ -8,6 +8,7 @@ const LazyAbout = lazy(() => import("./components/About"));
 const LazyHeader = lazy(() => import("./components/Header"));
 const LazyProjects = lazy(() => import("./components/Projects"));
 const LazyPortfolio = lazy(() => import("./components/Portfolio"));
+const CV = lazy(() => import("./components/CV"));
 const LazyFooter = lazy(() => import("./components/Footer"));
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
           <div className="containers" id="Projects">
             <LazyProjects />
           </div>
+          <div className="containers" id="CV">
+            <CV />
+          </div>
+
           <div id="Contact">
             <LazyFooter />
           </div>
