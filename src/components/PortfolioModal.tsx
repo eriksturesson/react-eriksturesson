@@ -57,6 +57,7 @@ export default function PortfolioModal({ open, item, onClose }: Props) {
                 {Object.entries(item.tags).map(([category, tags], index) => (
                   <Box key={category}>
                     <Stack direction="row" spacing={1} flexWrap="wrap">
+                      s
                       {tags.map((tag: string) => (
                         <Chip
                           key={`${category}-${tag}`}
