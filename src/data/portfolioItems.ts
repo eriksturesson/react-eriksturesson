@@ -20,7 +20,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       programmingLanguages: ["TypeScript"],
       tools: ["React", "MUI", "Docker"],
-      platforms: ["Firebase (Realtime DB, Cloud Functions, Authentication)", "GCP"],
+      platforms: ["Firebase Realtime DB", "Firebase Cloud Functions", "Firebase Authentication", "GCP"],
     },
   },
   {
