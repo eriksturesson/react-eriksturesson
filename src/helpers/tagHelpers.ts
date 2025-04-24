@@ -12,3 +12,16 @@ export const getCategoryColor = (
       return "default"; // Om någon annan kategori skulle komma in, vilket inte borde hända.
   }
 };
+// Funktion som mappar interna tags till de vi vill använda i getCategoryColor
+export const mapTagToCategory = (tagKey: string): "Languages" | "Tools" | "Platforms" => {
+  switch (tagKey) {
+    case "programmingLanguages":
+      return "Languages";
+    case "tools":
+      return "Tools";
+    case "platforms":
+      return "Platforms";
+    default:
+      return "Languages";
+  }
+};

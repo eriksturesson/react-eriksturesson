@@ -1,6 +1,7 @@
 // components/PortfolioModal.tsx
-import { Alert, Box, Button, Modal, Snackbar, Typography } from "@mui/material";
+import { Alert, Box, Button, Chip, Divider, Modal, Snackbar, Stack, Typography } from "@mui/material";
 import { useState } from "react";
+import { getCategoryColor, mapTagToCategory } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
 
 interface Props {
@@ -51,6 +52,26 @@ export default function PortfolioModal({ open, item, onClose }: Props) {
                 {item.title}
               </Typography>
               <Typography variant="body1">{item.modal.description || item.description}</Typography>
+              <Divider sx={{ pt: 2, mb: 2 }} />
+              <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+                {Object.entries(item.tags).map(([category, tags], index) => (
+                  <Box key={category}>
+                    <Stack direction="row" spacing={1} flexWrap="wrap">
+                      {tags.map((tag: string) => (
+                        <Chip
+                          key={`${category}-${tag}`}
+                          label={tag}
+                          color={getCategoryColor(mapTagToCategory(category))}
+                          variant="filled"
+                          size="small"
+                          sx={{ m: 0.5 }} // Ökat mellanrum mellan chipsen
+                        />
+                      ))}
+                    </Stack>
+                  </Box>
+                ))}
+              </Stack>
+              <Divider sx={{ pt: 2, mb: 2 }} />
               {item.modal.media && item.modal.media.length > 0 && (
                 <Box mt={2}>
                   {/* Example to show images in the modal */}

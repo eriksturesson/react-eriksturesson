@@ -1,5 +1,17 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+  Divider,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { getCategoryColor, mapTagToCategory } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
 
 export default function PortfolioCard({
@@ -23,6 +35,25 @@ export default function PortfolioCard({
           {item.title}
         </Typography>
         <Typography variant="body2">{item.description}</Typography>
+        <Divider sx={{ pt: 2, mb: 2 }} />
+        <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+          {Object.entries(item.tags).map(([category, tags], index) => (
+            <Box key={category}>
+              <Stack direction="row" spacing={1} flexWrap="wrap">
+                {tags.map((tag: string) => (
+                  <Chip
+                    key={`${category}-${tag}`}
+                    label={tag}
+                    color={getCategoryColor(mapTagToCategory(category))}
+                    variant="filled"
+                    size="small"
+                    sx={{ m: 0.5 }} // Ökat mellanrum mellan chipsen
+                  />
+                ))}
+              </Stack>
+            </Box>
+          ))}
+        </Stack>
       </CardContent>
       <CardActions sx={{ px: 3, pb: 2 }}>
         {item.modal ? (
