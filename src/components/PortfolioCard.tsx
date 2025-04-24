@@ -39,7 +39,7 @@ export default function PortfolioCard({
         <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
           {Object.entries(item.tags).map(([category, tags], index) => (
             <Box key={category}>
-              <Stack direction="row" spacing={1} flexWrap="wrap">
+              <Stack direction="row" spacing={1} flexWrap="wrap" gap={1}>
                 {tags.map((tag: string) => (
                   <Chip
                     key={`${category}-${tag}`}
