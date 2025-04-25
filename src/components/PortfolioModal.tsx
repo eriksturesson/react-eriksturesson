@@ -1,6 +1,9 @@
 // components/PortfolioModal.tsx
-import { Alert, Box, Button, Chip, Divider, Modal, Snackbar, Stack, Typography } from "@mui/material";
+import { Box, Button, Chip, Divider, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
+
+import CopyLinkSnackbar from "../helpers/CopyLinkSnackBar";
+import { copyPortfolioLink } from "../helpers/sharePortfolio";
 import { getCategoryColor, mapTagToCategory } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
 
@@ -13,20 +16,11 @@ interface Props {
 export default function PortfolioModal({ open, item, onClose }: Props) {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const handleCopyLink = () => {
-    if (item) {
-      const itemSlug = encodeURIComponent(item.title.toLowerCase().replace(/\s+/g, ""));
-      const itemUrl = `${window.location.origin}/portfolio?portfolio=${itemSlug}`;
-
-      navigator.clipboard
-        .writeText(itemUrl)
-        .then(() => setSnackbarOpen(true))
-        .catch((err) => console.error("Fel vid kopiering: ", err));
-    }
-  };
-
   if (!item) return null;
-
+  const handleCopy = async () => {
+    const success = await copyPortfolioLink(item);
+    if (success) setSnackbarOpen(true);
+  };
   return (
     <>
       <Modal open={open} onClose={onClose}>
@@ -90,7 +84,7 @@ export default function PortfolioModal({ open, item, onClose }: Props) {
                 <Button onClick={onClose} variant="contained" color="error">
                   Stäng
                 </Button>
-                <Button onClick={handleCopyLink} variant="contained" color="info">
+                <Button onClick={handleCopy} variant="contained" color="info">
                   Dela
                 </Button>
               </Box>
@@ -98,16 +92,7 @@ export default function PortfolioModal({ open, item, onClose }: Props) {
           )}
         </Box>
       </Modal>
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000}
-        onClose={() => setSnackbarOpen(false)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      >
-        <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: "100%" }}>
-          Länk kopierad!
-        </Alert>
-      </Snackbar>
+      <CopyLinkSnackbar open={snackbarOpen} onClose={() => setSnackbarOpen(false)} />
     </>
   );
 }

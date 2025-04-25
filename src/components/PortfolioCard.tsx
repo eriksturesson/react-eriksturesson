@@ -14,6 +14,10 @@ import {
 import { getCategoryColor, mapTagToCategory } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
 
+import { useState } from "react";
+import CopyLinkSnackbar from "../helpers/CopyLinkSnackBar";
+import { copyPortfolioLink } from "../helpers/sharePortfolio";
+
 export default function PortfolioCard({
   item,
   onClick,
@@ -21,6 +25,11 @@ export default function PortfolioCard({
   item: PortfolioItem;
   onClick: (item: PortfolioItem) => void;
 }) {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const handleCopy = async () => {
+    const success = await copyPortfolioLink(item);
+    if (success) setSnackbarOpen(true);
+  };
   return (
     <Card sx={{ borderRadius: 4, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column" }}>
       <CardMedia
@@ -57,15 +66,21 @@ export default function PortfolioCard({
       </CardContent>
       <CardActions sx={{ px: 3, pb: 2 }}>
         {item.modal ? (
-          <Button size="small" variant="contained" color="success" onClick={() => onClick(item)}>
-            Läs mer
-          </Button>
+          <Box sx={{ width: "90%", display: "flex", justifyContent: "space-between" }}>
+            <Button variant="contained" color="success" onClick={() => onClick(item)}>
+              Läs mer
+            </Button>
+            <Button onClick={handleCopy} variant="contained" color="info">
+              Dela
+            </Button>
+          </Box>
         ) : (
           <Button startIcon={<LockOutlinedIcon />} disabled size="small" variant="contained">
             Läs mer (kommer snart)
           </Button>
         )}
       </CardActions>
+      <CopyLinkSnackbar open={snackbarOpen} onClose={() => setSnackbarOpen(false)} />
     </Card>
   );
 }

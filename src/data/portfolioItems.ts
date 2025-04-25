@@ -18,11 +18,14 @@ import statistics from "../assets/img/graph-6030184_1280.png";
 import fakturaSystem from "../assets/img/invoice-studentnode-example.png";
 import invoice from "../assets/img/invoice.png";
 import jobSearch from "../assets/img/job-5359923_1280.png";
+import mobileAppPrintscreen from "../assets/img/mobileAppPrintscreen.jpg";
+import mobileAppPrintscreen2 from "../assets/img/mobileAppPrintscreen2.jpg";
 import interview from "../assets/img/office-8140320_1280.png";
 import orderSystem from "../assets/img/orderHistory.png";
 import rekonWebsite from "../assets/img/rekon-website.png";
 import website from "../assets/img/responsive-1702827_1280.png";
 import rotaryWebsite from "../assets/img/rotaryWebsite.png";
+import mobileApp from "../assets/img/smartphone-1833950_1280.png";
 import talentReachEMail from "../assets/img/talentReachEmail.png";
 import sendEmail from "../assets/img/telegram-5662082_1280.png";
 import { PortfolioItem } from "../types/portfolio";
@@ -229,6 +232,24 @@ export const portfolioItems: PortfolioItem[] = [
       programmingLanguages: ["TypeScript", "Node.js"],
       tools: ["React", "MUI", "Firebase Cloud Functions"],
       platforms: ["Firebase", "GCP"],
+    },
+  },
+  {
+    title: "Rapporteringsapp i android och ios",
+    description: "Skapade en app för att anställda lättare skulle kunna fylla i mer än bara siffror varje vecka.",
+    image: { type: "image", src: mobileApp, alt: "App i React Native" },
+    modal: {
+      description:
+        "Gjorde en app i React Native för att anställda lättare skulle kunna fylla i mer än bara siffror varje vecka och för att kunna aggregera statistik och teamens resultat.",
+      media: [
+        { type: "image", src: mobileAppPrintscreen, alt: "App i React Native" },
+        { type: "image", src: mobileAppPrintscreen2, alt: "App i React Native" },
+      ],
+    },
+    tags: {
+      programmingLanguages: ["TypeScript", "Node.js"],
+      tools: ["React Native", "React Native Paper", "Metro"],
+      platforms: ["Firebase", "Firebase Realtime Database"],
     },
   },
 ];
