@@ -46,9 +46,16 @@ export const portfolioItems: PortfolioItem[] = [
       ],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "JavaScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase Realtime DB", "Firebase Authentication", "Firebase Hosting", "GCP"],
+      techStack: ["TypeScript", "JavaScript", "Node.js", "MUI", "React", "SCSS", "CSS", "HTML"],
+      architecture: [
+        "Firebase Auth",
+        "Firebase Hosting",
+        "Firebase Realtime Database",
+        "Firebase Storage",
+        "GCP",
+        "Docker",
+      ],
+      productFocus: ["SaaS-utveckling", "API-integrationer", "Jobbmatchning"],
     },
   },
   {
@@ -69,9 +76,9 @@ export const portfolioItems: PortfolioItem[] = [
       ],
     },
     tags: {
-      programmingLanguages: ["HTML", "CSS", "JavaScript"],
-      tools: [],
-      platforms: ["Firebase"],
+      techStack: ["HTML", "CSS", "JavaScript"],
+      architecture: ["Firebase Hosting"],
+      productFocus: ["Eventhantering", "Deltagaranmälan", "Inbjudningar"],
     },
   },
   {
@@ -85,9 +92,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: matchingApiDocs, alt: "API Documentation" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Express", "Docker", "Swagger", "API Integration"],
-      platforms: ["Firebase Realtime Database", "GCP"],
+      techStack: ["TypeScript", "Node.js"],
+      architecture: ["Express", "Docker", "Swagger"],
+      productFocus: ["API-integrationer", "Jobbmatchning", "Automation"],
     },
   },
   {
@@ -101,9 +108,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: matchingApiDocs, alt: "API Update for Exhibitors" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Express", "Docker", "Swagger", "API Integration"],
-      platforms: ["Firebase Realtime Database", "GCP"],
+      techStack: ["TypeScript", "Node.js"],
+      architecture: ["Express", "Docker", "Swagger"],
+      productFocus: ["API-integrationer", "Automation", "Systemintegration"],
     },
   },
   {
@@ -117,9 +124,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: talentReachEMail, alt: "Talent Reach Dashboard" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["Docker", "API Integration"],
-      platforms: ["GCP", "Firebase"],
+      techStack: ["TypeScript", "Node.js"],
+      architecture: ["Docker", "GCP - Compute Engine"],
+      productFocus: ["Jobbmatchning", "Automation", "API-integration", "Kandidatflöde", "Automatiska epost"],
     },
   },
   {
@@ -133,9 +140,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: fakturaSystem, alt: "Billing System" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "MUI", "React"],
+      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
+      productFocus: ["Fakturering", "Användarhantering", "Prismodeller"],
     },
   },
   {
@@ -149,9 +156,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: jobPostingSystem, alt: "Job Posting System" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions", "API Integration"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI"],
+      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Firebase Realtime Database"],
+      productFocus: ["Jobbannonsering", "API-integrationer", "Fakturering"],
     },
   },
   {
@@ -165,9 +172,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: bookingSystem, alt: "Booking System" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "MUI", "React"],
+      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Firebase Realtime Database", "Firebase Auth"],
+      productFocus: ["Bokningssystem", "Automatiska epost", "Intervjuhantering"],
     },
   },
   {
@@ -181,9 +188,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: bookingSystemAdmin, alt: "Employer Application System" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI"],
+      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
+      productFocus: ["Bokningssystem"],
     },
   },
   {
@@ -197,9 +204,10 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: automatiseradStatistik, alt: "Automated Statistics" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI"],
+      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
+
+      productFocus: ["Statistikgenerering", "Datavisualisering", "Rapportering"],
     },
   },
   {
@@ -213,9 +221,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: adminDashboard, alt: "Admin Dashboard" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI"],
+      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
+      productFocus: ["Adminportal", "Eventhantering", "Statistik"],
     },
   },
   {
@@ -229,9 +237,10 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: orderSystem, alt: "Order System" }],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React", "MUI", "Firebase Cloud Functions"],
-      platforms: ["Firebase", "GCP"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI"],
+      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
+
+      productFocus: ["Ordersystem", "Fakturering", "Eventhantering"],
     },
   },
   {
@@ -247,9 +256,9 @@ export const portfolioItems: PortfolioItem[] = [
       ],
     },
     tags: {
-      programmingLanguages: ["TypeScript", "Node.js"],
-      tools: ["React Native", "React Native Paper", "Metro"],
-      platforms: ["Firebase", "Firebase Realtime Database"],
+      techStack: ["TypeScript", "Node.js", "React Native", "React Native Paper"],
+      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime Database", "Firebase Storage"],
+      productFocus: ["Apputveckling", "android", "ios"],
     },
   },
 ];

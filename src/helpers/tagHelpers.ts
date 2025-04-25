@@ -1,27 +1,27 @@
 export const getCategoryColor = (
-  category: "Languages" | "Tools" | "Platforms"
+  category: "Techstack" | "Architecture" | "ProductFocus"
 ): "success" | "info" | "warning" | "default" => {
   switch (category) {
-    case "Languages":
+    case "Techstack":
       return "success";
-    case "Tools":
+    case "Architecture":
       return "info";
-    case "Platforms":
+    case "ProductFocus":
       return "warning";
     default:
       return "default"; // Om någon annan kategori skulle komma in, vilket inte borde hända.
   }
 };
 // Funktion som mappar interna tags till de vi vill använda i getCategoryColor
-export const mapTagToCategory = (tagKey: string): "Languages" | "Tools" | "Platforms" => {
+export const mapTagToCategory = (tagKey: string): "Techstack" | "Architecture" | "ProductFocus" => {
   switch (tagKey) {
-    case "programmingLanguages":
-      return "Languages";
-    case "tools":
-      return "Tools";
-    case "platforms":
-      return "Platforms";
+    case "techStack":
+      return "Techstack";
+    case "architecture":
+      return "Architecture";
+    case "productFocus":
+      return "ProductFocus";
     default:
-      return "Languages";
+      return "Techstack";
   }
 };

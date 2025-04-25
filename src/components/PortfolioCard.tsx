@@ -66,7 +66,7 @@ export default function PortfolioCard({
       </CardContent>
       <CardActions sx={{ px: 3, pb: 2 }}>
         {item.modal ? (
-          <Box sx={{ width: "90%", display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
             <Button variant="contained" color="success" onClick={() => onClick(item)}>
               Läs mer
             </Button>

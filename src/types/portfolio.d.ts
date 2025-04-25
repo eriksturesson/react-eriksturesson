@@ -15,7 +15,7 @@ export interface PortfolioItem {
 }
 
 export interface PortfolioTags {
-  programmingLanguages: string[];
-  tools: string[];
-  platforms: string[];
+  techStack: string[]; // ex: TypeScript, React, Node.js
+  architecture: string[]; // ex: Firebase Auth, GCP, Docker
+  productFocus: string[]; // ex: API-integrationer, SaaS-utveckling
 }

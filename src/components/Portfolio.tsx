@@ -55,27 +55,27 @@ export default function Portfolio() {
     return items.filter((item) =>
       selectedTags.some(
         (tag) =>
-          item.tags.programmingLanguages.includes(tag) ||
-          item.tags.tools.includes(tag) ||
-          item.tags.platforms.includes(tag)
+          item.tags.techStack.includes(tag) ||
+          item.tags.architecture.includes(tag) ||
+          item.tags.productFocus.includes(tag)
       )
     );
   };
 
   // Collect all unique tags grouped by category
-  const programmingLanguages = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.programmingLanguages)));
-  const tools = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.tools)));
-  const platforms = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.platforms)));
+  const techStack = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.techStack)));
+  const architecture = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.architecture)));
+  const productFocus = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.productFocus)));
 
   // Define the categories and their corresponding colors
   const categories: {
-    name: "Languages" | "Tools" | "Platforms";
+    name: "Techstack" | "Architecture" | "ProductFocus";
     tags: string[];
     color: "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning";
   }[] = [
-    { name: "Languages", tags: programmingLanguages, color: "success" },
-    { name: "Tools", tags: tools, color: "info" },
-    { name: "Platforms", tags: platforms, color: "warning" },
+    { name: "Techstack", tags: techStack, color: "success" },
+    { name: "Architecture", tags: architecture, color: "info" },
+    { name: "ProductFocus", tags: productFocus, color: "warning" },
   ];
 
   return (
@@ -93,15 +93,15 @@ export default function Portfolio() {
         <Typography variant="body1" fontWeight="bold" mb={1} align="center">
           Filtrera på{" "}
           <Typography component="span" color="green" fontWeight="bold">
-            Languages
+            Techstack
           </Typography>
           ,{" "}
           <Typography component="span" color="blue" fontWeight="bold">
-            Tools
+            Arkitektur
           </Typography>
           , eller{" "}
           <Typography component="span" color="orange" fontWeight="bold">
-            Platforms
+            Produktfokus
           </Typography>
         </Typography>
 
