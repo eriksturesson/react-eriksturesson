@@ -1,5 +1,6 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { Suspense, lazy } from "react";
+import { Helmet } from "react-helmet-async";
 import "./assets/css/App.css";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { eriksTheme } from "./utils/theme";
@@ -16,7 +17,20 @@ function App() {
     <Suspense fallback={<LoadingSpinner />}>
       <ThemeProvider theme={eriksTheme}>
         <Box>
-          {/* <CookieConsentBanner /> */}
+          <Helmet>
+            <title>Erik Sturesson | Product Manager & Tech-ledare</title>
+            <meta
+              name="description"
+              content="Erik Sturesson – Product Manager med fokus på affärsutveckling, automation och teknisk ledning."
+            />
+            <meta name="keywords" content="Erik Sturesson, Product Manager, Tech Lead, Affärsutveckling, Automation" />
+            <meta property="og:title" content="Erik Sturesson | Product Manager & Tech-ledare" />
+            <meta
+              property="og:description"
+              content="Utforska min portfolio och lär känna mig som digital produktutvecklare."
+            />
+            <meta property="og:image" content="https://eriksturesson.se/og-background.jpg" />
+          </Helmet>
 
           <div className="navAndHeaderDiv" id="Home">
             <LazyNavBar />

@@ -5,6 +5,7 @@ import { portfolioItems } from "../data/portfolioItems";
 import { getCategoryColor } from "../helpers/tagHelpers";
 import { PortfolioItem } from "../types/portfolio";
 import PortfolioCard from "./PortfolioCard";
+import { PortfolioHelmet } from "./PortfolioHelmet";
 import PortfolioModal from "./PortfolioModal";
 
 export default function Portfolio() {
@@ -14,6 +15,7 @@ export default function Portfolio() {
 
   const location = useLocation();
   const navigate = useNavigate(); // För att uppdatera URL:en när modal stängs
+  // Dynamically extract the current portfolio URL
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -82,13 +84,15 @@ export default function Portfolio() {
 
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
+      <PortfolioHelmet selectedItem={selectedItem} />
+
       <Box sx={{ textAlign: "center", mb: 4 }}>
         <Typography variant="h4" gutterBottom fontWeight="bold">
           Portfolio
         </Typography>
-        <Typography variant="caption" component="i">
+        {/* <Typography variant="caption" component="i">
           (Fortfarande under utveckling)
-        </Typography>
+        </Typography> */}
       </Box>
       {/* Render Tag Filters */}
       <Box mb={4} sx={{ textAlign: "center" }}>
