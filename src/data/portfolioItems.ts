@@ -38,7 +38,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: { type: "image", src: adminImage, alt: "Student Node Dashboard" },
     modal: {
       description:
-        "Vi hade monopol i Sverige där vårt system användes på över 50st karriärmässor över landet. Här är printscreens från några hemsidor som exemplifierar hur det såg ut.",
+        "Vi hade monopol i Sverige där vårt system användes på över 50st karriärmässor över landet. Här är printscreens från några hemsidor som exemplifierar hur det såg ut. År 2023 byggde jag om hela systemet från vanilla JS till React, Typescript och MUI-ramverket. Under en period hade jag även IT-konsulter med i teamet som jag ledde.",
       media: [
         { type: "image", src: studentNodePlatform, alt: "Student Node Dashboard" },
         { type: "image", src: careerFairTechjobs, alt: "Career Fair Techjobs" },
@@ -50,12 +50,12 @@ export const portfolioItems: PortfolioItem[] = [
       architecture: [
         "Firebase Auth",
         "Firebase Hosting",
-        "Firebase Realtime Database",
+        "Firebase Realtime DB",
         "Firebase Storage",
-        "GCP",
+        "GCP Artifact Registry",
         "Docker",
       ],
-      productFocus: ["Frontend", "Backend", "SaaS-utveckling", "API-integrationer"],
+      productFocus: ["Frontend", "Backend", "SaaS", "API"],
     },
   },
   {
@@ -93,8 +93,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js"],
-      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime Database"],
-      productFocus: ["API-integrationer", "Backend"],
+      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
+      productFocus: ["API", "Backend"],
     },
   },
   {
@@ -109,8 +109,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js"],
-      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime Database"],
-      productFocus: ["API-integrationer", "Backend"],
+      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
+      productFocus: ["API", "Backend"],
     },
   },
   {
@@ -126,7 +126,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js"],
       architecture: ["Docker", "GCP - Compute Engine"],
-      productFocus: ["Backend", "API-integration", "Epostutskick"],
+      productFocus: ["Backend", "API", "E-postautomatisering"],
     },
   },
   {
@@ -141,8 +141,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "MUI", "React"],
-      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
-      productFocus: ["Backend", "Frontend", "Fakturering", "Användarhantering", "Epostutskick"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "E-postautomatisering"],
     },
   },
   {
@@ -157,8 +157,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Firebase Realtime Database"],
-      productFocus: ["Backend", "Frontend", "Jobbannonsering", "API-integrationer", "Fakturering"],
+      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "SaaS"],
     },
   },
   {
@@ -173,8 +173,14 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "MUI", "React"],
-      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Firebase Realtime Database", "Firebase Auth"],
-      productFocus: ["SaaS-utveckling", "Backend", "Frontend", "Bokningssystem", "Epostutskick"],
+      architecture: [
+        "Firebase Hosting",
+        "Firebase Cloud Functions",
+        "Serverless Backend",
+        "Firebase Realtime DB",
+        "Firebase Auth",
+      ],
+      productFocus: ["SaaS", "Backend", "Frontend", "UX/UI", "E-postautomatisering"],
     },
   },
   {
@@ -189,8 +195,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
-      productFocus: ["Frontend", "Backend", "SaaS-utveckling", "Bokningssystem"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI"],
     },
   },
   {
@@ -205,8 +211,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
-      productFocus: ["Frontend", "Backend", "Statistik", "Datavisualisering", "Rapportering"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
+      productFocus: ["Frontend", "Backend", "UX/UI", "Datavisualisering"],
     },
   },
   {
@@ -221,8 +227,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Firebase Auth", "Firebase Realtime Database"],
-      productFocus: ["Frontend", "Backend", "SaaS-utveckling", "Adminportal"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Auth", "Firebase Realtime DB"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI"],
     },
   },
   {
@@ -237,8 +243,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Firebase Realtime Database"],
-      productFocus: ["Frontend", "Backend", "SaaS-utveckling", "Ordersystem", "Fakturering"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
+      productFocus: ["Frontend", "Backend", "SaaS"],
     },
   },
   {
@@ -255,8 +261,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React Native", "React Native Paper"],
-      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime Database", "Firebase Storage"],
-      productFocus: ["Frontend", "Backend", "Mobilapp", "android", "ios"],
+      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime DB", "Firebase Storage"],
+      productFocus: ["Frontend", "Backend", "Mobilapp"],
     },
   },
 ];
