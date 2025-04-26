@@ -34,8 +34,8 @@ export default function NavBar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        ERIKSTURESSON
+      <Typography variant="h6" sx={{ my: 2, fontStyle: "italic" }}>
+        ERIK STURESSON
       </Typography>
       <Divider />
       <List>
@@ -62,20 +62,25 @@ export default function NavBar(props: Props) {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
+          sx={{ mr: 2, display: { sm: "block", md: "none" } }}
         >
           <MenuIcon />
         </IconButton>
         <Typography
           variant="h6"
           component="div"
-          sx={{ textAlign: "left", flexGrow: 1, display: { xs: "none", sm: "block", fontSize: "1.2vw" } }}
+          sx={{
+            textAlign: { xs: "right", sm: "right", md: "left" },
+            flexGrow: 1,
+            display: { xs: mobileOpen ? "none" : "block", sm: "block" },
+            fontStyle: "italic",
+          }}
         >
-          ERIKSTURESSON.SE
+          ERIK STURESSON
         </Typography>
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
           {navItems.map((item) => (
-            <Button key={item} sx={{ color: "#fff", fontSize: "1.2vw", mr: "2vw" }}>
+            <Button key={item} sx={{ color: "#fff", mr: "2vw" }}>
               <a href={`#${item}`} style={{ color: "inherit" }}>
                 {item}
               </a>
@@ -93,7 +98,7 @@ export default function NavBar(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", sm: "block", md: "none" },
             "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
           }}
         >
