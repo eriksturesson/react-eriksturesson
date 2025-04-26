@@ -82,7 +82,7 @@ export default function Portfolio() {
     { name: "Architecture", tags: architecture, color: "info" },
     { name: "ProductFocus", tags: productFocus, color: "warning" },
   ];
-  const MotionChip = motion(Chip);
+
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
       <PortfolioHelmet selectedItem={selectedItem} />
