@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import "../assets/css/index.css";
 
+import { motion } from "motion/react";
 import { projectCardItems } from "../data/projectItems";
 import { ProjectCardItem } from "../types/projects";
 import { ModalForProjectItems } from "./ProjectModal";
@@ -37,6 +38,7 @@ export default function ProjectTimeline(): JSX.Element {
           <Typography sx={{ textAlign: "center" }} variant="h2">
             Min IT-resa
           </Typography>
+
           {projectCardItems
             .sort((a: ProjectCardItem, b: ProjectCardItem) => b.year - a.year)
             .map((cardObject: ProjectCardItem, i) => (
@@ -52,26 +54,49 @@ export default function ProjectTimeline(): JSX.Element {
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent sx={{ py: "12px", px: 2 }}>
-                  <Card>
-                    <CardActionArea>
-                      <CardMedia
-                        sx={{ mt: "2.7vw", mb: "2.7vw" }}
-                        component="img"
-                        className={cardObject.cssClass}
-                        height={cardObject.height}
-                        image={cardObject.image}
-                        alt={cardObject.alt}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {cardObject.headerText}
-                        </Typography>
-                        <Typography variant="body2" color="text.primary">
-                          {cardObject.descriptionText}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={{
+                      hidden: {},
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.05, // Stagger-animation för taggar
+                        },
+                      },
+                    }}
+                  >
+                    <motion.div
+                      key={i + "motion-div"}
+                      variants={{
+                        hidden: { opacity: 0, scale: 0 },
+                        visible: { opacity: 1, scale: 1 },
+                      }}
+                      transition={{ type: "spring", duration: 0.6 }}
+                    >
+                      <Card>
+                        <CardActionArea>
+                          <CardMedia
+                            sx={{ mt: "2.7vw", mb: "2.7vw" }}
+                            component="img"
+                            className={cardObject.cssClass}
+                            height={cardObject.height}
+                            image={cardObject.image}
+                            alt={cardObject.alt}
+                          />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                              {cardObject.headerText}
+                            </Typography>
+                            <Typography variant="body2" color="text.primary">
+                              {cardObject.descriptionText}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </motion.div>
+                  </motion.div>
                 </TimelineContent>
               </TimelineItem>
             ))}

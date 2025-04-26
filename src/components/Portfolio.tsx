@@ -1,4 +1,5 @@
 import { Box, Chip, Grid, Stack, Typography } from "@mui/material";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { portfolioItems } from "../data/portfolioItems";
@@ -81,7 +82,7 @@ export default function Portfolio() {
     { name: "Architecture", tags: architecture, color: "info" },
     { name: "ProductFocus", tags: productFocus, color: "warning" },
   ];
-
+  const MotionChip = motion(Chip);
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
       <PortfolioHelmet selectedItem={selectedItem} />
@@ -111,21 +112,43 @@ export default function Portfolio() {
           </Typography>
         </Typography>
 
-        {/* Loop through each category and render its tags */}
         {categories.map((category) => (
           <Box mb={2} key={category.name}>
-            <Stack direction="row" flexWrap="wrap" justifyContent="center" alignItems="center" gap={1}>
-              {category.tags.map((tag) => (
-                <Chip
-                  key={tag}
-                  label={tag}
-                  onClick={() => handleTagClick(tag)}
-                  color={getCategoryColor(category.name)}
-                  variant={selectedTags.includes(tag) ? "filled" : "outlined"}
-                  sx={{ cursor: "pointer" }}
-                />
-              ))}
-            </Stack>
+            {/* Animerar hela kategorin när den först blir synlig */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.05, // Stagger-animation för taggar
+                  },
+                },
+              }}
+            >
+              <Stack direction="row" flexWrap="wrap" justifyContent="center" alignItems="center" gap={1}>
+                {category.tags.map((tag) => (
+                  <motion.div
+                    key={tag}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0 },
+                      visible: { opacity: 1, scale: 1 },
+                    }}
+                    transition={{ type: "spring", duration: 0.6 }}
+                  >
+                    <Chip
+                      label={tag}
+                      onClick={() => handleTagClick(tag)}
+                      color={getCategoryColor(category.name)}
+                      variant={selectedTags.includes(tag) ? "filled" : "outlined"}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  </motion.div>
+                ))}
+              </Stack>
+            </motion.div>
           </Box>
         ))}
       </Box>
@@ -134,7 +157,23 @@ export default function Portfolio() {
       <Grid container spacing={4} justifyContent="center">
         {filterPortfolioItems(portfolioItems).map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <PortfolioCard item={item} onClick={() => handleOpen(item)} />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Startposition: osynlig och nedanför
+                visible: { opacity: 1, y: 0 }, // Slutposition när synlig
+              }}
+              transition={{
+                type: "spring",
+                delay: index * 0.1, // Fördröjning mellan korten
+                stiffness: 100,
+                damping: 25,
+              }}
+            >
+              <PortfolioCard item={item} onClick={() => handleOpen(item)} />
+            </motion.div>
           </Grid>
         ))}
       </Grid>

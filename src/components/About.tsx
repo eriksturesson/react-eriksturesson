@@ -4,6 +4,7 @@ import { Button, ImageList, ImageListItem } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { motion } from "motion/react";
 import erikprofilbild from "../assets/img/erik-sturesson-profilbild-2024-04-08.jpg";
 import { aboutData, aboutData2 } from "../data/aboutItems";
 
@@ -20,8 +21,17 @@ function LogoGrid({ itemData }: { itemData: string[] }) {
 }
 
 export default function About() {
+  const MotionBox = motion(Box);
   return (
-    <Box>
+    <MotionBox
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{
+        duration: 1,
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
+      }}
+    >
       <Grid container width="100%" sx={{ display: "flex", flexDirection: "row" }}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Typography variant="h2" component="h2" mx={"2vw"} my={"2vw"} textAlign="center">
@@ -77,6 +87,6 @@ export default function About() {
           </Box>
         </Grid>
       </Grid>
-    </Box>
+    </MotionBox>
   );
 }

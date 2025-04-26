@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "../assets/css/App.css";
 //import backdropErikSmallScreen from "../assets/img/backdrop-erik-small-screen.jpg";
 //import backdropErik from "../assets/img/backdrop-erik.jpg";
+import { motion } from "motion/react";
 import heroSmallScreen from "../assets/img/hero-small-screen.jpg";
 import hero from "../assets/img/hero.jpg";
 
@@ -61,8 +62,15 @@ function Header() {
     alignItems: "center",
     //top: windowWidth < responsiveWidthLimit ? 0 : "", // Adjust position based on screen width
   };
+  const MotionBox = motion(Box);
   return (
-    <Box id="header" style={headerStyle}>
+    <MotionBox
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      id="header"
+      style={headerStyle}
+    >
       {/* <ResponsiveImage smallScreenImage={backdropErikSmallScreen} largeScreenImage={backdropErik} /> */}
       <img
         src={windowWidth < responsiveWidthLimit ? heroSmallScreen : hero}
@@ -87,7 +95,7 @@ function Header() {
           <KeyboardArrowDownIcon style={arrowStyle} />
         </Box>
       </Box>
-    </Box>
+    </MotionBox>
   );
 }
 
