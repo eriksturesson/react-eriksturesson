@@ -160,14 +160,14 @@ export default function Portfolio() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
               variants={{
                 hidden: { opacity: 0, y: 50 }, // Startposition: osynlig och nedanför
                 visible: { opacity: 1, y: 0 }, // Slutposition när synlig
               }}
               transition={{
                 type: "spring",
-                delay: index * 0.1, // Fördröjning mellan korten
+                delay: index * 0.05, // Fördröjning mellan korten
                 stiffness: 100,
                 damping: 25,
               }}

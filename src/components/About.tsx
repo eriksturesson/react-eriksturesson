@@ -5,10 +5,31 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { aboutData, aboutData2 } from "../data/aboutItems";
 import { LogoCarousel } from "./LogoCarousel";
 
 export default function About() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const handleScroll = () => {
+    const aboutSection = document.getElementById("About");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const responsiveWidthLimit = 700;
   const MotionBox = motion(Box);
   return (
     <MotionBox
@@ -22,15 +43,22 @@ export default function About() {
     >
       <Grid container width="100%" sx={{ display: "flex", flexDirection: "row" }}>
         <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
-          <Typography variant="h2" component="h2" mx={"2vw"} my={"2vw"} textAlign="center">
-            Tech-ledare
+          <Typography
+            variant={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
+            component={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
+            mx={"2vw"}
+            mt={"2vw"}
+            textAlign="center"
+          >
+            Projektägare | Fullstackutvecklare
+          </Typography>
+          <Typography variant="body1" component="cite" mx={"2vw"} mb={"2vw"} textAlign="center">
+            Bygger och leder produktlösningar som skapar affärsvärde och gör idéer till verklighet.
           </Typography>
           <LogoCarousel logos={[...aboutData, ...aboutData2, ...aboutData, ...aboutData2]} direction="left" />
           <Typography variant="h5" component="h5" mt={"4vw"} mb={"2vw"} mx={"2vw"} pl={2} pr={2}>
-            Grundat och lett utvecklingen av Sveriges ledande SaaS-plattform för karriärmässor. Ansvarat för att aligna
-            produkter med kunders behov och skapa lösningar som effektiviserar och skapar värde. Företaget (Student Node
-            AB) blev uppköpt av Poolia 2019, där jag stannade i 6 år. Jag trivs i rollen som brygga mellan teknik, affär
-            och användare – med ansvar för kravställning, roadmap och leverans.
+            Grundade och ledde Student Node AB, ett SaaS-företag som blev uppköpt av Poolia 2019. Specialiserad på att
+            skapa tekniska lösningar som möter både affärs- och användarbehov.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6} sx={{ mt: 4 }}>
@@ -45,14 +73,14 @@ export default function About() {
               target="_blank"
               startIcon={<LinkedInIcon />}
             >
-              Besök min LinkedIn-profil
+              Min LinkedIn-profil
             </Button>
           </Box>
         </Grid>
 
         <Grid item xs={12} md={6} sx={{ mt: 4 }}>
           <Typography variant="h5" component="h5" textAlign="center">
-            Se koden för eriksturesson.se
+            Koden för eriksturesson.se
           </Typography>
           <Box display="flex" justifyContent="center" mt={2}>
             <Button
@@ -62,7 +90,7 @@ export default function About() {
               target="_blank"
               startIcon={<GitHubIcon />}
             >
-              Kolla in GitHub-projektet
+              eriksturesson.se på GitHub
             </Button>
           </Box>
         </Grid>

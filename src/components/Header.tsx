@@ -31,6 +31,16 @@ const videoStyle: React.CSSProperties = {
   objectFit: "cover",
 };
 
+const overlayBackgroundStyle: React.CSSProperties = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: "rgba(0, 0, 0, 0.3)", // Gray with 0.3 opacity
+  zIndex: 0, // Place it behind the text
+};
+
 function Header() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const handleScroll = () => {
@@ -55,11 +65,17 @@ function Header() {
 
   const textOverlayStyle: React.CSSProperties = {
     padding: "20px",
-    position: "relative",
-    display: windowWidth < responsiveWidthLimit ? "none" : "flex", // Center content both horizontally and vertically
+    position: "absolute", // Use absolute positioning to overlay text on top of the image
+    top: "50%", // Center vertically
+    left: "50%", // Center horizontally
+    transform: "translate(-50%, -50%)", // Fine-tune centering by adjusting from the middle
+    display: windowWidth < responsiveWidthLimit ? "flex" : "flex", // Center content both horizontally and vertically
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    fontSize: windowWidth < responsiveWidthLimit ? "0.5rem" : "3rem",
+    textAlign: "center",
+    zIndex: 2, // Place it above the overlay background
     //top: windowWidth < responsiveWidthLimit ? 0 : "", // Adjust position based on screen width
   };
   const MotionBox = motion(Box);
@@ -80,19 +96,29 @@ function Header() {
       {/* <video autoPlay loop muted playsInline style={videoStyle}>
         <source src={eldstad} type="video/mp4" />
       </video> */}
-      <Box style={textOverlayStyle} color={"white"}>
-        <Container>
-          <Typography variant="h3" component="h3" align="center" gutterBottom>
-            VÄLKOMMEN!
-          </Typography>
-          {windowWidth > responsiveWidthLimit && (
-            <Typography variant="h5" component="h5" align="center" gutterBottom>
-              Vem är jag?
+      <Box style={overlayBackgroundStyle}>
+        {/* Text overlay */}
+        <Box style={textOverlayStyle} color={"white"}>
+          <Container>
+            <Typography
+              variant={windowWidth < responsiveWidthLimit ? "h5" : "h2"}
+              component={windowWidth < responsiveWidthLimit ? "h5" : "h2"}
+              gutterBottom
+            >
+              Tech-ledare
             </Typography>
-          )}
-        </Container>
-        <Box onClick={handleScroll} style={{ cursor: "pointer" }}>
-          <KeyboardArrowDownIcon style={arrowStyle} />
+
+            <Typography
+              variant={windowWidth < responsiveWidthLimit ? "body1" : "h4"}
+              component={windowWidth < responsiveWidthLimit ? "cite" : "h4"}
+              gutterBottom
+            >
+              Se portfolio, historia och CV
+            </Typography>
+          </Container>
+          <Box onClick={handleScroll} style={{ cursor: "pointer" }}>
+            <KeyboardArrowDownIcon style={arrowStyle} />
+          </Box>
         </Box>
       </Box>
     </MotionBox>
