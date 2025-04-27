@@ -7,12 +7,12 @@ export const LogoCarousel = ({ logos, direction }: { logos: string[]; direction:
       <motion.div
         style={{ display: "flex" }}
         animate={{
-          x: direction === "left" ? ["0%", "-100%", "0%"] : ["0%", "100%", "0%"],
+          x: direction === "left" ? ["0%", "-200%", "0%"] : ["0%", "200%", "0%"],
         }}
         transition={{
           repeat: Infinity, // Upprepa animationen
           repeatType: "loop", // Loopar animationen
-          duration: 20, // Hur lång tid en cykel tar
+          duration: 40, // Hur lång tid en cykel tar
           ease: "linear", // Linerär rörelse, ingen acceleration
         }}
       >
