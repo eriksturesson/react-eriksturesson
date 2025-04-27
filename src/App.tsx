@@ -6,6 +6,7 @@ import { eriksTheme } from "./utils/theme";
 const LazyNavBar = lazy(() => import("./components/NavBar"));
 const LazyAbout = lazy(() => import("./components/About"));
 const LazyHeader = lazy(() => import("./components/Header"));
+const LazyStudentNode = lazy(() => import("./components/StudentNode"));
 const LazyProjects = lazy(() => import("./components/Projects"));
 const LazyPortfolio = lazy(() => import("./components/Portfolio"));
 const CV = lazy(() => import("./components/CV"));
@@ -16,7 +17,6 @@ function App() {
     <Suspense fallback={<LoadingSpinner />}>
       <ThemeProvider theme={eriksTheme}>
         <Box>
-     
           <div className="navAndHeaderDiv" id="Home">
             <LazyNavBar />
             <LazyHeader />
@@ -24,6 +24,9 @@ function App() {
 
           <div className="containers" id="About">
             <LazyAbout />
+          </div>
+          <div id="Studentnode">
+            <LazyStudentNode />
           </div>
           <div className="containers" id="Portfolio">
             <LazyPortfolio />

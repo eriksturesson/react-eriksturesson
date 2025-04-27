@@ -11,12 +11,6 @@ import { LogoCarousel } from "./LogoCarousel";
 
 export default function About() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const handleScroll = () => {
-    const aboutSection = document.getElementById("About");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

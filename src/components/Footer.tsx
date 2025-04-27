@@ -1,4 +1,4 @@
-import { Instagram, LinkedIn, YouTube } from "@mui/icons-material/";
+import { BusinessCenterOutlined, Instagram, LinkedIn, YouTube } from "@mui/icons-material/";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import DescriptionIcon from "@mui/icons-material/Description"; // För CV
 import FolderIcon from "@mui/icons-material/Folder"; // För Portfolio
@@ -55,6 +55,13 @@ function Footer() {
             href="#About"
             sx={{ color: "inherit", minWidth: 60 }}
             icon={<PersonIcon />}
+          />
+          <BottomNavigationAction
+            showLabel
+            label="Student Node"
+            href="#Studentnode"
+            sx={{ color: "inherit", minWidth: 60 }}
+            icon={<BusinessCenterOutlined />}
           />
           <BottomNavigationAction
             showLabel
