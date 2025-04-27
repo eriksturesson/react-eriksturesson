@@ -1,5 +1,6 @@
 // CVSection.tsx
 import { Box, Button, Card, CardContent, Divider, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { motion } from "motion/react";
 import cvFullstack from "../assets/pdf/cvFullstack.pdf";
 import cvProduktagare from "../assets/pdf/cvProduktagare.pdf";
 
@@ -16,8 +17,19 @@ const CVSection = () => {
   ];
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // xs och sm = true
+  const MotionBox = motion(Box); // Importera motion från framer-motion
   return (
-    <Box id="CV" sx={{ px: 4, py: 8 }}>
+    <MotionBox
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{
+        duration: 1,
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
+      }}
+      id="CV"
+      sx={{ px: 4, py: 8 }}
+    >
       <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
         CV
       </Typography>
@@ -60,7 +72,7 @@ const CVSection = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </MotionBox>
   );
 };
 

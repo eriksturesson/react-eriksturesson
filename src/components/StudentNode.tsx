@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { motion } from "motion/react";
 import { companiesInStudentNode } from "../data/companiesInStudentNode";
 import { CompanyNameCarousel } from "./CompanyNamesCarousel";
 
@@ -11,9 +12,19 @@ function chunkArray<T>(array: T[], size: number): T[][] {
 }
 export default function StudentNode() {
   const logoGroups = chunkArray(companiesInStudentNode, 100); // Delar upp i grupper om 10 företag
-
+  const MotionBox = motion(Box); // Använd motion för att animera Box-komponenten
   return (
-    <Box id="studentnode" sx={{ mt: "4rem", pt: "4rem", width: "100%", bgcolor: "#f9f9f9" }}>
+    <MotionBox
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{
+        duration: 1,
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
+      }}
+      id="studentnode"
+      sx={{ mt: "4rem", pt: "4rem", width: "100%", bgcolor: "#f9f9f9" }}
+    >
       <Box sx={{ textAlign: "center", mb: 4 }}>
         <Typography variant="h4" gutterBottom fontWeight="bold">
           Student Node AB
@@ -39,6 +50,6 @@ export default function StudentNode() {
           </Box>
         ))}
       </Box>
-    </Box>
+    </MotionBox>
   );
 }
