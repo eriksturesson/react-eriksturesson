@@ -8,12 +8,15 @@ export function PortfolioHelmet({ selectedItem }: { selectedItem: PortfolioItem 
   const hero = "https://eriksturesson.se/og-background.jpg"; // Default image if none is provided
   return (
     <Helmet>
-      <title>{selectedItem ? selectedItem.title : "Erik Sturesson | Portfolio"}</title>
+      <title>{selectedItem ? "Erik Sturesson | " + selectedItem.title : "Erik Sturesson | Portfolio"}</title>
       <meta
         name="description"
         content={selectedItem ? selectedItem.description : "Portfolio of Erik Sturesson, Product Manager & Tech Leader"}
       />
-      <meta property="og:title" content={selectedItem ? selectedItem.title : "Erik Sturesson | Portfolio"} />
+      <meta
+        property="og:title"
+        content={selectedItem ? "Erik Sturesson | " + selectedItem.title : "Erik Sturesson | Portfolio"}
+      />
       <meta
         property="og:description"
         content={selectedItem ? selectedItem.description : "Portfolio of Erik Sturesson, showcasing various projects."}

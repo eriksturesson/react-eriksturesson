@@ -85,7 +85,7 @@ export default function Portfolio() {
 
   return (
     <Box id="portfolio" sx={{ px: 4, py: 8, bgcolor: "#f9f9f9" }}>
-      <PortfolioHelmet selectedItem={selectedItem} />
+      {selectedItem && <PortfolioHelmet selectedItem={selectedItem} />}
 
       <Box sx={{ textAlign: "center", mb: 4 }}>
         <Typography variant="h4" gutterBottom fontWeight="bold">
