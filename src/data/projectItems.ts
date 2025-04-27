@@ -154,7 +154,7 @@ export const projectCardItems: ProjectCardItem[] = [
     alt: `backend-logos`,
     year: 2024,
     height: "100%",
-    headerText: "Matchningssystem inom PION Group blir webbapp",
+    headerText: "System för matchning inom PION Group blir webbapp",
     descriptionText:
       "Matchningssystem som tidigare byggt i backend blir webbapp och backend flyttas till Docker i Google Cloud Run. Vertex AI används vid automatisering.",
     modal: {
