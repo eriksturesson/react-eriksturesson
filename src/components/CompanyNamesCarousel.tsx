@@ -28,7 +28,7 @@ export const CompanyNameCarousel = ({
           whiteSpace: "nowrap",
         }}
         animate={{
-          x: direction === "left" ? ["0%", "-100%"] : ["-200%", "0%"],
+          x: direction === "left" ? ["0%", "-200%"] : ["-200%", "0%"],
         }}
         transition={{
           repeat: Infinity,
