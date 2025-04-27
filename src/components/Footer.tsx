@@ -56,13 +56,7 @@ function Footer() {
             sx={{ color: "inherit", minWidth: 60 }}
             icon={<PersonIcon />}
           />
-          <BottomNavigationAction
-            showLabel
-            label="Student Node"
-            href="#Studentnode"
-            sx={{ color: "inherit", minWidth: 60 }}
-            icon={<BusinessCenterOutlined />}
-          />
+
           <BottomNavigationAction
             showLabel
             label="Portfolio"
@@ -76,6 +70,13 @@ function Footer() {
             href="#Projects"
             sx={{ color: "inherit", minWidth: 60 }}
             icon={<AccountTreeIcon />}
+          />
+          <BottomNavigationAction
+            showLabel
+            label="Student Node"
+            href="#Studentnode"
+            sx={{ color: "inherit", minWidth: 60 }}
+            icon={<BusinessCenterOutlined />}
           />
           <BottomNavigationAction
             showLabel

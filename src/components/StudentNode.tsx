@@ -10,7 +10,7 @@ function chunkArray<T>(array: T[], size: number): T[][] {
   return chunked;
 }
 export default function StudentNode() {
-  const logoGroups = chunkArray(companiesInStudentNode, 10); // Delar upp i grupper om 10 företag
+  const logoGroups = chunkArray(companiesInStudentNode, 100); // Delar upp i grupper om 10 företag
 
   return (
     <Box id="studentnode" sx={{ mt: "4rem", pt: "4rem", width: "100%", bgcolor: "#f9f9f9" }}>

@@ -25,15 +25,16 @@ function App() {
           <div className="containers" id="About">
             <LazyAbout />
           </div>
-          <div id="Studentnode">
-            <LazyStudentNode />
-          </div>
+
           <div className="containers" id="Portfolio">
             <LazyPortfolio />
           </div>
 
           <div className="containers" id="Projects">
             <LazyProjects />
+          </div>
+          <div id="Studentnode">
+            <LazyStudentNode />
           </div>
           <div className="containers" id="CV">
             <CV />
