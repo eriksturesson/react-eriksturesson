@@ -18,19 +18,19 @@ export default function StudentNode() {
         <Typography variant="h4" gutterBottom fontWeight="bold">
           Student Node AB
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom sx={{ pr: "2rem", pl: "2rem" }}>
           VD och medgrundare av Student Node AB. Sveriges ledande Saas-plattform för karriärmässor mellan 2015-2025.
           <a href="https://www.placera.se/pressmeddelanden/poolia-koper-in-i-sig-i-studenteventforetaget-student-node-2019-03-29">
             Uppköpta av Poolia 2019
           </a>
           , <a href="https://www.borsvarlden.com/finwire/FWM00B0C94">avvecklade 2025</a>.
         </Typography>
-        <Typography variant="body1" sx={{ mt: 2, mb: 2 }}>
+        <Typography variant="body1" sx={{ mt: 2, mb: 2, pr: "2rem", pl: "2rem" }}>
           Föutom all statistik, 20 000 + studenter och CVn,fanns 2394 st uställande arbetsgivare som varit på
           karriärmässor för att träffa talanger, i vårt system.
         </Typography>
-        <Typography variant="caption" sx={{ mt: 2, mb: 5 }}>
-          Nedan har jag samlat några av dessa uställare som funnits på mässor över hela Sverige: Sverige:
+        <Typography variant="caption" sx={{ mt: 2, mb: 5, pr: "2rem", pl: "2rem" }}>
+          Nedan är exempel på utställare i vårt IT-system:
         </Typography>
 
         {logoGroups.map((group, idx) => (
