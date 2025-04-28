@@ -44,7 +44,7 @@ export default function About() {
             mt={"2vw"}
             textAlign="center"
           >
-            Projektägare | Fullstackutvecklare
+            Produktägare | Fullstackutvecklare
           </Typography>
           <Typography variant="body1" component="cite" mx={"2vw"} mb={"2vw"} textAlign="center">
             Bygger och leder produktlösningar som skapar affärsvärde och gör idéer till verklighet.
