@@ -31,7 +31,10 @@ export default function PortfolioCard({
     if (success) setSnackbarOpen(true);
   };
   return (
-    <Card sx={{ borderRadius: 4, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column" }}>
+    <Card
+      id={item.title + "-card"}
+      sx={{ borderRadius: 4, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column" }}
+    >
       <CardMedia
         component="img"
         height="180"
@@ -67,7 +70,13 @@ export default function PortfolioCard({
       <CardActions sx={{ px: 3, pb: 2 }}>
         {item.modal ? (
           <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-            <Button variant="contained" color="success" onClick={() => onClick(item)}>
+            <Button
+              id={item.title + "-button"}
+              className="portfolioCardClassForGoogleAnalytics"
+              variant="contained"
+              color="success"
+              onClick={() => onClick(item)}
+            >
               Läs mer
             </Button>
             <Button onClick={handleCopy} variant="contained" color="info">
