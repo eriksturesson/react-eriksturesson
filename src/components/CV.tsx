@@ -27,7 +27,7 @@ const CVSection = () => {
   ];
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // xs och sm = true
-  const MotionBox = motion(Box); // Importera motion från framer-motion
+  const MotionBox = motion.create(Box); // Importera motion från framer-motion
   return (
     <MotionBox
       initial={{ opacity: 0, scale: 0 }}

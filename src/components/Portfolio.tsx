@@ -69,9 +69,7 @@ export default function Portfolio() {
   const techStack = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.techStack)));
   const architecture = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.architecture)));
   const productFocus = Array.from(new Set(portfolioItems.flatMap((item) => item.tags.productFocus)));
-  console.log("Techstack:", techStack);
-  console.log("Architecture:", architecture);
-  console.log("ProductFocus:", productFocus);
+
   // Define the categories and their corresponding colors
   const categories: {
     name: "Techstack" | "Architecture" | "ProductFocus";

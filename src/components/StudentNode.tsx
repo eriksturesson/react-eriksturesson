@@ -12,7 +12,7 @@ function chunkArray<T>(array: T[], size: number): T[][] {
 }
 export default function StudentNode() {
   const logoGroups = chunkArray(companiesInStudentNode, 100); // Delar upp i grupper om 10 företag
-  const MotionBox = motion(Box); // Använd motion för att animera Box-komponenten
+  const MotionBox = motion.create(Box); // Använd motion för att animera Box-komponenten
   return (
     <MotionBox
       initial={{ opacity: 0, scale: 0 }}

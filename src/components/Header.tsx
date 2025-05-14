@@ -78,7 +78,7 @@ function Header() {
     zIndex: 2, // Place it above the overlay background
     //top: windowWidth < responsiveWidthLimit ? 0 : "", // Adjust position based on screen width
   };
-  const MotionBox = motion(Box);
+  const MotionBox = motion.create(Box);
   return (
     <MotionBox
       initial={{ opacity: 0, y: 50 }}

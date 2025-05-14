@@ -26,3 +26,4 @@ src/config.ts
 package-lock.json
 .firebaserc
 /.firebase/*
+/dist

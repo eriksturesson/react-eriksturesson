@@ -24,7 +24,7 @@ export default function About() {
   }, []);
 
   const responsiveWidthLimit = 700;
-  const MotionBox = motion(Box);
+  const MotionBox = motion.create(Box);
   return (
     <MotionBox
       initial={{ opacity: 0, scale: 0 }}
