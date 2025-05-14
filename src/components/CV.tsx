@@ -2,17 +2,27 @@
 import { Box, Button, Card, CardContent, Divider, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "motion/react";
 import cvFullstack from "../assets/pdf/cvFullstack.pdf";
+import cvFullstackEng from "../assets/pdf/cvFullstackEng.pdf";
 import cvProduktagare from "../assets/pdf/cvProduktagare.pdf";
+import cvProduktagareEng from "../assets/pdf/cvProduktagareEng.pdf";
 
 const CVSection = () => {
   const cvs = [
     {
-      title: "CV - Produktägare",
+      title: "CV [Sv] - Produktägare",
       file: cvProduktagare,
     },
     {
-      title: "CV - Fullstackutvecklare",
+      title: "CV [Eng] - Product Owner",
+      file: cvProduktagareEng,
+    },
+    {
+      title: "CV [Sv] - Fullstackutvecklare",
       file: cvFullstack,
+    },
+    {
+      title: "CV [Eng] - Fullstack developer",
+      file: cvFullstackEng,
     },
   ];
   const theme = useTheme();
@@ -36,7 +46,7 @@ const CVSection = () => {
 
       <Grid container spacing={4}>
         {cvs.map((cv) => (
-          <Grid item xs={12} md={6} key={cv.title}>
+          <Grid item xs={12} md={6} xl={3} key={cv.title}>
             <Card>
               <CardContent>
                 <Typography variant="h5">{cv.title}</Typography>
