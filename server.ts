@@ -12,7 +12,7 @@ const limiter = rateLimit({
 const app = express();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path.join(__dirname, "..", "dist");
-
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
