@@ -8,12 +8,14 @@ const limiter = rateLimit({
   max: 100, // Max 100 requests per IP per 15 min
   message: "För många requests – försök igen senare.",
 });
+
 const app = express();
-const port = process.env.PORT || 3009;
+const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path.join(__dirname, "..", "dist");
+
 app.use(helmet());
 app.use(limiter);
-app.use(express.json({ limit: "1mb" })); // Max 1MB JSON-payload
+app.use(express.json({ limit: "1mb" }));
 
 app.use(express.static(distPath));
 

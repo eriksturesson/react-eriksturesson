@@ -13,11 +13,11 @@ const limiter = (0, express_rate_limit_1.default)({
     message: "För många requests – försök igen senare.",
 });
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3009;
+const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path_1.default.join(__dirname, "..", "dist");
 app.use((0, helmet_1.default)());
 app.use(limiter);
-app.use(express_1.default.json({ limit: "1mb" })); // Max 1MB JSON-payload
+app.use(express_1.default.json({ limit: "1mb" }));
 app.use(express_1.default.static(distPath));
 app.get("*", (_req, res) => {
     res.sendFile(path_1.default.join(distPath, "index.html"));

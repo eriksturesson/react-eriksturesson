@@ -16,7 +16,8 @@
     "@types/jest": "^27.5.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "express-rate-limit": "^7.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^6.11.2",
     "firebase": "^9.12.1",
     "helmet": "^8.1.0",
     "motion": "^12.9.2",
@@ -35,8 +36,7 @@
     "preview": "vite preview",
     "start": "node dist-server/server.js",
     "build:server": "tsc -p tsconfig.server.json",
-    "start:server": "node dist-server/server.js",
-    "dev:server": "ts-node --project tsconfig.server.json server.ts"
+    "start:server": "node dist-server/server.js"
   },
   "eslintConfig": {
     "extends": [

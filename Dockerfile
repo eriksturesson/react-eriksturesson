@@ -1,5 +1,5 @@
 # ---- STEP 1: Build frontend + backend ----
-FROM node:20 as build
+FROM node:20 AS build
 
 WORKDIR /app
 COPY package*.json ./
