@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import path from "path";
@@ -17,7 +17,7 @@ app.use(express.json({ limit: "1mb" })); // Max 1MB JSON-payload
 
 app.use(express.static(distPath));
 
-app.get("*", (_req, res) => {
+app.get("*", (_req: Request, res: Response) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 

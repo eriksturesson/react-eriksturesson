@@ -1,5 +1,5 @@
 # ---- STEP 1: Build frontend + backend ----
-FROM node:22 as build
+FROM node:20 as build
 
 WORKDIR /app
 COPY package*.json ./
@@ -14,7 +14,7 @@ RUN npm run build
 RUN npm run build:server
 
 # ---- STEP 2: Prod image ----
-FROM node:22
+FROM node:20
 
 WORKDIR /app
 
