@@ -10,14 +10,15 @@ const limiter = rateLimit({
 });
 const app = express();
 const port = process.env.PORT || 3009;
+const distPath = path.join(__dirname, "..", "dist");
 app.use(helmet());
 app.use(limiter);
 app.use(express.json({ limit: "1mb" })); // Max 1MB JSON-payload
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(distPath));
 
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 app.listen(port, () => {

@@ -1,6 +1,8 @@
 {
   "name": "eriksturesson",
   "version": "1.0.0",
+  "type:": "commonjs",
+  "description": "Personal website of Erik Sturesson, showcasing projects, portfolio, and more.",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -26,15 +28,16 @@
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^7.5.1",
     "react-scripts": "5.0.1",
-    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "start": "node dist-server/server.js",
     "build:server": "tsc -p tsconfig.server.json",
-    "start": "node dist-server/server.js"
+    "start:server": "node dist-server/server.js",
+    "dev:server": "ts-node --project tsconfig.server.json server.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +60,8 @@
   "devDependencies": {
     "@types/node": "^22.15.18",
     "@types/react-helmet": "^6.1.11",
-    "@vitejs/plugin-react": "^4.4.1"
+    "@vitejs/plugin-react": "^4.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
