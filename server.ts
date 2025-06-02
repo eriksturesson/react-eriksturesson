@@ -13,6 +13,11 @@ const app = express();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path.join(__dirname, "..", "dist");
 app.set("trust proxy", 1);
+// Logger middleware för x-forwarded-for
+app.use((req: Request, res: Response, next) => {
+  console.log("X-Forwarded-For:", req.headers["x-forwarded-for"]);
+  next();
+});
 app.use(helmet());
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
