@@ -15,7 +15,14 @@ const distPath = path.join(__dirname, "..", "dist");
 app.set("trust proxy", 1);
 // Logger middleware för x-forwarded-for
 app.use((req: Request, res: Response, next) => {
-  console.log("X-Forwarded-For:", req.headers["x-forwarded-for"]);
+  const xff = req.headers["x-forwarded-for"];
+  if (Array.isArray(xff)) {
+    console.log("X-Forwarded-For (array):", xff.join(", "));
+  } else if (typeof xff === "string") {
+    console.log("X-Forwarded-For (string):", xff);
+  } else {
+    console.log("X-Forwarded-For header missing");
+  }
   next();
 });
 app.use(helmet());
