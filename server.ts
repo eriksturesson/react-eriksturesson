@@ -13,16 +13,20 @@ const app = express();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path.join(__dirname, "..", "dist");
 app.set("trust proxy", 1);
-// Logger middleware för x-forwarded-for
+// Check x-forwarded-for
 app.use((req: Request, res: Response, next) => {
   const xff = req.headers["x-forwarded-for"];
-  if (Array.isArray(xff)) {
-    console.log("X-Forwarded-For (array):", xff.join(", "));
-  } else if (typeof xff === "string") {
-    console.log("X-Forwarded-For (string):", xff);
+
+  if (typeof xff === "string") {
+    if (xff.includes(",")) {
+      console.log("X-Forwarded-For (multiple IPs):", xff);
+    } else {
+      console.log("X-Forwarded-For (single IP):", xff);
+    }
   } else {
-    console.log("X-Forwarded-For header missing");
+    console.log("X-Forwarded-For header missing or not a string");
   }
+  console.log("Express req.ip:", req.ip); // Den IP Express använder
   next();
 });
 app.use(helmet());
