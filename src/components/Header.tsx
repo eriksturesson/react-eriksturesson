@@ -113,7 +113,7 @@ function Header() {
               component={windowWidth < responsiveWidthLimit ? "cite" : "h4"}
               gutterBottom
             >
-              Se portfolio, historia och CV
+              Se kod, portfolio och CV
             </Typography>
           </Container>
           <Box onClick={handleScroll} style={{ cursor: "pointer" }}>

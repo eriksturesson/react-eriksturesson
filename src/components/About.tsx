@@ -1,12 +1,14 @@
 import GitHubIcon from "@mui/icons-material/GitHub"; // Kom ihåg att importera GitHub-ikonen
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Button, Divider, Stack } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, Paper, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { motion } from "motion/react";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { useEffect, useState } from "react";
+import backendErrorDocs from "../assets/img/backend-error-documentation.png";
+import errorDrawingsDocs from "../assets/img/error-drawing-documentation.png";
 import { aboutData, aboutData2 } from "../data/aboutItems";
 import LanguageIcon from "@mui/icons-material/Language";
 import { LogoCarousel } from "./LogoCarousel";
@@ -113,69 +115,97 @@ export default function About() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Typography variant="h6">backend-error</Typography>
-          <Box>
-            <img src="https://img.shields.io/npm/dy/backend-error?style=flat-square" alt="npm downloads" />
-          </Box>
-          <Box>
-            <img src="https://img.shields.io/npm/v/backend-error?style=flat-square" alt="npm version" />
-          </Box>
-          <Box>
-            <Button
-              sx={{ margin: 1 }}
-              startIcon={<DescriptionIcon />}
-              variant="contained"
-              color="error"
-              href="https://www.npmjs.com/package/backend-error"
-              target="_blank"
-            >
-              Till NPM
-            </Button>
-            <Button
-              sx={{ margin: 1 }}
-              variant="contained"
-              color="success"
-              href="https://github.com/eriksturesson/backendError"
-              target="_blank"
-              startIcon={<GitHubIcon />}
-            >
-              GitHub
-            </Button>
-          </Box>
+          <Card elevation={5}>
+            <CardMedia sx={{ objectFit: "cover" }} component="img" image={backendErrorDocs} alt="backend error docs" />
+            <CardContent>
+              <Typography variant="h3" component="h3">
+                backend-error
+              </Typography>
+              <Box mb={1}>
+                <img
+                  style={{ width: 200 }}
+                  src="https://img.shields.io/npm/dy/backend-error?style=flat-square"
+                  alt="npm downloads"
+                />
+              </Box>
+              <Box mb={2}>
+                <img src="https://img.shields.io/npm/v/backend-error?style=flat-square" alt="npm version" />
+              </Box>
+            </CardContent>
+            <CardActions sx={{ justifyContent: "center" }}>
+              <Button
+                sx={{ margin: 1 }}
+                startIcon={<DescriptionIcon />}
+                variant="contained"
+                color="error"
+                href="https://www.npmjs.com/package/backend-error"
+                target="_blank"
+              >
+                Till NPM
+              </Button>
+              <Button
+                sx={{ margin: 1 }}
+                variant="contained"
+                color="success"
+                href="https://github.com/eriksturesson/backendError"
+                target="_blank"
+                startIcon={<GitHubIcon />}
+              >
+                GitHub
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
 
-        {/* error-drawings */}
         <Grid item xs={12} md={6}>
-          <Typography variant="h6">error-drawings</Typography>
-          <Box>
-            <img src="https://img.shields.io/npm/dy/error-drawings?style=flat-square" alt="npm downloads" />
-          </Box>
-          <Box>
-            <img src="https://img.shields.io/npm/v/error-drawings?style=flat-square" alt="npm version" />
-          </Box>
-          <Box>
-            <Button
-              sx={{ margin: 1 }}
-              startIcon={<DescriptionIcon />}
-              variant="contained"
-              color="error"
-              href="https://www.npmjs.com/package/error-drawings"
-              target="_blank"
-            >
-              Till NPM
-            </Button>
-            <Button
-              sx={{ margin: 1 }}
-              variant="contained"
-              color="success"
-              href="https://github.com/eriksturesson/errorDrawings"
-              target="_blank"
-              startIcon={<GitHubIcon />}
-            >
-              GitHub
-            </Button>
-          </Box>
+          <Card elevation={5}>
+            <CardMedia
+              sx={{ objectFit: "cover" }}
+              component="img"
+              image={errorDrawingsDocs}
+              alt="error drawings docs"
+            />
+
+            <CardContent>
+              <Typography variant="h3" component="h3">
+                error-drawings
+              </Typography>
+              <Box mb={1}>
+                <img
+                  style={{ width: 200 }}
+                  src="https://img.shields.io/npm/dy/error-drawings?style=flat-square"
+                  alt="npm downloads"
+                />
+              </Box>
+              <Box mb={2}>
+                <img src="https://img.shields.io/npm/v/error-drawings?style=flat-square" alt="npm version" />
+              </Box>
+            </CardContent>
+            <CardActions sx={{ justifyContent: "center" }}>
+              <Button
+                sx={{ margin: 1 }}
+                startIcon={<DescriptionIcon />}
+                variant="contained"
+                color="error"
+                href="https://www.npmjs.com/package/error-drawings"
+                target="_blank"
+              >
+                Till NPM
+              </Button>
+              <Button
+                sx={{ margin: 1 }}
+                variant="contained"
+                color="success"
+                href="https://github.com/eriksturesson/errorDrawings"
+                target="_blank"
+                startIcon={<GitHubIcon />}
+              >
+                GitHub
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
+
         <Grid item xs={12}>
           <Typography variant="h5" component="h5">
             Denna hemsida

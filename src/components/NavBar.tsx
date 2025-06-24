@@ -62,7 +62,7 @@ export default function NavBar(props: Props) {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "block", md: "none" } }}
+          sx={{ mr: 2, display: { xs: "block", lg: "none" } }}
         >
           <MenuIcon />
         </IconButton>
@@ -70,7 +70,7 @@ export default function NavBar(props: Props) {
           variant="h6"
           component="div"
           sx={{
-            textAlign: { xs: "right", sm: "right", md: "left" },
+            textAlign: { xs: "right", lg: "left" },
             flexGrow: 1,
             display: { xs: mobileOpen ? "none" : "block", sm: "block" },
             fontStyle: "italic",
@@ -78,7 +78,7 @@ export default function NavBar(props: Props) {
         >
           ERIK STURESSON
         </Typography>
-        <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+        <Box sx={{ display: { xs: "none", lg: "block" } }}>
           {navItems.map((item) => (
             <Button key={item} sx={{ color: "#fff", mr: "2vw" }}>
               <a href={`#${item}`} style={{ color: "inherit" }}>
@@ -98,7 +98,7 @@ export default function NavBar(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "block", md: "none" },
+            display: { xs: "block", lg: "none" },
             "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
           }}
         >
