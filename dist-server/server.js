@@ -15,6 +15,24 @@ const limiter = (0, express_rate_limit_1.default)({
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path_1.default.join(__dirname, "..", "dist");
+app.set("trust proxy", 1);
+// Check x-forwarded-for
+app.use((req, res, next) => {
+    const xff = req.headers["x-forwarded-for"];
+    if (typeof xff === "string") {
+        if (xff.includes(",")) {
+            console.log("X-Forwarded-For (multiple IPs):", xff);
+        }
+        else {
+            console.log("X-Forwarded-For (single IP):", xff);
+        }
+    }
+    else {
+        console.log("X-Forwarded-For header missing or not a string");
+    }
+    console.log("Express req.ip:", req.ip); // Den IP Express använder
+    next();
+});
 app.use((0, helmet_1.default)());
 app.use(limiter);
 app.use(express_1.default.json({ limit: "1mb" }));
