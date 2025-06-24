@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import path from "path";
+import fs from "fs";
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minuter
@@ -35,7 +36,16 @@ app.use(express.json({ limit: "1mb" }));
 
 app.use(express.static(distPath));
 
-app.get("*", (_req: Request, res: Response) => {
+app.get("*", (req: any, res: any) => {
+  const requestedPath = path.join(distPath, req.path);
+
+  // Kontrollera om filen existerar i distPath (t.ex. /main.js eller /styles.css)
+  if (req.path.includes(".") && !fs.existsSync(requestedPath)) {
+    // Om det är en fil men den finns inte -> skicka 404
+    return res.status(404).send("Not found");
+  }
+
+  // Annars servera index.html (för SPA-routes)
   res.sendFile(path.join(distPath, "index.html"));
 });
 
