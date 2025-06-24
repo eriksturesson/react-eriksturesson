@@ -180,6 +180,10 @@ export default function About() {
           <Typography variant="h5" component="h5">
             Denna hemsida
           </Typography>
+          <Typography component="cite">
+            Hostad lokalt med Docker på en Raspberry Pi via Cloudflare Zero Trust Tunnel. CI/CD sker automatiskt via
+            GitHub och Docker Hub.
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <Button
