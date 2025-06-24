@@ -55,7 +55,7 @@ export const portfolioItems: PortfolioItem[] = [
         "GCP Artifact Registry",
         "Docker",
       ],
-      productFocus: ["Frontend", "Backend", "SaaS", "API"],
+      productFocus: ["Frontend", "Backend", "SaaS", "API", "Databaser"],
     },
   },
   {
@@ -94,7 +94,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js"],
       architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
-      productFocus: ["API", "Backend"],
+      productFocus: ["API", "Databaser", "Backend"],
     },
   },
   {
@@ -110,7 +110,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js"],
       architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
-      productFocus: ["API", "Backend"],
+      productFocus: ["API", "Databaser", "Backend"],
     },
   },
   {
@@ -126,7 +126,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js"],
       architecture: ["Docker", "GCP - Compute Engine"],
-      productFocus: ["Backend", "API", "E-postautomatisering"],
+      productFocus: ["Backend", "API", "Databaser", "E-postautomatisering"],
     },
   },
   {
@@ -142,7 +142,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js", "MUI", "React"],
       architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "E-postautomatisering"],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "E-postautomatisering"],
     },
   },
   {
@@ -158,7 +158,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
       architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "SaaS"],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "SaaS"],
     },
   },
   {
