@@ -30,7 +30,22 @@ app.use((req: Request, res: Response, next) => {
   console.log("Express req.ip:", req.ip); // Den IP Express använder
   next();
 });
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: [
+        "'self'",
+        "https://static.cloudflareinsights.com", // Cloudflare Insights
+        "https://img.shields.io", // Shields.io
+        "https://shields.io", // ibland shields.io kan behövas
+      ],
+      // Lägg till andra directives som styleSrc, imgSrc, connectSrc, etc om du behöver
+      styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io"],
+      imgSrc: ["'self'", "https://img.shields.io", "data:"],
+    },
+  })
+);
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
 
