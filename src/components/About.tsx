@@ -1,6 +1,8 @@
 import GitHubIcon from "@mui/icons-material/GitHub"; // Kom ihåg att importera GitHub-ikonen
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, Paper, Stack } from "@mui/material";
+import eventLandingPages from "../assets/img/printscreen eventlandingpages.png";
+import eriksturessonprintscreen from "../assets/img/eriksturesson printscreen.png";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -73,50 +75,53 @@ export default function About() {
             variant={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
             component={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
           >
-            Publik kod
+            Levande fritidsprojekt
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" component="h5">
-            Event Landing pages
-          </Typography>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card elevation={5} sx={{ p: 2 }}>
+            <Typography variant="h5" component="h5">
+              Event Landing pages
+            </Typography>
 
-          <Typography component={"cite"}>
-            Skalbart, modernt, mobilanpassat eventsystem inklusive admin inloggning. Används av Stockholm City
-            Affärsnätverk
-          </Typography>
-          <Box>
-            <Button
-              sx={{ margin: 1 }}
-              startIcon={<LanguageIcon />}
-              variant="contained"
-              color="info"
-              href="https://stockholmcityaffarsnatverk.se"
-              target="_blank"
-            >
-              Stockholm City Affärsnatverk
-            </Button>
-            <Button
-              sx={{ margin: 1 }}
-              variant="contained"
-              color="success"
-              href={"https://github.com/eriksturesson/EventLandingPages"} // Byt ut denna URL med rätt GitHub-repository-länk
-              target="_blank"
-              startIcon={<GitHubIcon />}
-            >
-              Event Landing Pages
-            </Button>
-          </Box>
+            <Typography component={"cite"}>
+              Skalbart, modernt, mobilanpassat eventsystem inklusive admin inloggning. Används av Stockholm City
+              Affärsnätverk.
+            </Typography>
+            <CardContent>
+              <img style={{ width: "50%", minWidth: 200 }} src={eventLandingPages} alt="Event Landing Pages" />
+            </CardContent>
+            <Box>
+              <Button
+                sx={{ margin: 1 }}
+                startIcon={<LanguageIcon />}
+                variant="contained"
+                color="info"
+                href="https://stockholmcityaffarsnatverk.se"
+                target="_blank"
+              >
+                Stockholm City Affärsnatverk
+              </Button>
+              <Button
+                sx={{ margin: 1 }}
+                variant="contained"
+                color="success"
+                href={"https://github.com/eriksturesson/EventLandingPages"} // Byt ut denna URL med rätt GitHub-repository-länk
+                target="_blank"
+                startIcon={<GitHubIcon />}
+              >
+                Event Landing Pages
+              </Button>
+            </Box>
+          </Card>
         </Grid>
 
-        <Grid item xs={12}>
-          <Typography variant="h5">NPM Paket</Typography>
-          <Typography component="cite">Paket för utvecklare i NodeJS / TypeScript</Typography>
-        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card elevation={5} sx={{ p: 2 }}>
+            <Typography variant="h5">NPM Paket</Typography>
+            <Typography component="cite">Paket för utvecklare att hantera error i NodeJS / TypeScript.</Typography>
 
-        <Grid item xs={12} md={6}>
-          <Card elevation={5}>
-            <CardMedia sx={{ objectFit: "cover" }} component="img" image={backendErrorDocs} alt="backend error docs" />
+            {/* <CardMedia sx={{ objectFit: "cover" }} component="img" image={backendErrorDocs} alt="backend error docs" /> */}
             <CardContent>
               <Typography variant="h3" component="h3">
                 backend-error
@@ -157,7 +162,7 @@ export default function About() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        {/* <Grid item xs={12} md={6}>
           <Card elevation={5}>
             <CardMedia
               sx={{ objectFit: "cover" }}
@@ -204,27 +209,36 @@ export default function About() {
               </Button>
             </CardActions>
           </Card>
-        </Grid>
+        </Grid> */}
 
-        <Grid item xs={12}>
-          <Typography variant="h5" component="h5">
-            Denna hemsida
-          </Typography>
-          <Typography component="cite">
-            Hostad lokalt med Docker på en Raspberry Pi via Cloudflare Zero Trust Tunnel. CI/CD sker automatiskt via
-            GitHub och Docker Hub.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant="contained"
-            color="success"
-            href={"https://github.com/eriksturesson/react-eriksturesson"} // Byt ut denna URL med rätt GitHub-repository-länk
-            target="_blank"
-            startIcon={<GitHubIcon />}
-          >
-            eriksturesson.se
-          </Button>
+        <Grid item xs={12} sm={12} md={4}>
+          <Card elevation={5} sx={{ p: 2 }}>
+            <Typography variant="h5" component="h5">
+              Denna hemsida
+            </Typography>
+            <Typography component="cite">
+              Hostad lokalt med Docker på en Raspberry Pi via Cloudflare Zero Trust Tunnel. CI/CD sker automatiskt via
+              GitHub och Docker Hub.
+            </Typography>
+            <CardContent>
+              <img
+                style={{ width: "50%", minWidth: 200 }}
+                src={eriksturessonprintscreen}
+                alt="eriksturesson.se printscreen"
+              />
+            </CardContent>
+            <Box sx={{ p: 2 }}>
+              <Button
+                variant="contained"
+                color="success"
+                href={"https://github.com/eriksturesson/react-eriksturesson"} // Byt ut denna URL med rätt GitHub-repository-länk
+                target="_blank"
+                startIcon={<GitHubIcon />}
+              >
+                eriksturesson.se
+              </Button>
+            </Box>
+          </Card>
         </Grid>
       </Grid>
     </MotionBox>
