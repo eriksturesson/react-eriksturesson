@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "motion/react";
+import compressedTechYear from "../assets/videos/compresed-techyear2018.mp4";
 import { companiesInStudentNode } from "../data/companiesInStudentNode";
 import { CompanyNameCarousel } from "./CompanyNamesCarousel";
 
@@ -40,8 +41,12 @@ export default function StudentNode() {
           Föutom all statistik, 20 000 + studenter och CVn,fanns 2394 st uställande arbetsgivare som varit på
           karriärmässor för att träffa talanger, i vårt system.
         </Typography>
-        <Typography variant="caption" sx={{ mt: 2, mb: 5, pr: "2rem", pl: "2rem" }}>
-          Nedan är exempel på utställare i vårt IT-system:
+        <Box sx={{ maxHeight: "400px", overflow: "hidden" }}>
+          <video src={compressedTechYear} muted autoPlay style={{ width: "90%", height: "auto", maxHeight: "400px" }} />
+        </Box>
+        <Typography variant="body1" sx={{ mt: 2, mb: 2, pr: "2rem", pl: "2rem" }}>
+          Vårt IT-system användes på majoriteten av Sveriges lärosäten på över 50st mässor och arbetsmarknadsdagar.
+          Nedan är exempel på utställare på mässor över hela Sverige där vårt IT-system användes:
         </Typography>
 
         {logoGroups.map((group, idx) => (
