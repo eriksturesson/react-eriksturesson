@@ -1,33 +1,27 @@
 // CVSection.tsx
-import { Box, Button, Card, CardContent, Divider, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "motion/react";
-import cvFullstack from "../assets/pdf/cvFullstack.pdf";
-import cvFullstackEng from "../assets/pdf/cvFullstackEng.pdf";
-import cvProduktagare from "../assets/pdf/cvProduktagare.pdf";
-import cvProduktagareEng from "../assets/pdf/cvProduktagareEng.pdf";
+import AttachmentIcon from "@mui/icons-material/Attachment";
+
+import cvProduktagare from "../assets/pdf/CV - Head of Product  Digitaliseringschef [Sv - 2025-10-22].pdf";
+import cvProduktagareEng from "../assets/pdf/CV - Head of Product Digitalization Manager [Eng - 2025-10-22].pdf";
 
 const CVSection = () => {
   const cvs = [
     {
-      title: "CV [Sv] - Produktägare",
+      title: "CV [Sv] - Head of Product / Digitaliseringschef",
       file: cvProduktagare,
     },
     {
-      title: "CV [Eng] - Product Owner",
+      title: "CV [Eng] - Head of Product / Head of Digitalization",
       file: cvProduktagareEng,
     },
-    {
-      title: "CV [Sv] - Fullstackutvecklare",
-      file: cvFullstack,
-    },
-    {
-      title: "CV [Eng] - Fullstack developer",
-      file: cvFullstackEng,
-    },
   ];
+
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // xs och sm = true
-  const MotionBox = motion.create(Box); // Importera motion från framer-motion
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const MotionBox = motion.create(Box);
+
   return (
     <MotionBox
       initial={{ opacity: 0, scale: 0 }}
@@ -44,44 +38,28 @@ const CVSection = () => {
         CV
       </Typography>
 
-      <Grid container spacing={4}>
+      <Stack direction={isSmallScreen ? "column" : "row"} spacing={4} justifyContent="center">
         {cvs.map((cv) => (
-          <Grid item xs={12} md={6} xl={3} key={cv.title}>
-            <Card>
-              <CardContent>
-                <Typography variant="h5">{cv.title}</Typography>
-                <Button
-                  variant="contained"
-                  color="success"
-                  href={cv.file}
-                  download
-                  sx={{
-                    mt: 2,
-                    display: isSmallScreen ? "flex" : "inline-flex",
-                    justifyContent: isSmallScreen ? "center" : "flex-start",
-                    mx: isSmallScreen ? "auto" : 0, // horizontal centering
-                  }}
-                >
-                  Ladda ner PDF
-                </Button>
-
-                {!isSmallScreen && (
-                  <>
-                    <Divider sx={{ pb: "10px" }} />
-                    <embed
-                      src={cv.file}
-                      type="application/pdf"
-                      width="100%"
-                      height="600px"
-                      style={{ borderRadius: "8px", marginBottom: "1rem" }}
-                    />
-                  </>
-                )}
-              </CardContent>
-            </Card>
-          </Grid>
+          <Box
+            key={cv.title}
+            sx={{
+              p: 3,
+              borderRadius: 2,
+              boxShadow: 3,
+              backgroundColor: "#f5f5f5",
+              textAlign: "center",
+              minWidth: 250,
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              {cv.title}
+            </Typography>
+            <Button variant="contained" color="success" href={cv.file} download startIcon={<AttachmentIcon />}>
+              Download PDF
+            </Button>
+          </Box>
         ))}
-      </Grid>
+      </Stack>
     </MotionBox>
   );
 };
