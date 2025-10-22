@@ -48,14 +48,13 @@ const CVSection = () => {
               boxShadow: 3,
               backgroundColor: "#f5f5f5",
               textAlign: "center",
-              minWidth: 250,
             }}
           >
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" sx={{ wordBreak: "break-word" }} gutterBottom>
               {cv.title}
             </Typography>
             <Button variant="contained" color="success" href={cv.file} download startIcon={<AttachmentIcon />}>
-              Download PDF
+              Download
             </Button>
           </Box>
         ))}
