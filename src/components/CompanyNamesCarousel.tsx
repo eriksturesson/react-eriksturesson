@@ -1,5 +1,6 @@
 import { Box, Chip, useTheme } from "@mui/material";
 import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 export const CompanyNameCarousel = ({
   companyNames,
@@ -8,9 +9,7 @@ export const CompanyNameCarousel = ({
   companyNames: string[];
   direction: "left" | "right";
 }) => {
-  const theme = useTheme(); // Hämta temafärger från MUI:s tema
-
-  // Array med olika färgtyper som vi kan använda
+  const theme = useTheme();
   const colors = [
     theme.palette.success.main,
     theme.palette.info.main,
@@ -20,25 +19,38 @@ export const CompanyNameCarousel = ({
     theme.palette.secondary.main,
   ];
 
+  const motionRef = useRef<HTMLDivElement>(null);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
+  useEffect(() => {
+    if (motionRef.current) {
+      setScrollWidth(motionRef.current.scrollWidth / 2); // dela på 2 för loop
+    }
+  }, [companyNames]);
+
+  const speed = 50; // pixlar per sekund
+  const duration = scrollWidth / speed; // total tid för animationen
+
   return (
-    <Box sx={{ overflow: "hidden", width: "100%" }}>
+    <Box sx={{ overflow: "hidden", width: "100%", paddingTop: "1rem", paddingBottom: "1rem" }}>
       <motion.div
+        ref={motionRef}
         style={{
           display: "flex",
           whiteSpace: "nowrap",
         }}
         animate={{
-          x: direction === "left" ? ["0%", "-200%"] : ["-200%", "0%"],
+          x: direction === "left" ? [0, -scrollWidth] : [-scrollWidth, 0],
         }}
         transition={{
           repeat: Infinity,
           repeatType: "loop",
-          duration: 20,
+          duration: duration,
           ease: "linear",
         }}
       >
         {companyNames.map((name, index) => {
-          const color = colors[index % colors.length]; // Växla mellan färgerna i arrayen
+          const color = colors[index % colors.length];
           return (
             <Box
               key={index}
@@ -53,7 +65,7 @@ export const CompanyNameCarousel = ({
                 label={name}
                 sx={{
                   fontWeight: "bold",
-                  bgcolor: color, // Använd temafärg
+                  bgcolor: color,
                   boxShadow: 2,
                   borderRadius: "8px",
                   minWidth: "180px",
