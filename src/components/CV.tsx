@@ -3,18 +3,15 @@ import { Box, Button, Stack, Typography, useMediaQuery, useTheme } from "@mui/ma
 import { motion } from "motion/react";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 
-import cvProduktagare from "../assets/pdf/CV - Head of Product  Digitaliseringschef [Sv - 2025-10-22].pdf";
-import cvProduktagareEng from "../assets/pdf/CV - Head of Product Digitalization Manager [Eng - 2025-10-22].pdf";
-
 const CVSection = () => {
   const cvs = [
     {
       title: "CV [Sv] - Head of Product / Digitaliseringschef",
-      file: cvProduktagare,
+      file: "/CV%20[SV]%20-%20Head%20of%20Product%20Digitalization%20Manager.pdf",
     },
     {
       title: "CV [Eng] - Head of Product / Head of Digitalization",
-      file: cvProduktagareEng,
+      file: "/CV%20[Eng]%20-%20Head%20of%20Product%20Digitalization%20Manager.pdf",
     },
   ];
 
