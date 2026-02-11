@@ -24,7 +24,12 @@ export default function StudentNode() {
         scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
       }}
       id="studentnode"
-      sx={{ mt: "4rem", pt: "4rem", width: "100%", bgcolor: "#f9f9f9" }}
+      sx={{
+        mt: "4rem",
+        pt: "4rem",
+        width: "100%",
+        bgcolor: "#f9f9f9",
+      }}
     >
       <Box sx={{ textAlign: "center", mb: 4 }}>
         <Typography variant="h4" gutterBottom fontWeight="bold">

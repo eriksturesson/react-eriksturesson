@@ -22,7 +22,7 @@ const CVSection = () => {
     },
     {
       title: "Teknisk projektledare / IT-projektledare / Technical Project Manager / IT Project Manager",
-      swe: "/CV%20[SV]%20-%20Teknisk%20projektledare%20%20IT-projektledare.pdf",
+      swe: "/CV%20[SV]%20-%20Erik%20Sturesson%20-%20Teknisk%20projektledare%20%20IT-projektledare.pdf",
       eng: "/CV%20[Eng]%20-%20Technical%20Project%20Manager%20%20IT%20Project%20Manager.pdf",
     },
   ];
