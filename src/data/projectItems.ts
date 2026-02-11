@@ -4,6 +4,8 @@ import CodeIcon from "@mui/icons-material/Code";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import LaptopIcon from "@mui/icons-material/Laptop";
 import ScheduleIcon from "@mui/icons-material/Schedule";
+import CloudSyncIcon from "@mui/icons-material/CloudSync";
+import FingerprintIcon from "@mui/icons-material/Fingerprint";
 import adminImg from "../assets/img/adminImg.png";
 import databaseImg from "../assets/img/database.png";
 import dockerCloudRunVertexAI from "../assets/img/docker-cloudrun-vertexAI.png";
@@ -18,6 +20,34 @@ import techleadersboat from "../assets/img/techleadersboat.png";
 import typescriptLogo from "../assets/img/typescript-logo.png";
 import { ProjectCardItem } from "../types/projects";
 export const projectCardItems: ProjectCardItem[] = [
+  {
+    image: databaseImg,
+    icon: CloudSyncIcon,
+    alt: `Master Data Hub`,
+    year: 2025,
+    height: "100%",
+    headerText: "Master Data Hub",
+    descriptionText:
+      "Fullstackutvecklare hos Affibody. Skapade en Master Data Hub för persondata, integrationer mot Personio, Entra, Microsoft AD, BankID och externa APIer. Arbetade mycket med app registrations, consent flows och säker inloggning. Ansvarade för Azure-miljö, Cosmos DB, Azure Functions och automatisering via GitHub Actions.",
+    modal: {
+      descriptionText:
+        "På Affibody ansvarade jag för att bygga och drifta en master data hub för persondata, där integrationer mot Personio, Entra, Microsoft AD och BankID var centrala. Jag byggde och dokumenterade APIer, satte upp app registrations och hanterade consent flows för säker inloggning. Azure-miljön bestod av Cosmos DB, Azure Functions och automatisering via GitHub Actions. Rollen innefattade även arkitektur och säkerhetsfrågor kring identitet och access.",
+    },
+  },
+  {
+    image: adminImg,
+    icon: FingerprintIcon,
+    alt: `Identitetsverifiering`,
+    year: 2025,
+    height: "100%",
+    headerText: "Identitetsverifiering",
+    descriptionText:
+      "Fullstackutvecklare. Byggde ett system för identitetsverifiering med API:er och webhook så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering.",
+    modal: {
+      descriptionText:
+        "Jag jobbade som fullstackutvecklare för att bygga ett system för identitetsverifiering med API:er och webhook, så att andra system kan använda sig av detta. Fokus på säkerhet, integrationer och automatisering.",
+    },
+  },
   {
     image: powershellLogo,
     icon: CodeIcon,

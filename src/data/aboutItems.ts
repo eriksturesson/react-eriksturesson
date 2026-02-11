@@ -1,4 +1,12 @@
 import api from "../assets/img/api.png";
+import securityReportLogo from "../assets/img/npm-image.png";
+import fluentuiLogo from "../assets/img/js-action-logo.png";
+import azureLogo from "../assets/img/azure-a.png";
+import cosmosdbLogo from "../assets/img/filestore.png";
+import githubActionsLogo from "../assets/img/npm-image.png";
+// affibodyLogo och t34msLogo borttagna (ej riktiga logotyper)
+import azureCosmosDbLogo from "../assets/img/azure-cosmos-db.png";
+import functionAppsLogo from "../assets/img/function-apps.png";
 import cloud_functions from "../assets/img/cloud_functions.png";
 import compute_engine from "../assets/img/compute_engine.png";
 import cssLogo from "../assets/img/css3-logo.png";
@@ -23,5 +31,18 @@ export const aboutData = [
   muiLogo,
   motionLogo,
   reactLogo,
+  fluentuiLogo,
+  azureLogo,
+  azureCosmosDbLogo,
+  functionAppsLogo,
+  githubActionsLogo,
 ];
-export const aboutData2 = [gcpLogo, firebaseLogo, api, docker, compute_engine, cloud_functions, firestore];
+export const aboutData2 = [
+  gcpLogo,
+  firebaseLogo,
+  docker,
+  compute_engine,
+  cloud_functions,
+  firestore,
+  securityReportLogo,
+];

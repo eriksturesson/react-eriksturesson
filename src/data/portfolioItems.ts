@@ -1,3 +1,4 @@
+import backendErrorImg from "../assets/img/backend-error-documentation.png";
 import jobPostingSystem from "../assets/img/admin-jobs.section.png";
 import bookingSystemAdmin from "../assets/img/adminBookingPrintscreen.png";
 import adminImage from "../assets/img/adminImg.png";
@@ -23,7 +24,8 @@ import mobileAppPrintscreen2 from "../assets/img/mobileAppPrintscreen2.jpg";
 import interview from "../assets/img/office-8140320_1280.png";
 import orderSystem from "../assets/img/orderHistory.png";
 import rekonWebsite from "../assets/img/rekon-website.png";
-import website from "../assets/img/responsive-1702827_1280.png";
+import eventLandingPagesExample from "../assets/img/Event Landing Pages example.png";
+import npmImage from "../assets/img/npm-image.png";
 import rotaryWebsite from "../assets/img/rotaryWebsite.png";
 import mobileApp from "../assets/img/smartphone-1833950_1280.png";
 import talentReachEMail from "../assets/img/talentReachEmail.png";
@@ -31,6 +33,38 @@ import sendEmail from "../assets/img/telegram-5662082_1280.png";
 import { PortfolioItem } from "../types/portfolio";
 
 export const portfolioItems: PortfolioItem[] = [
+  {
+    title: "backend-error (npm-paket)",
+    description:
+      "Paket för utvecklare att hantera error i NodeJS / TypeScript. Publicerat på npm, används för bättre felhantering och loggning i backend-projekt.",
+    image: { type: "image", src: backendErrorImg, alt: "backend-error npm package" },
+    modal: {
+      description:
+        "npm-paketet backend-error hjälper utvecklare att hantera och logga fel i NodeJS/TypeScript-projekt. Inkluderar CLI, loggning och integration mot CI/CD. Finns på npmjs.com och används i flera egna projekt.",
+      media: [{ type: "image", src: backendErrorImg, alt: "backend-error npm package" }],
+    },
+    tags: {
+      techStack: ["Node.js", "TypeScript", "npm"],
+      architecture: ["CLI", "Loggning", "CI/CD"],
+      productFocus: ["Open Source", "Säkerhet", "DevOps"],
+    },
+  },
+  {
+    title: "npm security-reporter",
+    description:
+      "Ett levande fritidsprojekt: CLI-verktyg och npm-paket som automatiskt analyserar och rapporterar säkerhetsbrister i beroenden för Node.js-projekt. Bygger på automatisering och integration mot GitHub Actions.",
+    image: { type: "image", src: npmImage, alt: "npm security-reporter" },
+    modal: {
+      description:
+        "npm security-reporter är ett CLI-verktyg och npm-paket som automatiskt analyserar och rapporterar säkerhetsbrister i beroenden för Node.js-projekt. Projektet är open source och integreras enkelt i CI/CD-flöden, t.ex. via GitHub Actions. Bygger på Node.js, TypeScript och automatisering.",
+      media: [],
+    },
+    tags: {
+      techStack: ["Node.js", "TypeScript", "GitHub Actions", "npm"],
+      architecture: ["CLI", "CI/CD", "Automatisering"],
+      productFocus: ["Open Source", "Säkerhet", "DevOps"],
+    },
+  },
   {
     title: "Student Node – Mässplattformen",
     description:
@@ -46,7 +80,18 @@ export const portfolioItems: PortfolioItem[] = [
       ],
     },
     tags: {
-      techStack: ["TypeScript", "JavaScript", "Node.js", "MUI", "React", "SCSS", "CSS", "HTML"],
+      techStack: [
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "MUI",
+        "React",
+        "SCSS",
+        "CSS",
+        "HTML",
+        "GitHub Actions",
+        "FluentUI",
+      ],
       architecture: [
         "Firebase Auth",
         "Firebase Hosting",
@@ -54,26 +99,24 @@ export const portfolioItems: PortfolioItem[] = [
         "Firebase Storage",
         "GCP Artifact Registry",
         "Docker",
+        "Azure",
+        "Cosmos DB",
+        "Azure Functions",
+        "Entra",
+        "Master Data Hub",
       ],
-      productFocus: ["Frontend", "Backend", "SaaS", "API", "Databaser"],
+      productFocus: ["Frontend", "Backend", "SaaS", "API", "Databaser", "IT-arkitekt"],
     },
   },
   {
-    title: "Eventhemsidor",
+    title: "Event Landing Pages",
     description:
-      "Responsiva eventhemsidor för kundevent. Jag designade och utvecklade eventhemsidor för både Poolia och Student Node. Jag var även ansvarig för inbjudningar och hantering av deltagare på flera av Student Nodes events.",
-    image: { type: "image", src: website, alt: "Event Page" },
+      "Skalbart, modernt, mobilanpassat eventsystem inklusive admin inloggning. Används av Stockholm City Affärsnätverk och för Celebration Event. Ny design och integration för eventhantering och inbjudningar.",
+    image: { type: "image", src: eventLandingPagesExample, alt: "Event Landing Pages" },
     modal: {
       description:
-        "Här är en detaljerad beskrivning av eventhemsidorna, deras design och funktioner för att hantera inbjudningar och deltagare på Student Nodes events.",
-      media: [
-        { type: "image", src: eventPageTLB, alt: "Event Page" },
-        { type: "image", src: eventPageMobile, alt: "Event Page" },
-        { type: "image", src: eventPageTLB2, alt: "Event Page" },
-        { type: "image", src: eventPageTLBMobile, alt: "Event Page" },
-        { type: "image", src: eventPageTLBMobile2, alt: "Event Page" },
-        { type: "image", src: rotaryWebsite, alt: "Event Page" },
-      ],
+        "Event Landing Pages är ett exempel på ett modernt eventsystem med fokus på design, användarvänlighet och integration för eventhantering och inbjudningar. Används för både Stockholm City Affärsnätverk och Celebration Event.",
+      media: [{ type: "image", src: eventLandingPagesExample, alt: "Event Landing Pages" }],
     },
     tags: {
       techStack: ["HTML", "CSS", "JavaScript"],
@@ -92,9 +135,24 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: matchingApiDocs, alt: "API Documentation" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js"],
-      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
-      productFocus: ["API", "Databaser", "Backend"],
+      techStack: ["TypeScript", "Node.js", "GitHub Actions", "AI/Prompting", "Personio"],
+      architecture: [
+        "Express",
+        "Docker",
+        "Swagger",
+        "Firebase Realtime DB",
+        "Externa APIer",
+        "Azure",
+        "Cosmos DB",
+        "Azure Functions",
+        "Entra",
+        "Microsoft AD",
+        "BankID",
+        "App registrations",
+        "Consent flows",
+        "Inloggning",
+      ],
+      productFocus: ["API", "Databaser", "Backend", "Master Data Hub", "IT-arkitekt", "Identitet & inloggning"],
     },
   },
   {
@@ -108,9 +166,21 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: matchingApiDocs, alt: "API Update for Exhibitors" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js"],
-      architecture: ["Express", "Docker", "Swagger", "Firebase Realtime DB"],
-      productFocus: ["API", "Databaser", "Backend"],
+      techStack: ["TypeScript", "Node.js", "GitHub Actions", "Personio"],
+      architecture: [
+        "Express",
+        "Docker",
+        "Swagger",
+        "Firebase Realtime DB",
+        "Externa APIer",
+        "Azure Functions",
+        "Microsoft AD",
+        "BankID",
+        "App registrations",
+        "Consent flows",
+        "Inloggning",
+      ],
+      productFocus: ["API", "Databaser", "Backend", "Master Data Hub", "Identitet & inloggning"],
     },
   },
   {
@@ -124,9 +194,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: talentReachEMail, alt: "Talent Reach Dashboard" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js"],
-      architecture: ["Docker", "GCP - Compute Engine"],
-      productFocus: ["Backend", "API", "Databaser", "E-postautomatisering"],
+      techStack: ["TypeScript", "Node.js", "AI/Prompting"],
+      architecture: ["Docker", "GCP - Compute Engine", "Azure", "Cosmos DB"],
+      productFocus: ["Backend", "API", "Databaser", "E-postautomatisering", "AI/Prompting"],
     },
   },
   {
@@ -140,9 +210,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: fakturaSystem, alt: "Billing System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "MUI", "React"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "E-postautomatisering"],
+      techStack: ["TypeScript", "Node.js", "MUI", "React", "GitHub Actions"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure Functions"],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "E-postautomatisering", "IT-arkitekt"],
     },
   },
   {
@@ -156,9 +226,16 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: jobPostingSystem, alt: "Job Posting System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Hosting", "Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "SaaS"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      architecture: [
+        "Firebase Hosting",
+        "Firebase Cloud Functions",
+        "Serverless Backend",
+        "Firebase Realtime DB",
+        "Azure",
+        "Cosmos DB",
+      ],
+      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "SaaS", "IT-arkitekt"],
     },
   },
   {
@@ -172,15 +249,17 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: bookingSystem, alt: "Booking System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "MUI", "React"],
+      techStack: ["TypeScript", "Node.js", "MUI", "React", "FluentUI"],
       architecture: [
         "Firebase Hosting",
         "Firebase Cloud Functions",
         "Serverless Backend",
         "Firebase Realtime DB",
         "Firebase Auth",
+        "Azure Functions",
+        "Entra",
       ],
-      productFocus: ["SaaS", "Backend", "Frontend", "UX/UI", "E-postautomatisering"],
+      productFocus: ["SaaS", "Backend", "Frontend", "UX/UI", "E-postautomatisering", "IT-arkitekt"],
     },
   },
   {
@@ -194,9 +273,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: bookingSystemAdmin, alt: "Employer Application System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure", "Cosmos DB"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI", "IT-arkitekt"],
     },
   },
   {
@@ -226,9 +305,16 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: adminDashboard, alt: "Admin Dashboard" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Auth", "Firebase Realtime DB"],
-      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      architecture: [
+        "Firebase Cloud Functions",
+        "Serverless Backend",
+        "Firebase Auth",
+        "Firebase Realtime DB",
+        "Azure Functions",
+        "Entra",
+      ],
+      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI", "IT-arkitekt"],
     },
   },
   {
@@ -242,9 +328,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: orderSystem, alt: "Order System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Frontend", "Backend", "SaaS"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure", "Cosmos DB"],
+      productFocus: ["Frontend", "Backend", "SaaS", "IT-arkitekt"],
     },
   },
   {
@@ -260,9 +346,9 @@ export const portfolioItems: PortfolioItem[] = [
       ],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React Native", "React Native Paper"],
-      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime DB", "Firebase Storage"],
-      productFocus: ["Frontend", "Backend", "Mobilapp"],
+      techStack: ["TypeScript", "Node.js", "React Native", "React Native Paper", "AI/Prompting"],
+      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime DB", "Firebase Storage", "Azure"],
+      productFocus: ["Frontend", "Backend", "Mobilapp", "AI/Prompting"],
     },
   },
 ];

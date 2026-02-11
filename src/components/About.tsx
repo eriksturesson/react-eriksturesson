@@ -1,7 +1,7 @@
 import GitHubIcon from "@mui/icons-material/GitHub"; // Kom ihåg att importera GitHub-ikonen
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, Paper, Stack } from "@mui/material";
-import eventLandingPages from "../assets/img/printscreen eventlandingpages.png";
+import eventLandingPages from "../assets/img/Event Landing Pages example.png";
 import eriksturessonprintscreen from "../assets/img/eriksturesson printscreen.png";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -85,8 +85,8 @@ export default function About() {
             </Typography>
 
             <Typography component={"cite"}>
-              Skalbart, modernt, mobilanpassat eventsystem inklusive admin inloggning. Används av Stockholm City
-              Affärsnätverk.
+              Skalbart, modernt, mobilanpassat eventsystem inklusive admin-inloggning. Används vid privata event som
+              dainafyllerar.se och affärssammanhang – användes av Stockholm City Affärsnätverk från 2016–2026.
             </Typography>
             <CardContent>
               <img style={{ width: "50%", minWidth: 200 }} src={eventLandingPages} alt="Event Landing Pages" />
@@ -97,10 +97,10 @@ export default function About() {
                 startIcon={<LanguageIcon />}
                 variant="contained"
                 color="info"
-                href="https://stockholmcityaffarsnatverk.se"
+                href="https://dainafyllerar.se"
                 target="_blank"
               >
-                Stockholm City Affärsnatverk
+                dainafyllerar.se
               </Button>
               <Button
                 sx={{ margin: 1 }}
@@ -120,8 +120,6 @@ export default function About() {
           <Card elevation={5} sx={{ p: 2 }}>
             <Typography variant="h5">NPM Paket</Typography>
             <Typography component="cite">Paket för utvecklare att hantera error i NodeJS / TypeScript.</Typography>
-
-            {/* <CardMedia sx={{ objectFit: "cover" }} component="img" image={backendErrorDocs} alt="backend error docs" /> */}
             <CardContent>
               <Typography variant="h3" component="h3">
                 backend-error
@@ -153,6 +151,50 @@ export default function About() {
                 variant="contained"
                 color="success"
                 href="https://github.com/eriksturesson/backendError"
+                target="_blank"
+                startIcon={<GitHubIcon />}
+              >
+                GitHub
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card elevation={5} sx={{ p: 2 }}>
+            <Typography variant="h5">NPM Paket</Typography>
+            <Typography component="cite">Automatiserad CLI för säkerhetsanalys av Node.js-projekt.</Typography>
+            <CardContent>
+              <Typography variant="h3" component="h3">
+                security-reporter
+              </Typography>
+              <Box mb={1}>
+                <img
+                  style={{ width: 200 }}
+                  src="https://img.shields.io/npm/dy/security-reporter?style=flat-square"
+                  alt="npm downloads"
+                />
+              </Box>
+              <Box mb={2}>
+                <img src="https://img.shields.io/npm/v/security-reporter?style=flat-square" alt="npm version" />
+              </Box>
+            </CardContent>
+            <CardActions sx={{ justifyContent: "center" }}>
+              <Button
+                sx={{ margin: 1 }}
+                startIcon={<DescriptionIcon />}
+                variant="contained"
+                color="error"
+                href="https://www.npmjs.com/package/security-reporter"
+                target="_blank"
+              >
+                Till NPM
+              </Button>
+              <Button
+                sx={{ margin: 1 }}
+                variant="contained"
+                color="success"
+                href="https://github.com/eriksturesson/security-reporter"
                 target="_blank"
                 startIcon={<GitHubIcon />}
               >
