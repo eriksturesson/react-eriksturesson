@@ -18,7 +18,9 @@ import rotarywebsida from "../assets/img/rotarywebsida.png";
 import schemalaggningsAppImage from "../assets/img/schemalaggningsapp.png";
 import techleadersboat from "../assets/img/techleadersboat.png";
 import typescriptLogo from "../assets/img/typescript-logo.png";
+import eventLandingPagesExample from "../assets/img/Event Landing Pages example.png";
 import { ProjectCardItem } from "../types/projects";
+
 export const projectCardItems: ProjectCardItem[] = [
   {
     image: databaseImg,
@@ -42,95 +44,25 @@ export const projectCardItems: ProjectCardItem[] = [
     height: "100%",
     headerText: "Identitetsverifiering",
     descriptionText:
-      "Fullstackutvecklare. Byggde ett system för identitetsverifiering med API:er och webhook så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering.",
+      "Fullstackutvecklare på T34MS. Byggde ett system för identitetsverifiering med API:er och webhook så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering.",
     modal: {
       descriptionText:
         "Jag jobbade som fullstackutvecklare för att bygga ett system för identitetsverifiering med API:er och webhook, så att andra system kan använda sig av detta. Fokus på säkerhet, integrationer och automatisering.",
     },
   },
   {
-    image: powershellLogo,
+    image: dockerCloudRunVertexAI,
     icon: CodeIcon,
-    alt: `powershellLogo`,
-    year: 2015,
+    alt: `backend-logos`,
+    year: 2024,
     height: "100%",
-    headerText: "Powershell",
+    headerText: "System för matchning inom PION Group blir webbapp",
     descriptionText:
-      "Lärde mig powershellscript för att exemeplvis lätt komma in i rätt projekt och undermappar med egna 'erikcd' commandon, 'erikrun' som kör olika program och 'erikopen' för att öppna olika projekt från rätt directories.",
-  },
-  {
-    image: databaseImg,
-    icon: DataObjectIcon,
-    alt: `databaseImg`,
-    year: 2019,
-    height: "100%",
-    headerText: "GDPR-script i Powershell",
-    descriptionText:
-      "Skapade ett program som går igenom samtliga filer (säkerhetskopior i mitt fall), gick igenom alla rader och identifierade en sträng som skulle tas bort och då raderades alla rader med detta.",
+      "Matchningssystem som tidigare byggt i backend blir webbapp och backend flyttas till Docker i Google Cloud Run. Vertex AI används vid automatisering.",
     modal: {
       descriptionText:
-        "Detta script gjorde att vi på ett automatiserat sätt kunde ta bort personuppgifter från hundratals filer och säkerhetskopior.",
+        "Matchningssystemet som tidigare byggts i backend (se år 2022) flyttas till en webbapp för att rekryterare ska kunna se och redigera konsulter som passar till jobb. Jag bryter ut backend som jobbar väldigt mycket (frontend används mest för att SEN visa resultatet, dvs matchningarna av konsulter och jobb). Backend flyttas till Docker i Google Cloud Run. Vertex AI används för olika automatiseringar men jag kan inte gå in närmare på vad. Tyvärr kan jag inte länka till systemet då det är känslig information.",
     },
-  },
-  {
-    image: mysqlLogo,
-    icon: DataObjectIcon,
-    alt: `MySQL`,
-    year: 2020,
-    height: "100%",
-    headerText: "MySQL",
-    descriptionText:
-      "Lärde mig SQL för att skapa en relationsdatabas i syfte att få ordning på data samt snabbt och enkelt sortera och få ut vad vi behövde.",
-  },
-  {
-    image: rotarywebsida,
-    icon: LaptopIcon,
-    alt: `Rotary Website`,
-    year: 2020,
-    height: "100%",
-    headerText: "Rotary Website",
-    descriptionText:
-      "Skapade mobilanpassad hemsida för Stockholm City Affärsnätverk, idag har systemet även inloggning med CMS för redigering av hemsidan.",
-    modal: {
-      descriptionText:
-        "Hemsidan används idag för att boka in sig på olika evenemang och för att se vilka som är medlemmar i nätverket.",
-      callToActionText: "Besök hemsidan",
-      callToActionLink: "https://stockholmcityaffarsnatverk.se",
-    },
-  },
-  {
-    image: techleadersboat,
-    icon: LaptopIcon,
-    alt: `Tech Leaders Boat`,
-    year: 2020,
-    height: "100%",
-    headerText: "Tech Leaders Boat",
-    descriptionText:
-      "Från mobilanpassad hemsida på Stockholm City Affärsnätverk började webbsidan användas för kundevenemang på Student Node AB. Senare år 2022 började det användas inom PION Group (Poolia/QRIOS/Uniflex m.fler) för kundevenemang, då via pooliaevent.se och qriosevent.se så som oktoberfest.qriosevent.se.",
-    modal: {
-      descriptionText: "Bland flera kundevenemang är här länken till ett av Student Nodes evenemang:",
-      callToActionText: "Besök Tech Leaders Boat",
-      callToActionLink: "https://2023.techleadersboat.se",
-    },
-  },
-  {
-    image: raspberrypiImage,
-    icon: CodeIcon,
-    alt: `RaspberryPi`,
-    year: 2021,
-    height: "100%",
-    headerText: "Automatisering av script",
-    descriptionText: "Konfiguration och kod integrerat till Linux i syfte att automatisera köra dagliga script.",
-  },
-  {
-    image: schemalaggningsAppImage,
-    icon: ScheduleIcon,
-    alt: `Schemaläggningsapp`,
-    year: 2022,
-    height: "100%",
-    headerText: "Bokning",
-    descriptionText:
-      "Helt egenbyggt schemaläggningssystem av intervjuer med företag vid evenemang och studentmässor med flertalet funktioner som automatiska mailutskick vid olika tillfällen, avbokningsmöjligheter i CMS av admin, kod som ger admin-användaren valmöjligheter när hen börjar göra eventuella misstag så som att korrigera eller göra omval av bokningsbara tider när vanliga användare/kandidater redan bokat.",
   },
   {
     image: typescriptLogo,
@@ -152,44 +84,62 @@ export const projectCardItems: ProjectCardItem[] = [
     descriptionText: "Automatisering av kandidatmatchning till jobb i olika system [kan inte berätta mer än så].",
   },
   {
-    image: adminImg,
-    icon: AdminPanelSettingsIcon,
-    alt: `AdminPanellogo`,
-    year: 2023,
+    image: raspberrypiImage,
+    icon: CodeIcon,
+    alt: `RaspberryPi`,
+    year: 2021,
     height: "100%",
-    headerText: "Admin system",
-    descriptionText:
-      "Adminsystem med olika behörighetsnivåer i Student Nodes CMS. Nya funktioner och kontrollverktyg för en superuser för att hantera, bjuda in och ändra admins.",
+    headerText: "Automatisering av script",
+    descriptionText: "Konfiguration och kod integrerat till Linux i syfte att automatisera köra dagliga script.",
   },
   {
-    image: reactLogo,
-    cssClass: `App-logo`,
-    icon: CodeIcon,
-    alt: `Reactlogo`,
-    year: 2024,
+    image: eventLandingPagesExample,
+    icon: LaptopIcon,
+    alt: `Event Landing Pages`,
+    year: 2020,
     height: "100%",
-    headerText: "Ombyggnad",
+    headerText: "Event Landing Pages Evolution",
     descriptionText:
-      "10 år av kod i Student Node ombyggt på 9 månder från vanilla JS och Node till Typescript, React och MUI-ramverket.",
+      "Utvecklade och underhöll event-plattform sedan 2020. Startade med Stockholm City Affärsnätverk (Rotary) och Tech Leaders Boat - ett årligt event för Sveriges IT-ledare som använts varje år sedan start. År 2022 började systemet även användas inom PION Group (Poolia/QRIOS/Uniflex) för kundevents. Nyligen ombyggt från scratch på fritid med modernt adminsystem och CMS som inte fanns i ursprungsversionen. Används fortfarande aktivt för olika typer av events.",
     modal: {
       descriptionText:
-        "Hela vårt IT-system som används på majoriteten av Sveriges arbetsmarknadsdagar idag, med hemsidor för de olika mässorna, har byggt om. Under projektet har jag programmerat majoritetn själv men även fått lyxen att jobba ihop med duktiga IT-konsulter och 2st praktikanter som bidragit i gruppen.",
-      callToActionText: "Demo för vårt IT-system",
-      callToActionLink: "https://beta.studentnote.se/",
+        "Event Landing Pages började 2020 som en mobilanpassad hemsida för Stockholm City Affärsnätverk. Samma år började systemet användas för Tech Leaders Boat - ett prestigefyllt årligt event för Sveriges IT-ledare som har använt plattformen varje år sedan dess. År 2022 expanderade användningen till PION Groups kundevents via pooliaevent.se och qriosevent.se (t.ex. oktoberfest.qriosevent.se). Systemet har nyligen byggts om från scratch på fritid med ett modernt adminsystem med CMS-funktionalitet, inbjudningshantering och möjlighet att skapa huvudsidor och undersidor - funktioner som inte fanns i den ursprungliga versionen. Plattformen används fortfarande aktivt för både Stockholm City Affärsnätverk och privata events.",
+      callToActionText: "Besök Stockholm City Affärsnätverk",
+      callToActionLink: "https://stockholmcityaffarsnatverk.se",
     },
   },
   {
-    image: dockerCloudRunVertexAI,
-    icon: CodeIcon,
-    alt: `backend-logos`,
-    year: 2024,
+    image: mysqlLogo,
+    icon: DataObjectIcon,
+    alt: `MySQL`,
+    year: 2020,
     height: "100%",
-    headerText: "System för matchning inom PION Group blir webbapp",
+    headerText: "MySQL",
     descriptionText:
-      "Matchningssystem som tidigare byggt i backend blir webbapp och backend flyttas till Docker i Google Cloud Run. Vertex AI används vid automatisering.",
+      "Lärde mig SQL för att skapa en relationsdatabas i syfte att få ordning på data samt snabbt och enkelt sortera och få ut vad vi behövde.",
+  },
+  {
+    image: databaseImg,
+    icon: DataObjectIcon,
+    alt: `databaseImg`,
+    year: 2019,
+    height: "100%",
+    headerText: "GDPR-script i Powershell",
+    descriptionText:
+      "Skapade ett program som går igenom samtliga filer (säkerhetskopior i mitt fall), gick igenom alla rader och identifierade en sträng som skulle tas bort och då raderades alla rader med detta.",
     modal: {
       descriptionText:
-        "Matchningssystemet som tidigare byggts i backend (se år 2022) flyttas till en webbapp för att rekryterare ska kunna se och redigera konsulter som passar till jobb. Jag bryter ut backend som jobbar väldigt mycket (frontend används mest för att SEN visa resultatet, dvs matchningarna av konsulter och jobb). Backend flyttas till Docker i Google Cloud Run. Vertex AI används för olika automatiseringar men jag kan inte gå in närmare på vad. Tyvärr kan jag inte länka till systemet då det är känslig information.",
+        "Detta script gjorde att vi på ett automatiserat sätt kunde ta bort personuppgifter från hundratals filer och säkerhetskopior.",
     },
+  },
+  {
+    image: powershellLogo,
+    icon: CodeIcon,
+    alt: `powershellLogo`,
+    year: 2015,
+    height: "100%",
+    headerText: "Powershell",
+    descriptionText:
+      "Lärde mig powershellscript för att exemeplvis lätt komma in i rätt projekt och undermappar med egna 'erikcd' commandon, 'erikrun' som kör olika program och 'erikopen' för att öppna olika projekt från rätt directories.",
   },
 ];

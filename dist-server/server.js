@@ -51,6 +51,9 @@ app.use(helmet_1.default.contentSecurityPolicy({
 app.use(limiter);
 app.use(express_1.default.json({ limit: "1mb" }));
 app.use(express_1.default.static(distPath));
+app.get("/health", (req, res) => {
+    res.status(200).json({ ok: true });
+});
 app.get("*", (req, res) => {
     const requestedPath = path_1.default.join(distPath, req.path);
     // Kontrollera om filen existerar i distPath (t.ex. /main.js eller /styles.css)

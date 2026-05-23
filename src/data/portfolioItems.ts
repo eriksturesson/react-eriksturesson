@@ -30,9 +30,70 @@ import rotaryWebsite from "../assets/img/rotaryWebsite.png";
 import mobileApp from "../assets/img/smartphone-1833950_1280.png";
 import talentReachEMail from "../assets/img/talentReachEmail.png";
 import sendEmail from "../assets/img/telegram-5662082_1280.png";
+import databaseImg from "../assets/img/database.png";
 import { PortfolioItem } from "../types/portfolio";
 
 export const portfolioItems: PortfolioItem[] = [
+  {
+    title: "Master Data Hub",
+    description:
+      "Fullstackutvecklare hos Affibody. Byggde en Master Data Hub för persondata med integrationer mot Personio, Entra, Microsoft AD, BankID och externa APIer. Ansvarade för Azure-miljö, Cosmos DB, Azure Functions, app registrations, consent flows och säker inloggning.",
+    image: { type: "image", src: databaseImg, alt: "Master Data Hub" },
+    modal: {
+      description:
+        "På Affibody ansvarade jag för att bygga och drifta en master data hub för persondata, där integrationer mot Personio, Entra, Microsoft AD och BankID var centrala. Jag byggde och dokumenterade APIer, satte upp app registrations och hanterade consent flows för säker inloggning. Azure-miljön bestod av Cosmos DB, Azure Functions och automatisering via GitHub Actions. Rollen innefattade även arkitektur och säkerhetsfrågor kring identitet och access management.",
+      media: [{ type: "image", src: databaseImg, alt: "Master Data Hub" }],
+    },
+    tags: {
+      techStack: ["TypeScript", "Node.js", "React", "FluentUI", "GitHub Actions", "Personio"],
+      architecture: [
+        "REST API",
+        "Express",
+        "Docker",
+        "Swagger",
+        "Azure Functions",
+        "Azure Cosmos DB",
+        "Azure Entra",
+        "Azure AD",
+        "BankID",
+        "App registrations",
+        "Consent flows",
+        "Master Data Hub",
+        "Externa APIer",
+        "CI/CD",
+      ],
+      productFocus: ["Backend", "Frontend", "API", "Databaser", "IT-arkitekt", "Identitet & inloggning", "Tech Lead"],
+    },
+  },
+  {
+    title: "Identitetsverifiering",
+    description:
+      "Fullstackutvecklare på T34MS. Byggde ett system för identitetsverifiering med API:er och webhooks så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering för enterprise-autentisering.",
+    image: { type: "image", src: adminImage, alt: "Identitetsverifiering" },
+    modal: {
+      description:
+        "Jag jobbade som fullstackutvecklare för att bygga ett system för identitetsverifiering med API:er och webhooks, så att andra system kan använda sig av detta. Systemet var byggt med fokus på säkerhet, integrationer mot Azure AD, BankID och automatisering. Implementerade säkra access- och godkännandeflöden för enterprise-autentisering.",
+      media: [{ type: "image", src: adminImage, alt: "Identitetsverifiering" }],
+    },
+    tags: {
+      techStack: ["TypeScript", "Node.js", "React", "FluentUI", "GitHub Actions"],
+      architecture: [
+        "REST API",
+        "Express",
+        "Docker",
+        "Swagger",
+        "Azure Functions",
+        "Azure Cosmos DB",
+        "Azure Entra",
+        "Azure AD",
+        "BankID",
+        "App registrations",
+        "Consent flows",
+        "CI/CD",
+      ],
+      productFocus: ["Backend", "Frontend", "API", "Databaser", "IT-arkitekt", "Identitet & inloggning"],
+    },
+  },
   {
     title: "backend-error (npm-paket)",
     description:
@@ -45,8 +106,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["Node.js", "TypeScript", "npm"],
-      architecture: ["CLI", "Loggning", "CI/CD"],
-      productFocus: ["Open Source", "Säkerhet", "DevOps"],
+      architecture: ["CLI", "CI/CD"],
+      productFocus: ["Open Source", "DevOps", "Backend"],
     },
   },
   {
@@ -61,7 +122,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["Node.js", "TypeScript", "GitHub Actions", "npm"],
-      architecture: ["CLI", "CI/CD", "Automatisering"],
+      architecture: ["CLI", "CI/CD"],
       productFocus: ["Open Source", "Säkerhet", "DevOps"],
     },
   },
@@ -84,44 +145,49 @@ export const portfolioItems: PortfolioItem[] = [
         "TypeScript",
         "JavaScript",
         "Node.js",
-        "MUI",
         "React",
+        "MUI",
+        "FluentUI",
         "SCSS",
         "CSS",
         "HTML",
         "GitHub Actions",
-        "FluentUI",
       ],
       architecture: [
         "Firebase Auth",
         "Firebase Hosting",
         "Firebase Realtime DB",
         "Firebase Storage",
+        "Firebase Cloud Functions",
+        "Serverless",
         "GCP Artifact Registry",
         "Docker",
-        "Azure",
-        "Cosmos DB",
         "Azure Functions",
-        "Entra",
+        "Azure Cosmos DB",
+        "Azure Entra",
         "Master Data Hub",
       ],
-      productFocus: ["Frontend", "Backend", "SaaS", "API", "Databaser", "IT-arkitekt"],
+      productFocus: ["Frontend", "Backend", "SaaS", "API", "Databaser", "IT-arkitekt", "Tech Lead"],
     },
   },
   {
     title: "Event Landing Pages",
     description:
-      "Skalbart, modernt, mobilanpassat eventsystem inklusive admin inloggning. Används av Stockholm City Affärsnätverk och för Celebration Event. Ny design och integration för eventhantering och inbjudningar.",
+      "Fullständigt eventsystem med CMS, adminportal och mobilanpassad frontend. Används sedan 2020 av Stockholm City Affärsnätverk (Rotary) och för Tech Leaders Boat (Sveriges IT-ledare, årligt event). Nyligen ombyggt från scratch på fritid med modernt adminsystem för innehållshantering, inbjudningar och event-management.",
     image: { type: "image", src: eventLandingPagesExample, alt: "Event Landing Pages" },
     modal: {
       description:
-        "Event Landing Pages är ett exempel på ett modernt eventsystem med fokus på design, användarvänlighet och integration för eventhantering och inbjudningar. Används för både Stockholm City Affärsnätverk och Celebration Event.",
-      media: [{ type: "image", src: eventLandingPagesExample, alt: "Event Landing Pages" }],
+        "Event Landing Pages är ett komplett eventsystem som utvecklats och använts sedan 2020. Systemet började användas för Stockholm City Affärsnätverk (Rotary) och Tech Leaders Boat - ett årligt event för Sveriges IT-ledare. År 2022 började systemet även användas inom PION Group (Poolia/QRIOS/Uniflex) för kundevents via pooliaevent.se och qriosevent.se. Systemet har nyligen byggts om från scratch på fritid med ett modernt adminsystem som inte fanns i ursprungsversionen. Innehåller nu adminportal med CMS-funktionalitet för innehållshantering, möjlighet att skapa huvudsidor och undersidor, inbjudningssystem och fullständig mobilanpassning.",
+      media: [
+        { type: "image", src: eventLandingPagesExample, alt: "Event Landing Pages" },
+        { type: "image", src: rotaryWebsite, alt: "Rotary Website" },
+        { type: "image", src: eventPageTLB, alt: "Tech Leaders Boat" },
+      ],
     },
     tags: {
-      techStack: ["HTML", "CSS", "JavaScript"],
-      architecture: ["Firebase Hosting"],
-      productFocus: ["Frontend", "UX/UI"],
+      techStack: ["HTML", "CSS", "JavaScript", "TypeScript", "Node.js"],
+      architecture: ["Firebase Hosting", "Firebase Realtime DB", "Firebase Auth"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UI/UX", "CMS"],
     },
   },
   {
@@ -137,22 +203,22 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js", "GitHub Actions", "AI/Prompting", "Personio"],
       architecture: [
+        "REST API",
         "Express",
         "Docker",
         "Swagger",
         "Firebase Realtime DB",
         "Externa APIer",
-        "Azure",
-        "Cosmos DB",
         "Azure Functions",
-        "Entra",
-        "Microsoft AD",
+        "Azure Cosmos DB",
+        "Azure Entra",
+        "Azure AD",
         "BankID",
         "App registrations",
         "Consent flows",
-        "Inloggning",
+        "Master Data Hub",
       ],
-      productFocus: ["API", "Databaser", "Backend", "Master Data Hub", "IT-arkitekt", "Identitet & inloggning"],
+      productFocus: ["API", "Backend", "Databaser", "IT-arkitekt", "Identitet & inloggning"],
     },
   },
   {
@@ -168,19 +234,20 @@ export const portfolioItems: PortfolioItem[] = [
     tags: {
       techStack: ["TypeScript", "Node.js", "GitHub Actions", "Personio"],
       architecture: [
+        "REST API",
         "Express",
         "Docker",
         "Swagger",
         "Firebase Realtime DB",
         "Externa APIer",
         "Azure Functions",
-        "Microsoft AD",
+        "Azure AD",
         "BankID",
         "App registrations",
         "Consent flows",
-        "Inloggning",
+        "Master Data Hub",
       ],
-      productFocus: ["API", "Databaser", "Backend", "Master Data Hub", "Identitet & inloggning"],
+      productFocus: ["API", "Backend", "Databaser", "Identitet & inloggning"],
     },
   },
   {
@@ -195,7 +262,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "AI/Prompting"],
-      architecture: ["Docker", "GCP - Compute Engine", "Azure", "Cosmos DB"],
+      architecture: ["Docker", "GCP Compute Engine", "Azure Cosmos DB"],
       productFocus: ["Backend", "API", "Databaser", "E-postautomatisering", "AI/Prompting"],
     },
   },
@@ -210,9 +277,9 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: fakturaSystem, alt: "Billing System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "MUI", "React", "GitHub Actions"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure Functions"],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "E-postautomatisering", "IT-arkitekt"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      architecture: ["Firebase Cloud Functions", "Serverless", "Firebase Realtime DB", "Azure Functions"],
+      productFocus: ["Backend", "Frontend", "UI/UX", "API", "Databaser", "E-postautomatisering", "IT-arkitekt"],
     },
   },
   {
@@ -230,12 +297,11 @@ export const portfolioItems: PortfolioItem[] = [
       architecture: [
         "Firebase Hosting",
         "Firebase Cloud Functions",
-        "Serverless Backend",
+        "Serverless",
         "Firebase Realtime DB",
-        "Azure",
-        "Cosmos DB",
+        "Azure Cosmos DB",
       ],
-      productFocus: ["Backend", "Frontend", "UX/UI", "API", "Databaser", "SaaS", "IT-arkitekt"],
+      productFocus: ["Backend", "Frontend", "UI/UX", "API", "Databaser", "SaaS", "IT-arkitekt"],
     },
   },
   {
@@ -249,17 +315,17 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: bookingSystem, alt: "Booking System" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "MUI", "React", "FluentUI"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "FluentUI"],
       architecture: [
         "Firebase Hosting",
         "Firebase Cloud Functions",
-        "Serverless Backend",
+        "Serverless",
         "Firebase Realtime DB",
         "Firebase Auth",
         "Azure Functions",
-        "Entra",
+        "Azure Entra",
       ],
-      productFocus: ["SaaS", "Backend", "Frontend", "UX/UI", "E-postautomatisering", "IT-arkitekt"],
+      productFocus: ["SaaS", "Backend", "Frontend", "UI/UX", "E-postautomatisering", "IT-arkitekt"],
     },
   },
   {
@@ -274,8 +340,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure", "Cosmos DB"],
-      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI", "IT-arkitekt"],
+      architecture: ["Firebase Cloud Functions", "Serverless", "Firebase Realtime DB", "Azure Cosmos DB"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UI/UX", "IT-arkitekt"],
     },
   },
   {
@@ -290,8 +356,8 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB"],
-      productFocus: ["Frontend", "Backend", "UX/UI", "Datavisualisering"],
+      architecture: ["Firebase Cloud Functions", "Serverless", "Firebase Realtime DB"],
+      productFocus: ["Frontend", "Backend", "UI/UX", "Datavisualisering"],
     },
   },
   {
@@ -305,16 +371,16 @@ export const portfolioItems: PortfolioItem[] = [
       media: [{ type: "image", src: adminDashboard, alt: "Admin Dashboard" }],
     },
     tags: {
-      techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
+      techStack: ["TypeScript", "Node.js", "React", "MUI", "FluentUI", "GitHub Actions"],
       architecture: [
         "Firebase Cloud Functions",
-        "Serverless Backend",
+        "Serverless",
         "Firebase Auth",
         "Firebase Realtime DB",
         "Azure Functions",
-        "Entra",
+        "Azure Entra",
       ],
-      productFocus: ["Frontend", "Backend", "SaaS", "UX/UI", "IT-arkitekt"],
+      productFocus: ["Frontend", "Backend", "SaaS", "UI/UX", "IT-arkitekt"],
     },
   },
   {
@@ -329,7 +395,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "MUI", "GitHub Actions"],
-      architecture: ["Firebase Cloud Functions", "Serverless Backend", "Firebase Realtime DB", "Azure", "Cosmos DB"],
+      architecture: ["Firebase Cloud Functions", "Serverless", "Firebase Realtime DB", "Azure Cosmos DB"],
       productFocus: ["Frontend", "Backend", "SaaS", "IT-arkitekt"],
     },
   },
@@ -347,7 +413,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React Native", "React Native Paper", "AI/Prompting"],
-      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime DB", "Firebase Storage", "Azure"],
+      architecture: ["Metro", "Firebase Auth", "Firebase Hosting", "Firebase Realtime DB", "Firebase Storage"],
       productFocus: ["Frontend", "Backend", "Mobilapp", "AI/Prompting"],
     },
   },

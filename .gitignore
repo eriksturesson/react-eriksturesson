@@ -14,6 +14,9 @@
 # production
 /build
 
+#security-reporter
+/reports
+
 # misc
 .DS_Store
 .env

@@ -44,12 +44,16 @@ app.use(
       styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io"],
       imgSrc: ["'self'", "https://img.shields.io", "data:"],
     },
-  })
+  }),
 );
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
 
 app.use(express.static(distPath));
+
+app.get("/health", (req: any, res: any) => {
+  res.status(200).json({ ok: true });
+});
 
 app.get("*", (req: any, res: any) => {
   const requestedPath = path.join(distPath, req.path);
