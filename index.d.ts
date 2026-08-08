@@ -5,3 +5,8 @@ declare module "*.png";
 declare module "*.mp4";
 declare module "*.webm";
 declare module "*.webp";
+
+interface Window {
+  dataLayer: any[];
+  gtag: (...args: any[]) => void;
+}

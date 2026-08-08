@@ -1,33 +1,43 @@
-import { getAnalytics } from "firebase/analytics";
-import CookieConsent from "react-cookie-consent";
-import { app } from "../helpers/firebaseFunctions";
+import { useEffect } from "react";
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+
+const COOKIE_NAME = "standardCookies";
+
+function updateConsent(granted: boolean) {
+  window.gtag?.("consent", "update", {
+    ad_storage: granted ? "granted" : "denied",
+    ad_user_data: granted ? "granted" : "denied",
+    ad_personalization: granted ? "granted" : "denied",
+    analytics_storage: granted ? "granted" : "denied",
+  });
+}
 
 export default function CookieConsentBanner() {
+  useEffect(() => {
+    // Re-apply a previously stored choice on every load, since the banner
+    // (and its onAccept handler) only renders once and won't fire again.
+    const stored = getCookieConsentValue(COOKIE_NAME);
+    if (stored === "true") {
+      updateConsent(true);
+    }
+  }, []);
+
   return (
     <CookieConsent
       location="bottom"
-      buttonText="Accept"
-      cookieName="standardCookies"
-      style={{ background: "white" }}
-      buttonStyle={{ background: "green", color: "black" }}
+      buttonText="Acceptera"
+      declineButtonText="Neka"
+      cookieName={COOKIE_NAME}
+      style={{ background: "white", color: "black" }}
+      buttonStyle={{ background: "green", color: "white" }}
+      declineButtonStyle={{ background: "#555", color: "white" }}
       expires={150}
       enableDeclineButton
-      onDecline={() => {
-        console.log("CookieConsentBanner.tsx: onDecline()");
-      }}
-      onAccept={(acceptedByScrolling) => {
-        if (acceptedByScrolling) {
-          // triggered if user scrolls past threshold
-          //It does not feel valid to use analytics if user does not accept
-          //const analytics = getAnalytics(app);
-        } else {
-          // triggered if user clicks accept button
-          const analytics = getAnalytics(app);
-          //TODO: Add analytics
-        }
-      }}
+      onDecline={() => updateConsent(false)}
+      onAccept={() => updateConsent(true)}
     >
-      This website uses cookies to enhance the user experience.{" "}
+      Den här sajten använder cookies via Google Tag Manager för besöksstatistik. Ingen spårning sker
+      förrän du accepterar.
     </CookieConsent>
   );
 }

@@ -1,6 +1,7 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { Suspense, lazy } from "react";
 import "./assets/css/App.css";
+import CookieConsentBanner from "./components/CookieConsentBanner";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { eriksTheme } from "./utils/theme";
 const LazyNavBar = lazy(() => import("./components/NavBar"));
@@ -43,6 +44,7 @@ function App() {
           <div id="Contact">
             <LazyFooter />
           </div>
+          <CookieConsentBanner />
         </Box>
       </ThemeProvider>
     </Suspense>
