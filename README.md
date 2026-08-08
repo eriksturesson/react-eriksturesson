@@ -8,53 +8,24 @@ Currently, it is a simple frontend-only project using React, Material-UI, and Ty
 
 To host and test the website locally:
 
-1. Create a Firebase project at firebase.com to host the website (it’s free).
-2. Create a `config.ts` file in your `src` folder and add your Firebase configuration:
+1. `npm install`
+2. `npm run dev` for the Vite dev server, or `npm run build && npm run start:server` to run against the same Express server used in production.
 
-```
-export const firebaseConfig = {
-  apiKey: 'your-api-key',
-  authDomain: 'your-project-id.firebaseapp.com',
-  projectId: 'your-project-id',
-  storageBucket: 'your-project-id.appspot.com',
-  messagingSenderId: 'your-sender-id',
-  appId: 'your-app-id'
-};
-```
-
-3. Run `firebase init` to set up Firebase hosting. Make sure to get the `.firebaserc` file in your root folder, which will look like this:
-
-```
-{
-  "projects": {
-    "default": "yourFirebaseProjectName"
-  }
-}
-
-```
+`src/config.ts` (Firebase client config) is already committed - it's not treated as a secret here, since Firebase enforces access via `database.rules.json` / `storage.rules`, not by hiding this file. If you're forking this for your own project: swap in your own Firebase project's config, and run `firebase init` to generate your own `.firebaserc`.
 
 # VITE
 
-Changed from CRA (Create React App) to Vite
+Changed from CRA (Create React App) to Vite.
 
-## Docker, Raspberry Pi & Cloudflare Setup
+## Hosting & Deploy
 
-My server primarily runs on a Raspberry Pi using Docker. To automatically keep my Docker containers up to date, I use [Watchtower](https://github.com/containrrr/watchtower), which periodically checks for new images on Docker Hub and updates the containers without any manual intervention.
+The site is self-hosted on my own hardware, not a hosting provider. A Cloudflare Worker routes every request to whichever machine answers first, in priority order:
 
-### How it works in brief:
+1. **M70Q** (Lenovo ThinkCentre M70Q, primary)
+2. **Pi4**
+3. **Pi3**
+4. **Firebase Hosting** (last resort only, so it stays on the free tier)
 
-- **GitHub Actions** automatically builds and pushes new Docker images to Docker Hub on every push to the `master` branch.
-- The Raspberry Pi runs Docker with Watchtower, which automatically pulls and restarts containers when new images are available.
-- Cloudflare is used as a reverse proxy and Zero Trust Tunnel, providing secure access to the server, including SSL and protection against attacks.
-- Firebase Hosting serves as a fallback. If the Pi does not respond with a 200 status, Cloudflare's proxy routes traffic to Firebase to ensure the site is always available.
+GitHub Actions builds and pushes a Docker image to Docker Hub on every push to `master`. Each machine pulls independently on its own schedule - there's no push-deploy onto the hardware from this repo.
 
-### Benefits of this setup:
-
-- Fully automated deployment and updates with zero manual work.
-- High availability thanks to Cloudflare and Firebase fallback.
-- Secure traffic and easy management using Cloudflare Zero Trust.
-- Cost-effective and efficient server solution leveraging the Raspberry Pi as an edge server.
-
----
-
-This solution provides a stable and scalable foundation for my website and applications, integrating modern tools and services in a smart way.
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full picture (health-check mechanics, per-node URLs, deploy details) - treat that file as the source of truth for the hosting setup, this section is just the summary.
