@@ -4,10 +4,17 @@ import helmet from "helmet";
 import path from "path";
 import fs from "fs";
 
+// Statiska filer (JS-chunks, bilder, PDF:er, fonter m.m.) ska inte räknas mot
+// limiten - en enda sidladdning kan göra 20-40 sådana requests, vilket annars
+// gjorde att man fick 429 efter bara ett par sidbesök. /health undantas också
+// eftersom övervakningstjänster (t.ex. Uptime Kuma) pollar den regelbundet.
+const STATIC_FILE_PATTERN = /\.(js|css|map|png|jpe?g|gif|svg|ico|webp|avif|pdf|woff2?|ttf|eot|json|xml|txt)$/i;
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minuter
-  max: 100, // Max 100 requests per IP per 15 min
+  max: 300, // Max 300 dokument-/navigeringsrequests per IP per 15 min
   message: "För många requests – försök igen senare.",
+  skip: (req) => req.path === "/health" || STATIC_FILE_PATTERN.test(req.path),
 });
 
 const app = express();
