@@ -29,7 +29,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/config.ts
 package-lock.json
 .firebaserc
 /.firebase/*
