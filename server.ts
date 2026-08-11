@@ -46,10 +46,27 @@ app.use(
         "https://static.cloudflareinsights.com", // Cloudflare Insights
         "https://img.shields.io", // Shields.io
         "https://shields.io", // ibland shields.io kan behövas
+        "https://www.googletagmanager.com", // GTM laddar in ytterligare scripts (GA4 m.m.)
+        "https://*.cookiebot.com", // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från Cookiebot
+        // De två inline-scripten i index.html (Consent Mode default + GTM-bootstrap).
+        // Hash istället för 'unsafe-inline' - måste uppdateras om scriptens
+        // innehåll ändras (se index.html:s <head>).
+        "'sha256-dSnkGkMGlYXxDN8GEc0fSJVZzgkTLU91LHpMw3z4w+M='",
+        "'sha256-gnVyfFP8juV6nBVgFjcPSSIdKjCg+hJZzFFyf/YqHyU='",
       ],
       // Lägg till andra directives som styleSrc, imgSrc, connectSrc, etc om du behöver
-      styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io"],
-      imgSrc: ["'self'", "https://img.shields.io", "data:"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io", "https://*.cookiebot.com"],
+      imgSrc: ["'self'", "https://img.shields.io", "data:", "https://*.cookiebot.com"],
+      connectSrc: [
+        "'self'",
+        "https://www.googletagmanager.com",
+        "https://static.cloudflareinsights.com",
+        "https://*.cookiebot.com",
+        "https://*.google-analytics.com", // GA4 mätpunkter (skickas även med nekat samtycke - modelling, inte cookies, det är hela poängen med Consent Mode v2)
+        "https://*.analytics.google.com",
+      ],
+      // Cookiebots banner renderas i en iframe från consentcdn.cookiebot.com
+      frameSrc: ["'self'", "https://*.cookiebot.com"],
     },
   }),
 );

@@ -262,6 +262,10 @@ export default function About() {
               Hostad lokalt med Docker på en Raspberry Pi via Cloudflare Zero Trust Tunnel. CI/CD sker automatiskt via
               GitHub och Docker Hub.
             </Typography>
+            <Typography component="cite" sx={{ display: "block", mt: 1 }}>
+              Jag använder AI dagligen i mitt arbete – men den här sidan är ursprungligen handkodad av mig själv, med
+              React, TypeScript och Node.js. AI kom in i processen senare.
+            </Typography>
             <CardContent>
               <img
                 style={{ width: "50%", minWidth: 200 }}
