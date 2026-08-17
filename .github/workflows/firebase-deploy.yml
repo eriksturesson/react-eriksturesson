@@ -39,11 +39,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          # INGEN `cache: "npm"` här, och inget `npm ci` nedan. Båda kräver en
+          # lockfil i repot, och package-lock.json är gitignorerad här — den
+          # finns bara lokalt. setup-node failar då direkt med "Dependencies
+          # lock file is not found", vilket är precis vad som hände 2026-08-17.
+          #
+          # Vill man ha determinism och cache är fixen att börja spåra
+          # lockfilen (ta bort raden ur .gitignore och committa den), inte att
+          # lägga tillbaka de här två raderna.
 
-      # npm ci, inte npm install: lockfilen ska följas exakt i CI.
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build
