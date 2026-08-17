@@ -1,9 +1,31 @@
 name: Build and Push Docker Image
 
+# OBS: repot är PUBLIKT, och publika repon har fria Actions-minuter. Inget
+# här dras alltså från kontots 2 000 i månaden. Filtren nedan finns för
+# byggtiden och för att hålla samma mönster som de privata repona — inte för
+# att spara minuter. Görs repot någon gång privat blir de däremot skarpa.
+
 on:
   push:
     branches:
       - master
+    paths:
+      - "src/**"
+      - "public/**"
+      - "server.ts"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig*.json"
+      - "vite.config.ts"
+      - "Dockerfile"
+      - ".dockerignore"
+      - ".github/workflows/docker-publish.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-push:
@@ -12,27 +34,33 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      # `npm install && npm run build` stod tidigare här. Dockerfilen gör om
+      # exakt samma sak inne i containern, och det är den builden som hamnar i
+      # imagen — steget här byggde alltså appen en gång extra utan att
+      # resultatet användes.
 
       - name: Set up QEMU (for multi-arch build)
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build frontend
-        run: npm install && npm run build
+        uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push multi-arch Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/eriksturesson:latest
+          # arm64 behövs — tjänsten körs på både m70q (amd64) och pi3/pi4
+          # (arm64), se home-infra/ansible/group_vars/.
           platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

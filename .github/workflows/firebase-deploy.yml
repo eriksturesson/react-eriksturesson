@@ -1,9 +1,30 @@
 name: Deploy to Firebase Hosting
 
+# Publikt repo — se docker-publish.yml, minuterna är fria här.
+
 on:
   push:
     branches:
       - master
+    # Hostingen serverar bara frontend-bundlen; server.ts och Dockerfile
+    # påverkar containern, inte det som ligger på Firebase.
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "vite.config.ts"
+      - "firebase.json"
+      - "database.rules.json"
+      - "storage.rules"
+      - ".github/workflows/firebase-deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   firebase-deploy:
@@ -12,15 +33,17 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
+      # npm ci, inte npm install: lockfilen ska följas exakt i CI.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
