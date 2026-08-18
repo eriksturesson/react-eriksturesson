@@ -47,10 +47,10 @@ export default function About() {
             variant={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
             component={windowWidth < responsiveWidthLimit ? "h4" : "h2"}
           >
-            Produktägare | Fullstack utvecklare
+            Teknisk Projektledare | Produktägare | Fullstack utvecklare
           </Typography>
           <Typography variant="body1" component="cite">
-            Bygger och leder produktlösningar som skapar affärsvärde och gör idéer till verklighet.
+            Leder digitaliserings- och produktinitiativ som skapar affärsvärde och gör idéer till verklighet.
           </Typography>
           <LogoCarousel logos={[...aboutData, ...aboutData2, ...aboutData, ...aboutData2]} direction="left" />
           <Typography variant="h5" component="h5">

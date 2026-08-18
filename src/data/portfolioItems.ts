@@ -37,11 +37,11 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: "Master Data Hub",
     description:
-      "Fullstackutvecklare hos Affibody. Byggde en Master Data Hub för persondata med integrationer mot Personio, Entra, Microsoft AD, BankID och externa APIer. Ansvarade för Azure-miljö, Cosmos DB, Azure Functions, app registrations, consent flows och säker inloggning.",
+      "Fullstackutvecklare hos Affibody. Byggde en Master Data Hub för persondata med integrationer mot Personio, Entra, Microsoft AD, BankID och externa APIer. Ansvarade för Azure-miljö, Cosmos DB, Azure Functions, Infrastructure as Code med Bicep, app registrations, consent flows och säker inloggning.",
     image: { type: "image", src: databaseImg, alt: "Master Data Hub" },
     modal: {
       description:
-        "På Affibody ansvarade jag för att bygga och drifta en master data hub för persondata, där integrationer mot Personio, Entra, Microsoft AD och BankID var centrala. Jag byggde och dokumenterade APIer, satte upp app registrations och hanterade consent flows för säker inloggning. Azure-miljön bestod av Cosmos DB, Azure Functions och automatisering via GitHub Actions. Rollen innefattade även arkitektur och säkerhetsfrågor kring identitet och access management.",
+        "På Affibody ansvarade jag för att bygga och drifta en master data hub för persondata, där integrationer mot Personio, Entra, Microsoft AD och BankID var centrala. Jag byggde och dokumenterade APIer, satte upp app registrations och hanterade consent flows för säker inloggning. Azure-miljön bestod av Cosmos DB, Azure Functions och automatisering via GitHub Actions, och infrastrukturen hanterades som kod (Infrastructure as Code) med Bicep. Rollen innefattade även arkitektur och säkerhetsfrågor kring identitet och access management.",
       media: [{ type: "image", src: databaseImg, alt: "Master Data Hub" }],
     },
     tags: {
@@ -61,19 +61,21 @@ export const portfolioItems: PortfolioItem[] = [
         "Master Data Hub",
         "Externa APIer",
         "CI/CD",
+        "Bicep",
+        "Infrastructure as Code",
       ],
       productFocus: ["Backend", "Frontend", "API", "Databaser", "IT-arkitekt", "Identitet & inloggning", "Tech Lead"],
     },
   },
   {
-    title: "Identitetsverifiering",
+    title: "Verify0 – Identitetsverifiering",
     description:
-      "Fullstackutvecklare på T34MS. Byggde ett system för identitetsverifiering med API:er och webhooks så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering för enterprise-autentisering.",
-    image: { type: "image", src: adminImage, alt: "Identitetsverifiering" },
+      "Fullstackutvecklare på T34MS. Byggde Verify0, ett system för att verifiera identiteten på personer innan de får support, med API:er och webhooks så att andra system kan använda detta. Fokus på säkerhet, integrationer och automatisering för enterprise-autentisering.",
+    image: { type: "image", src: adminImage, alt: "Verify0 – Identitetsverifiering" },
     modal: {
       description:
-        "Jag jobbade som fullstackutvecklare för att bygga ett system för identitetsverifiering med API:er och webhooks, så att andra system kan använda sig av detta. Systemet var byggt med fokus på säkerhet, integrationer mot Azure AD, BankID och automatisering. Implementerade säkra access- och godkännandeflöden för enterprise-autentisering.",
-      media: [{ type: "image", src: adminImage, alt: "Identitetsverifiering" }],
+        "Jag jobbade som fullstackutvecklare på T34MS med att bygga Verify0, ett system för att verifiera identiteten på personer innan de får support, med API:er och webhooks så att andra system kan använda sig av detta. Systemet var byggt med fokus på säkerhet, integrationer mot Azure AD, BankID och automatisering. Azure-infrastrukturen hanterades som kod (Infrastructure as Code) med Bicep. Implementerade säkra access- och godkännandeflöden för enterprise-autentisering.",
+      media: [{ type: "image", src: adminImage, alt: "Verify0 – Identitetsverifiering" }],
     },
     tags: {
       techStack: ["TypeScript", "Node.js", "React", "FluentUI", "GitHub Actions"],
@@ -90,6 +92,8 @@ export const portfolioItems: PortfolioItem[] = [
         "App registrations",
         "Consent flows",
         "CI/CD",
+        "Bicep",
+        "Infrastructure as Code",
       ],
       productFocus: ["Backend", "Frontend", "API", "Databaser", "IT-arkitekt", "Identitet & inloggning"],
     },

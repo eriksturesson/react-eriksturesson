@@ -1,3 +1,4 @@
+import ansibleLogo from "../assets/img/ansible-logo.svg";
 import api from "../assets/img/api.png";
 import securityReportLogo from "../assets/img/npm-image.png";
 import fluentuiLogo from "../assets/img/js-action-logo.png";
@@ -45,4 +46,5 @@ export const aboutData2 = [
   cloud_functions,
   firestore,
   securityReportLogo,
+  ansibleLogo,
 ];
