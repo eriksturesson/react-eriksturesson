@@ -47,7 +47,14 @@ app.use(
         "https://img.shields.io", // Shields.io
         "https://shields.io", // ibland shields.io kan behövas
         "https://www.googletagmanager.com", // GTM laddar in ytterligare scripts (GA4 m.m.)
-        "https://*.cookiebot.com", // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från Cookiebot
+        // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från Cookiebot.
+        // BÅDA domänerna behövs. consent.cookiebot.com levererar scripten, men
+        // consentcdn.cookiebot.eu levererar bannerns konfiguration och styling för
+        // EU-kunder, och *.cookiebot.com matchar inte .eu. Utan .eu laddar Cookiebot,
+        // dialogen byggs i DOM:en - och kollapsar till height:0 utan sin CSS, alltså
+        // osynlig för besökaren fast allt "ser rätt ut" i koden (ES-6).
+        "https://*.cookiebot.com",
+        "https://*.cookiebot.eu",
         // De två inline-scripten i index.html (Consent Mode default + GTM-bootstrap).
         // Hash istället för 'unsafe-inline' - måste uppdateras om scriptens
         // innehåll ändras (se index.html:s <head>).
@@ -55,18 +62,34 @@ app.use(
         "'sha256-gnVyfFP8juV6nBVgFjcPSSIdKjCg+hJZzFFyf/YqHyU='",
       ],
       // Lägg till andra directives som styleSrc, imgSrc, connectSrc, etc om du behöver
-      styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io", "https://*.cookiebot.com"],
-      imgSrc: ["'self'", "https://img.shields.io", "data:", "https://*.cookiebot.com"],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://img.shields.io",
+        "https://*.cookiebot.com",
+        "https://*.cookiebot.eu",
+      ],
+      imgSrc: [
+        "'self'",
+        "https://img.shields.io",
+        "data:",
+        "https://*.cookiebot.com",
+        "https://*.cookiebot.eu",
+        // GTM skickar sin telemetri som en bild mot /td?id=... - utan den här
+        // raden blockeras varje sidvisning med ett CSP-fel i konsolen.
+        "https://www.googletagmanager.com",
+      ],
       connectSrc: [
         "'self'",
         "https://www.googletagmanager.com",
         "https://static.cloudflareinsights.com",
         "https://*.cookiebot.com",
+        "https://*.cookiebot.eu",
         "https://*.google-analytics.com", // GA4 mätpunkter (skickas även med nekat samtycke - modelling, inte cookies, det är hela poängen med Consent Mode v2)
         "https://*.analytics.google.com",
       ],
-      // Cookiebots banner renderas i en iframe från consentcdn.cookiebot.com
-      frameSrc: ["'self'", "https://*.cookiebot.com"],
+      // Cookiebots banner renderas i en iframe från consentcdn.cookiebot.com/.eu
+      frameSrc: ["'self'", "https://*.cookiebot.com", "https://*.cookiebot.eu"],
     },
   }),
 );
