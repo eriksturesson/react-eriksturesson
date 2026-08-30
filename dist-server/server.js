@@ -8,10 +8,16 @@ const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const helmet_1 = __importDefault(require("helmet"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
+// Statiska filer (JS-chunks, bilder, PDF:er, fonter m.m.) ska inte räknas mot
+// limiten - en enda sidladdning kan göra 20-40 sådana requests, vilket annars
+// gjorde att man fick 429 efter bara ett par sidbesök. /health undantas också
+// eftersom övervakningstjänster (t.ex. Uptime Kuma) pollar den regelbundet.
+const STATIC_FILE_PATTERN = /\.(js|css|map|png|jpe?g|gif|svg|ico|webp|avif|pdf|woff2?|ttf|eot|json|xml|txt)$/i;
 const limiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000, // 15 minuter
-    max: 100, // Max 100 requests per IP per 15 min
+    max: 300, // Max 300 dokument-/navigeringsrequests per IP per 15 min
     message: "För många requests – försök igen senare.",
+    skip: (req) => req.path === "/health" || STATIC_FILE_PATTERN.test(req.path),
 });
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
@@ -42,10 +48,50 @@ app.use(helmet_1.default.contentSecurityPolicy({
             "https://static.cloudflareinsights.com", // Cloudflare Insights
             "https://img.shields.io", // Shields.io
             "https://shields.io", // ibland shields.io kan behövas
+            "https://www.googletagmanager.com", // GTM laddar in ytterligare scripts (GA4 m.m.)
+            // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från Cookiebot.
+            // BÅDA domänerna behövs. consent.cookiebot.com levererar scripten, men
+            // consentcdn.cookiebot.eu levererar bannerns konfiguration och styling för
+            // EU-kunder, och *.cookiebot.com matchar inte .eu. Utan .eu laddar Cookiebot,
+            // dialogen byggs i DOM:en - och kollapsar till height:0 utan sin CSS, alltså
+            // osynlig för besökaren fast allt "ser rätt ut" i koden (ES-6).
+            "https://*.cookiebot.com",
+            "https://*.cookiebot.eu",
+            // De två inline-scripten i index.html (Consent Mode default + GTM-bootstrap).
+            // Hash istället för 'unsafe-inline' - måste uppdateras om scriptens
+            // innehåll ändras (se index.html:s <head>).
+            "'sha256-dSnkGkMGlYXxDN8GEc0fSJVZzgkTLU91LHpMw3z4w+M='",
+            "'sha256-gnVyfFP8juV6nBVgFjcPSSIdKjCg+hJZzFFyf/YqHyU='",
         ],
         // Lägg till andra directives som styleSrc, imgSrc, connectSrc, etc om du behöver
-        styleSrc: ["'self'", "'unsafe-inline'", "https://img.shields.io"],
-        imgSrc: ["'self'", "https://img.shields.io", "data:"],
+        styleSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "https://img.shields.io",
+            "https://*.cookiebot.com",
+            "https://*.cookiebot.eu",
+        ],
+        imgSrc: [
+            "'self'",
+            "https://img.shields.io",
+            "data:",
+            "https://*.cookiebot.com",
+            "https://*.cookiebot.eu",
+            // GTM skickar sin telemetri som en bild mot /td?id=... - utan den här
+            // raden blockeras varje sidvisning med ett CSP-fel i konsolen.
+            "https://www.googletagmanager.com",
+        ],
+        connectSrc: [
+            "'self'",
+            "https://www.googletagmanager.com",
+            "https://static.cloudflareinsights.com",
+            "https://*.cookiebot.com",
+            "https://*.cookiebot.eu",
+            "https://*.google-analytics.com", // GA4 mätpunkter (skickas även med nekat samtycke - modelling, inte cookies, det är hela poängen med Consent Mode v2)
+            "https://*.analytics.google.com",
+        ],
+        // Cookiebots banner renderas i en iframe från consentcdn.cookiebot.com/.eu
+        frameSrc: ["'self'", "https://*.cookiebot.com", "https://*.cookiebot.eu"],
     },
 }));
 app.use(limiter);
