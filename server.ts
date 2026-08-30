@@ -47,12 +47,13 @@ app.use(
         "https://img.shields.io", // Shields.io
         "https://shields.io", // ibland shields.io kan behövas
         "https://www.googletagmanager.com", // GTM laddar in ytterligare scripts (GA4 m.m.)
-        // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från Cookiebot.
-        // BÅDA domänerna behövs. consent.cookiebot.com levererar scripten, men
-        // consentcdn.cookiebot.eu levererar bannerns konfiguration och styling för
-        // EU-kunder, och *.cookiebot.com matchar inte .eu. Utan .eu laddar Cookiebot,
-        // dialogen byggs i DOM:en - och kollapsar till height:0 utan sin CSS, alltså
-        // osynlig för besökaren fast allt "ser rätt ut" i koden (ES-6).
+        // Cookiebot (CMP, taggad via GTM) - officiell CSP-rekommendation från
+        // Cookiebot listar både .com och .eu. Den här sajten träffar i dag bara
+        // .com (consent.cookiebot.com + consentcdn.cookiebot.com, verifierat via
+        // performance.getEntriesByType("resource") på eriksturesson.se), men
+        // Cookiebot flyttar EU-kunder till consentcdn.cookiebot.eu i vissa
+        // konfigurationer och *.cookiebot.com matchar inte .eu. Raden är alltså
+        // förebyggande, inte en bugfix.
         "https://*.cookiebot.com",
         "https://*.cookiebot.eu",
         // De två inline-scripten i index.html (Consent Mode default + GTM-bootstrap).
