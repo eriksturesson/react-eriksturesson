@@ -1,0 +1,56 @@
+name: Staging — Firebase preview
+
+# Ger staging-grenen mening. Fram till 2026-09-02 fanns origin/staging men
+# pekade på exakt samma commit som master och ingen workflow triggade på
+# den — grenen gjorde alltså ingenting alls (HOME-84).
+#
+# Firebase preview channel och inte en riktig staging-hostname: det ger en
+# gratis *.web.app-URL utan ny tunnel, DNS-post eller Worker, och
+# servicekontot ligger redan som secret i repot.
+
+on:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Samma kontroll som gäller mot master. En staging som deployar trasig
+  # kod är inte en testmiljö, den är en andra plats felet syns på.
+  check:
+    uses: ./.github/workflows/check.yml
+
+  deploy-staging:
+    needs: check
+    runs-on: ubuntu-latest
+    environment: dockerProduction
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy till preview-kanalen
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          # Namngiven kanal, inte en per-commit: URL:en blir stabil och går
+          # att bokmärka. expires styr när Firebase städar bort den.
+          channelId: staging
+          expires: 30d
+          projectId: reacteriksturessonse

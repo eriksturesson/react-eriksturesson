@@ -1,0 +1,56 @@
+name: Kontroll
+
+# Enda definitionen av "håller det här?" i repot. Deploy-workflowsen anropar
+# den via `uses:` i stället för att kopiera stegen, så spärren och
+# PR-checken aldrig kan glida isär.
+#
+# Varför spärren ligger HÄR och inte bara i GitHubs inställningar: `needs:`
+# fungerar bara inom en och samma workflow, och master är oskyddad idag
+# ("Branch not protected", verifierat 2026-08-31). Repot är publikt, så
+# branch protection GÅR att slå på här till skillnad från de privata — men
+# det kräver Eriks egen inloggning och är ett komplement, inte ersättningen
+# (HOME-84).
+
+on:
+  workflow_call:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+# Egen prefix i gruppnamnet, INTE bara github.workflow: i en anropad
+# workflow resolvar github.workflow till ANROPARENS namn. Utan prefixet
+# hamnar den här i samma concurrency-grupp som den som anropade den och
+# avbryter sin egen anropare med cancel-in-progress — körningen blir röd
+# utan att ett enda steg körts. Hände i sturessonholding-se först.
+concurrency:
+  group: kontroll-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          # INGEN `cache: "npm"`, och npm install nedan i stället för npm ci.
+          # package-lock.json är gitignorerad i det här repot, och båda
+          # kräver en lockfil — se firebase-deploy.yml för hela historien.
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      # Vite transpilerar utan att typkolla, så `npm run build` ensamt
+      # släpper igenom typfel. CLAUDE.md konstaterar att "CI won't catch a
+      # type error for you" — det här steget är svaret på just den meningen.
+      - name: Typkontroll
+        run: npx tsc --noEmit

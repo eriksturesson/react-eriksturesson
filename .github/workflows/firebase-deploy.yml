@@ -27,7 +27,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Deploy-spärren. `needs:` fungerar bara inom en och samma workflow, och
+  # master är oskyddad -- det här är alltså det som faktiskt hindrar en
+  # trasig master från att nå produktion (HOME-84).
+  check:
+    uses: ./.github/workflows/check.yml
+
   firebase-deploy:
+    needs: check
     runs-on: ubuntu-latest
     environment: dockerProduction
 
