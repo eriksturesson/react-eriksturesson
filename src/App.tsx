@@ -10,7 +10,6 @@ const LazyStudentNode = lazy(() => import("./components/StudentNode"));
 const LazyProjects = lazy(() => import("./components/Projects"));
 const LazyPortfolio = lazy(() => import("./components/Portfolio"));
 const CV = lazy(() => import("./components/CV"));
-const LazyLocalArea = lazy(() => import("./components/LocalArea"));
 const LazyFooter = lazy(() => import("./components/Footer"));
 
 function App() {
@@ -39,13 +38,6 @@ function App() {
           </div>
           <div className="containers" id="CV">
             <CV />
-          </div>
-
-          {/* Precis fore kontaktsektionen: den lokala texten slutar med en
-              uppmaning att hora av sig, sa kontaktuppgifterna ska ligga
-              direkt under (HOME-113). */}
-          <div className="containers" id="LocalArea">
-            <LazyLocalArea />
           </div>
 
           <div id="Contact">
