@@ -1,31 +1,48 @@
-# What is this?
+# eriksturesson.se
 
-This repository contains the source code for my personal website: eriksturesson.se. The website showcases my professional background, skills, and portfolio.
+Source code for my personal website, [eriksturesson.se](https://eriksturesson.se). The site showcases my professional background, skills and projects.
 
-Currently, it is a simple frontend-only project using React, Material-UI, and TypeScript. The only Firebase feature used is hosting for now (no database, authentication, or other Firebase services).
+The application is a React + TypeScript/Vite frontend served in production by a small Express wrapper (`server.ts`) that also exposes `/health`.
 
-# Setting Up Locally
+## Local development
 
-To host and test the website locally:
+```bash
+npm install
+npm run dev
+```
 
-1. `npm install`
-2. `npm run dev` for the Vite dev server, or `npm run build && npm run start:server` to run against the same Express server used in production.
+To exercise the actual production server path locally:
 
-`src/config.ts` (Firebase client config) is already committed - it's not treated as a secret here, since Firebase enforces access via `database.rules.json` / `storage.rules`, not by hiding this file. If you're forking this for your own project: swap in your own Firebase project's config, and run `firebase init` to generate your own `.firebaserc`.
+```bash
+npm run build
+npm run build:server
+npm run start:server
+```
 
-# VITE
+`src/config.ts` contains Firebase client configuration and is deliberately committed; it is not treated as a secret. The site does not use Firebase as its primary production runtime.
 
-Changed from CRA (Create React App) to Vite.
+## Production
 
-## Hosting & Deploy
+The canonical production runtime is declared in [`eriksturesson/home-infra`](https://github.com/eriksturesson/home-infra):
 
-The site is self-hosted on my own hardware, not a hosting provider. A Cloudflare Worker routes every request to whichever machine answers first, in priority order:
+```text
+eriksturesson.se
+    -> Cloudflare routing
+    -> M70Q Kubernetes-native tunnel
+    -> K3s Service
+    -> Helm-managed eriksturesson-se Pods
+```
 
-1. **M70Q** (Lenovo ThinkCentre M70Q, primary)
-2. **Pi4**
-3. **Pi3**
-4. **Firebase Hosting** (last resort only, so it stays on the free tier)
+GitHub Actions in this repository publish multi-arch images to **GitHub Container Registry (GHCR)**. `home-infra` pins the production release by immutable `sha-<commit>` tag **and digest** in:
 
-GitHub Actions builds and pushes a Docker image to Docker Hub on every push to `master`. Each machine pulls independently on its own schedule - there's no push-deploy onto the hardware from this repo.
+```text
+k8s/environments/m70q/eriksturesson-se/values.yaml
+```
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full picture (health-check mechanics, per-node URLs, deploy details) - treat that file as the source of truth for the hosting setup, this section is just the summary.
+`latest` can exist as a convenience publishing alias, but it is not canonical production state.
+
+Older documentation and branches that describe M70Q/Pi nodes pulling mutable Docker Hub images with cron are historical. Do not restore that path because those files/branches still exist.
+
+A Firebase Hosting workflow/resource may remain as a fallback path. It is not the primary M70Q runtime; cloud/fallback retirement decisions should be made from current dependency/runtime evidence rather than old docs.
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the repository-level architecture and `home-infra/docs/canonical-runtime-map.md` for the cross-system source-of-truth map.
