@@ -1,44 +1,83 @@
-# Arkitektur — hosting & failover
+# Arkitektur — eriksturesson.se
 
-eriksturesson.se är inte hostat på en enda server. En Cloudflare
-Worker (`eriksturesson-se`, se `workers/eriksturesson-se/` i
-home-infra-repot) tar emot all trafik till `eriksturesson.se` och
-`www.eriksturesson.se`, health-checkar alla noder på **varje request**,
-och proxar till den första som svarar.
+Senast reconcilerad mot production: 2026-09-13 (HOME-247).
 
-## Prioritetsordning (failover)
+## Canonical production
 
-1. **M70Q** (primär nod)
-2. **Pi4**
-3. **Pi3**
-4. **Firebase Hosting** (sista utväg, alltid uppe)
+`eriksturesson.se` är self-hostad, men den primära production-originen är **inte längre en Docker Compose-container på M70Q/Pi med Docker Hub pull-cron**.
 
-Health-check: `GET https://<host>/health`, 5 sekunders timeout, körs
-parallellt mot alla noder. Kräver HTTP 200 för att räknas som frisk.
+Dagens primära väg är:
 
-## URL:er per nod (interna — Cloudflare Tunnel, ej tänkta att besökas direkt)
+```text
+eriksturesson.se / www.eriksturesson.se
+        |
+Cloudflare routing
+        |
+M70Q Kubernetes-native tunnel
+        |
+K3s Service
+        |
+Helm-managed eriksturesson-se Pods
+```
 
-| Nod  | Frontend                          |
-|------|-------------------------------------|
-| M70Q | `frontend-m70q.eriksturesson.se`    |
-| Pi4  | `frontend-pi4.eriksturesson.se`     |
-| Pi3  | `frontend-pi3.eriksturesson.se`     |
-| Firebase | `firebase.eriksturesson.se`     |
+Applikationskoden finns i detta repo. Production desired state finns i `eriksturesson/home-infra`.
 
-Publik URL (det enda som faktiskt exponeras):
-- `https://eriksturesson.se` / `https://www.eriksturesson.se`
+## Release identity
 
-Ingen separat backend/CORS-hantering behövs här — bara en
-frontend-router, inga API-anrop att proxa (till skillnad från
-sirtassalot.se, som har både frontend och backend bakom samma Worker).
+`.github/workflows/docker-publish.yml` bygger multi-arch container-images och publicerar dem till GitHub Container Registry:
 
-## Deploy — DockerHub push/pull, frikopplat
+```text
+ghcr.io/eriksturesson/eriksturesson:sha-<commit>
+```
 
-- CI (i det här repot) bygger och pushar den senaste imagen till
-  DockerHub vid varje merge.
-- Varje nod (M70Q, Pi4) drar hem det oberoende — ett cron-jobb kör
-  `docker compose pull && docker compose up -d` var 5:e minut
-  (Ansible-hanterat, `auto_update_services` i home-infra-repot). Ingen
-  push-baserad deploy — noderna hämtar bara vad som råkar vara
-  `:latest` när de kollar nästa gång.
-- Pi3 auto-uppdaterar inte just nu (avstängd/ombyggnad).
+`home-infra/k8s/environments/m70q/eriksturesson-se/values.yaml` är canonical production release state och pinnar både SHA-tag och immutable digest.
+
+`latest` kan publiceras som convenience alias, men ska inte användas som enda production- eller rollback-identitet.
+
+## Deploy-ägarskap
+
+Detta repo äger:
+
+- React/Vite-koden,
+- Express production server + `/health`,
+- containerbygget,
+- GHCR-publiceringen.
+
+`home-infra` äger:
+
+- K3s/Helm desired state,
+- production image-pin,
+- Cloudflare/runtime-routing,
+- recovery/reconcile.
+
+En merge här betyder därför inte att någon host ska köra `docker compose pull` mot `latest`. En ny artifact blir production först när den avsedda release-identiteten är declarerad/applierad via den canonical infra-vägen.
+
+## Health
+
+Productionservern i `server.ts` exponerar `GET /health`. Den används för runtime-verifiering och ska fortsätta vara billig, deterministisk och utan externa beroenden.
+
+## Firebase
+
+Firebase Hosting-resurser/workflow kan fortfarande finnas som fallback/legacy-resurs. De är inte canonical primary hosting för M70Q.
+
+Radera eller återaktivera inte fallback/cloud-resurser enbart för att äldre docs nämner dem. Reconciliation och eventuell retirement ska göras från aktuell dependency/runtime-evidence.
+
+## Historisk topologi
+
+Tidigare dokumenterade den här filen följande modell:
+
+```text
+M70Q host Docker -> Pi4 -> Pi3 -> Firebase
+Docker Hub :latest + periodisk docker compose pull
+```
+
+Den modellen är **historisk**. Pi3 är inte en required production-node och M70Q:s canonical site-runtime är nu K3s/Helm med GHCR immutable identity.
+
+Historiken finns kvar i Git om den behövs för incidentanalys; den ska inte användas som recovery-runbook.
+
+## Källor till sanning
+
+- app/CI: detta repo
+- production runtime/release: `eriksturesson/home-infra`
+- cross-system map: `home-infra/docs/canonical-runtime-map.md`
+- återstående explicita Helm rollback-proof: Jira HOME-203
