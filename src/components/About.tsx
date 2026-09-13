@@ -176,7 +176,7 @@ export default function About() {
                 />
               </Box>
               <Box mb={2}>
-                <img src="https://img.shields.io/npm/v/backend-error?style=flat-square" alt="npm version" />
+                <img src="https://img.shields.io/npm/v/security-reporter?style=flat-square" alt="npm version" />
               </Box>
             </CardContent>
             <CardActions sx={{ justifyContent: "center" }}>
