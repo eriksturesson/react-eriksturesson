@@ -176,7 +176,7 @@ export default function About() {
                 />
               </Box>
               <Box mb={2}>
-                <img src="https://img.shields.io/npm/v/security-reporter?style=flat-square" alt="npm version" />
+                <img src="https://img.shields.io/npm/v/backend-error?style=flat-square" alt="npm version" />
               </Box>
             </CardContent>
             <CardActions sx={{ justifyContent: "center" }}>
@@ -259,8 +259,8 @@ export default function About() {
               Denna hemsida
             </Typography>
             <Typography component="cite">
-              Hostad lokalt med Docker på en Raspberry Pi via Cloudflare Zero Trust Tunnel. CI/CD sker automatiskt via
-              GitHub och Docker Hub.
+              Primärt hostad i mitt homelab på en M70Q med Kubernetes (K3s/Helm) bakom Cloudflare. CI bygger
+              multi-arch container-images till GitHub Container Registry och infrastrukturen hanteras som kod.
             </Typography>
             <Typography component="cite" sx={{ display: "block", mt: 1 }}>
               Jag använder AI dagligen i mitt arbete – men den här sidan är ursprungligen handkodad av mig själv, med
