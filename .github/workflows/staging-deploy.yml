@@ -25,6 +25,9 @@ jobs:
 
   deploy-staging:
     needs: check
+    # workflow_dispatch may select another ref; preview deploys are intentionally
+    # sourced only from the canonical staging integration branch.
+    if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     environment: dockerProduction
     permissions:
