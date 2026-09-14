@@ -35,6 +35,10 @@ jobs:
 
   firebase-deploy:
     needs: check
+    # A manual workflow_dispatch can be started from another branch. Never let
+    # the live workflow consume staging/feature code even if that ref can obtain
+    # a WIF credential for its own preview workflow.
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment: dockerProduction
     permissions:
