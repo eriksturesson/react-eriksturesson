@@ -16,6 +16,7 @@ on:
   pull_request:
     branches:
       - master
+      - staging
   workflow_dispatch:
 
 # Egen prefix i gruppnamnet, INTE bara github.workflow: i en anropad

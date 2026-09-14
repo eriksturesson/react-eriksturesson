@@ -35,8 +35,15 @@ jobs:
 
   firebase-deploy:
     needs: check
+    # A manual workflow_dispatch can be started from another branch. Never let
+    # the live workflow consume staging/feature code even if that ref can obtain
+    # a WIF credential for its own preview workflow.
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment: dockerProduction
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout repo
@@ -61,10 +68,29 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Build and Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      # HOME-270: GitHub exchanges its OIDC token for a short-lived Google
+      # credential. No service-account key JSON is written to GitHub Secrets.
+      # Authenticate after the build so the short-lived credential is used only
+      # for the actual cloud operation.
+      - name: Authenticate to Google Cloud with GitHub OIDC
+        uses: google-github-actions/auth@v3
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-          channelId: live
-          projectId: reacteriksturessonse
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOY_SERVICE_ACCOUNT }}
+          create_credentials_file: true
+          export_environment_variables: true
+
+      - name: Refuse unexpected project configuration
+        env:
+          GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+        run: |
+          if [ "$GCP_PROJECT_ID" != "reacteriksturessonse" ]; then
+            echo "Expected GCP_PROJECT_ID=reacteriksturessonse, got '$GCP_PROJECT_ID'" >&2
+            exit 1
+          fi
+
+      # Firebase CLI supports ADC/WIF. Pin the CLI so a future auth regression
+      # cannot silently change the production deploy path between runs.
+      - name: Deploy to Firebase Hosting live channel
+        run: npx --yes firebase-tools@15.30.0 deploy --only hosting --project reacteriksturessonse --non-interactive
