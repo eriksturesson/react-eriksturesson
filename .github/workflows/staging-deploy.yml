@@ -5,8 +5,7 @@ name: Staging — Firebase preview
 # den — grenen gjorde alltså ingenting alls (HOME-84).
 #
 # Firebase preview channel och inte en riktig staging-hostname: det ger en
-# gratis *.web.app-URL utan ny tunnel, DNS-post eller Worker, och
-# servicekontot ligger redan som secret i repot.
+# gratis *.web.app-URL utan ny tunnel, DNS-post eller Worker.
 
 on:
   push:
@@ -26,8 +25,14 @@ jobs:
 
   deploy-staging:
     needs: check
+    # workflow_dispatch may select another ref; preview deploys are intentionally
+    # sourced only from the canonical staging integration branch.
+    if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     environment: dockerProduction
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout repo
@@ -44,13 +49,23 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy till preview-kanalen
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Authenticate to Google Cloud with GitHub OIDC
+        uses: google-github-actions/auth@v3
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-          # Namngiven kanal, inte en per-commit: URL:en blir stabil och går
-          # att bokmärka. expires styr när Firebase städar bort den.
-          channelId: staging
-          expires: 30d
-          projectId: reacteriksturessonse
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOY_SERVICE_ACCOUNT }}
+          create_credentials_file: true
+          export_environment_variables: true
+
+      - name: Refuse unexpected project configuration
+        env:
+          GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+        run: |
+          if [ "$GCP_PROJECT_ID" != "reacteriksturessonse" ]; then
+            echo "Expected GCP_PROJECT_ID=reacteriksturessonse, got '$GCP_PROJECT_ID'" >&2
+            exit 1
+          fi
+
+      - name: Deploy to stable Firebase preview channel
+        run: npx --yes firebase-tools@15.30.0 hosting:channel:deploy staging --project reacteriksturessonse --expires 30d --non-interactive
