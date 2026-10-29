@@ -1,30 +1,17 @@
-# ---- STEP 1: Build frontend + backend ----
-FROM node:20 AS build
+# HOME-331: multi-stage build — Vite build in Node, serve static via nginx:alpine.
+# Runtime no longer needs node_modules; keeps /health + CSP for the Worker failover.
 
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-
 COPY . .
-
-# Bygg frontend
 RUN npm run build
 
-# Kompilera server.ts med rätt tsconfig
-RUN npm run build:server
-
-# ---- STEP 2: Prod image ----
-FROM node:20
-
-WORKDIR /app
-
-# Kopiera endast det som behövs för produktion
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/dist-server ./dist-server
-COPY --from=build /app/package*.json ./
-
-RUN npm install --omit=dev
-
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 3009
-
-CMD ["node", "dist-server/server.js"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:3009/health | grep -q '"ok":true' || exit 1
+CMD ["nginx", "-g", "daemon off;"]
