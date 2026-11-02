@@ -22,7 +22,26 @@ function Footer() {
           Erik Sturesson
         </Typography>
         <Typography variant="caption" component="div" sx={{ flexGrow: 1 }}>
-          hej@eriksturesson.se
+          <a href="mailto:hej@eriksturesson.se" style={{ color: "inherit" }}>
+            hej@eriksturesson.se
+          </a>
+        </Typography>
+        <Typography variant="caption" component="div" sx={{ flexGrow: 1, pt: 1 }}>
+          <a href="/cookies" style={{ color: "inherit" }}>
+            Kakor / cookiepolicy
+          </a>
+          {" · "}
+          <a
+            href="#cookie-settings"
+            style={{ color: "inherit" }}
+            onClick={(e) => {
+              e.preventDefault();
+              const bot = (window as any).Cookiebot;
+              if (bot && typeof bot.renew === "function") bot.renew();
+            }}
+          >
+            Cookieinställningar
+          </a>
         </Typography>
       </Grid>
       <Grid

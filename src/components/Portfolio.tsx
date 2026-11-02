@@ -112,7 +112,7 @@ export default function Portfolio() {
             Arkitektur
           </Typography>
           , eller{" "}
-          <Typography component="span" color="orange" fontWeight="bold">
+          <Typography component="span" sx={{ color: "#b45309" }} fontWeight="bold">
             Produktfokus
           </Typography>
         </Typography>

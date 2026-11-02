@@ -38,7 +38,8 @@ app.use((req: Request, res: Response, next) => {
   next();
 });
 app.use(
-  helmet.contentSecurityPolicy({
+  helmet({
+    contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: [
@@ -92,8 +93,15 @@ app.use(
       // Cookiebots banner renderas i en iframe från consentcdn.cookiebot.com/.eu
       frameSrc: ["'self'", "https://*.cookiebot.com", "https://*.cookiebot.eu"],
     },
+    },
+    hsts: { maxAge: 31536000, includeSubDomains: true },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   }),
 );
+app.use((_req, res, next) => {
+  res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
+  next();
+});
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
 
@@ -116,6 +124,7 @@ app.get("*", (req: any, res: any) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+const listenPort = Number(port);
+app.listen(listenPort, "0.0.0.0", () => {
+  console.log(`Server running on http://0.0.0.0:${listenPort}`);
 });
