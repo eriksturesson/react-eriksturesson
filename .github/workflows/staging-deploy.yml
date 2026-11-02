@@ -52,5 +52,5 @@ jobs:
           # Namngiven kanal, inte en per-commit: URL:en blir stabil och går
           # att bokmärka. expires styr när Firebase städar bort den.
           channelId: staging
-          expires: 30d
+          expires: 7d
           projectId: reacteriksturessonse
