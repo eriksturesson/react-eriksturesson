@@ -33,3 +33,4 @@ package-lock.json
 .firebaserc
 /.firebase/*
 /dist
+dist-server/
