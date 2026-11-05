@@ -5,8 +5,10 @@ name: Staging — Firebase preview
 # den — grenen gjorde alltså ingenting alls (HOME-84).
 #
 # Firebase preview channel och inte en riktig staging-hostname: det ger en
-# gratis *.web.app-URL utan ny tunnel, DNS-post eller Worker, och
-# servicekontot ligger redan som secret i repot.
+# gratis *.web.app-URL utan ny tunnel, DNS-post eller Worker.
+# Auth: behåll FIREBASE_SERVICE_ACCOUNT här. WIF-providern från HOME-271
+# släpper bara in refs/heads/master, så staging-preview kan inte använda WIF
+# utan att bredda providern (det gör vi inte i den här PR:en).
 
 on:
   push:
