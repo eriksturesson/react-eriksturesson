@@ -29,9 +29,13 @@ concurrency:
 
 jobs:
   check:
-    # Samma runnerval som deploy-workflowsen: self-hosted på M70Q är default
-    # och BUILD_RUNNER=hosted är nödutgången när M70Q är nere.
-    runs-on: ${{ vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]') }}
+    # Publikt repo: kod från pull_request är otillförlitlig och får inte
+    # köras på M70Q. github.event_name i en anropad workflow är anroparens
+    # event (push eller workflow_dispatch från deploy-flödena), inte
+    # workflow_call — därför träffar pull_request-grenen bara den här
+    # filens egen PR-check, och deploy-anropen landar på self-hosted.
+    # BUILD_RUNNER=hosted är nödutgången när M70Q är nere.
+    runs-on: ${{ github.event_name == 'pull_request' && 'ubuntu-latest' || (vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]')) }}
 
     steps:
       - name: Checkout repo

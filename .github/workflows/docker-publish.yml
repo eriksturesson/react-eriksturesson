@@ -46,6 +46,10 @@ jobs:
     # köar tyst i stället för att fela, vilket ser ut som en hängning:
     #   gh variable set BUILD_RUNNER --body hosted -R eriksturesson/react-eriksturesson
     #   gh variable delete BUILD_RUNNER -R eriksturesson/react-eriksturesson
+    #
+    # Den här workflowen lyssnar bara på betrodda events (push till master
+    # och workflow_dispatch), så den stannar på M70Q. PR-checken i
+    # check.yml kör ubuntu-latest eftersom repot är publikt.
     runs-on: ${{ vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]') }}
     environment: dockerProduction
     permissions:

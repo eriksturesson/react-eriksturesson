@@ -47,6 +47,7 @@ jobs:
     # Samma BUILD_RUNNER-växel som docker-publish.yml — se den för hela
     # resonemanget. Båda jobben läser samma variabel, så en enda
     # `gh variable set` flyttar tillbaka hela repot till GitHubs runners.
+    # Bara betrodda events (push till master och workflow_dispatch).
     runs-on: ${{ vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]') }}
     environment: dockerProduction
     permissions:
