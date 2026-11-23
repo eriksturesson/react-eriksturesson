@@ -1,9 +1,9 @@
 name: Build and Push Docker Image
 
-# OBS: repot är PUBLIKT, och publika repon har fria Actions-minuter. Inget
-# här dras alltså från kontots 2 000 i månaden. Filtren nedan finns för
-# byggtiden och för att hålla samma mönster som de privata repona — inte för
-# att spara minuter. Görs repot någon gång privat blir de däremot skarpa.
+# OBS: repot är PUBLIKT, och publika repon har fria Actions-minuter. Filtren
+# nedan finns för byggtiden och för att hålla samma mönster som de privata
+# repona. Default-runnern är ändå self-hosted på M70Q, samma policy som
+# sturessonholding-se.
 
 on:
   push:
@@ -37,7 +37,20 @@ jobs:
 
   build-and-push:
     needs: check
-    runs-on: ubuntu-latest
+    # Egen hårdvara i stället för GitHubs runners. Runnern måste vara
+    # registrerad separat för det här repot — ett personkonto har inga
+    # org-nivå-runners, så sturessonholding-ses runner går inte att dela hit.
+    #
+    # Sätt variabeln BUILD_RUNNER=hosted för att tillfälligt gå tillbaka till
+    # GitHubs runners, t.ex. om m70q är nere — ett jobb utan tillgänglig runner
+    # köar tyst i stället för att fela, vilket ser ut som en hängning:
+    #   gh variable set BUILD_RUNNER --body hosted -R eriksturesson/react-eriksturesson
+    #   gh variable delete BUILD_RUNNER -R eriksturesson/react-eriksturesson
+    #
+    # Den här workflowen lyssnar bara på betrodda events (push till master
+    # och workflow_dispatch), så den stannar på M70Q. PR-checken i
+    # check.yml kör ubuntu-latest eftersom repot är publikt.
+    runs-on: ${{ vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]') }}
     environment: dockerProduction
     permissions:
       contents: read
@@ -46,6 +59,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      # Isolera Actions-jobbets Docker-auth från den persistenta self-hosted
+      # runner-användarens ~/.docker/config.json. RUNNER_TEMP finns först när
+      # jobbet faktiskt kör på en runner, så exportera DOCKER_CONFIG här och
+      # låt GITHUB_ENV bära den till QEMU/Buildx/login-stegen som följer.
+      - name: Prepare isolated Docker config
+        run: |
+          DOCKER_CONFIG="$RUNNER_TEMP/docker-config"
+          mkdir -p "$DOCKER_CONFIG"
+          echo "DOCKER_CONFIG=$DOCKER_CONFIG" >> "$GITHUB_ENV"
 
       # `npm install && npm run build` stod tidigare här. Dockerfilen gör om
       # exakt samma sak inne i containern, och det är den builden som hamnar i
@@ -57,6 +80,14 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          # Namngiven builder, och det är hela poängen med att bygga på m70q.
+          #
+          # Utan namn skapar action:en en ny buildx-container per körning, och
+          # då kastas lagercachen varje gång — varje bygge börjar om från
+          # noll. Med ett stabilt namn lever containern och dess cache kvar
+          # mellan körningar.
+          name: eriksturesson
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -66,6 +97,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push multi-arch Docker image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -76,5 +108,13 @@ jobs:
           # arm64 behövs — tjänsten körs på både m70q (amd64) och pi3/pi4
           # (arm64), se home-infra/ansible/group_vars/.
           platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # Ingen `cache-from/to: type=gha` här. Den namngivna buildern ovan
+          # behåller lagren lokalt på M70Q mellan körningar.
+
+      - name: Record immutable image identity
+        run: |
+          echo "ghcr.io/eriksturesson/eriksturesson:sha-${GITHUB_SHA}@${{ steps.build.outputs.digest }}"
+          echo "### Immutable image" >> "$GITHUB_STEP_SUMMARY"
+          echo '```text' >> "$GITHUB_STEP_SUMMARY"
+          echo "ghcr.io/eriksturesson/eriksturesson:sha-${GITHUB_SHA}@${{ steps.build.outputs.digest }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

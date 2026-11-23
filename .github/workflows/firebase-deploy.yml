@@ -1,6 +1,7 @@
 name: Deploy to Firebase Hosting
 
-# Publikt repo — se docker-publish.yml, minuterna är fria här.
+# Publikt repo — default-runnern är ändå self-hosted på M70Q, samma policy
+# som sturessonholding-se. Se docker-publish.yml för BUILD_RUNNER-växeln.
 
 on:
   push:
@@ -39,7 +40,15 @@ jobs:
     # the live workflow consume non-master code even if that ref could obtain a
     # credential somehow.
     if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
+    # Samma runner som docker-publish. M70Q kör ett jobb i taget, så vid en
+    # push som rör src/** köar den här deployen bakom image-bygget i stället
+    # för att gå parallellt. Accepterat: alternativet är GitHubs runners.
+    #
+    # Samma BUILD_RUNNER-växel som docker-publish.yml — se den för hela
+    # resonemanget. Båda jobben läser samma variabel, så en enda
+    # `gh variable set` flyttar tillbaka hela repot till GitHubs runners.
+    # Bara betrodda events (push till master och workflow_dispatch).
+    runs-on: ${{ vars.BUILD_RUNNER == 'hosted' && 'ubuntu-latest' || fromJSON('["self-hosted","m70q"]') }}
     environment: dockerProduction
     permissions:
       contents: read
