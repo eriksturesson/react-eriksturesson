@@ -64,3 +64,22 @@ test('missing static assets return 404', async () => {
   const response = await fetch(`${base}/missing-server-smoke-test.js`);
   assert.equal(response.status, 404);
 });
+
+test('encoded and extensionless missing asset paths return 404', async () => {
+  for (const pathname of ['/missing-server-smoke-test%2Ejs', '/assets/missing-server-smoke-test', '/assets/']) {
+    const response = await fetch(base + pathname);
+    assert.equal(response.status, 404, pathname);
+    await response.arrayBuffer();
+  }
+});
+
+test('real assets and the cookies navigation route remain available', async () => {
+  const asset = await fetch(base + '/favicon.ico');
+  assert.equal(asset.status, 200);
+  assert.match(asset.headers.get('content-type') ?? '', /icon/);
+  await asset.arrayBuffer();
+  const cookies = await fetch(base + '/cookies');
+  assert.equal(cookies.status, 200);
+  assert.match(cookies.headers.get('content-type') ?? '', /text\/html/);
+  await cookies.arrayBuffer();
+});
