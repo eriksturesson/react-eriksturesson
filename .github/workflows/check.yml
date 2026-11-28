@@ -54,3 +54,9 @@ jobs:
       # type error for you" — det här steget är svaret på just den meningen.
       - name: Typkontroll
         run: npx tsc --noEmit
+
+      - name: Build Express server
+        run: npm run build:server
+
+      - name: Server privacy and health regression tests
+        run: node --test test/server.test.mjs
