@@ -2,7 +2,6 @@ import express, { Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import path from "path";
-import fs from "fs";
 
 // Statiska filer (JS-chunks, bilder, PDF:er, fonter m.m.) ska inte räknas mot
 // limiten - en enda sidladdning kan göra 20-40 sådana requests, vilket annars
@@ -96,16 +95,18 @@ app.get("/health", (_req: Request, res: Response) => {
 
 app.use(express.static(distPath));
 
-app.get("*", (req: any, res: any) => {
-  const requestedPath = path.join(distPath, req.path);
-
-  // Kontrollera om filen existerar i distPath (t.ex. /main.js eller /styles.css)
-  if (req.path.includes(".") && !fs.existsSync(requestedPath)) {
-    // Om det är en fil men den finns inte -> skicka 404
+app.get("*", (req: Request, res: Response) => {
+  // Existing files have already been served by express.static.
+  // Do not return successful HTML for a missing or ignored asset.
+  let requestedPath: string;
+  try {
+    requestedPath = decodeURIComponent(req.path);
+  } catch {
+    return res.status(400).send("Bad request");
+  }
+  if (requestedPath.includes(".") || requestedPath === "/assets" || requestedPath.startsWith("/assets/")) {
     return res.status(404).send("Not found");
   }
-
-  // Annars servera index.html (för SPA-routes)
   res.sendFile(path.join(distPath, "index.html"));
 });
 
