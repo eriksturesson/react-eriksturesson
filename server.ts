@@ -21,22 +21,6 @@ const app = express();
 const port = process.env.PORT || 3009; // fallback till 3009 om env variabel saknas
 const distPath = path.join(__dirname, "..", "dist");
 app.set("trust proxy", 1);
-// Check x-forwarded-for
-app.use((req: Request, res: Response, next) => {
-  const xff = req.headers["x-forwarded-for"];
-
-  if (typeof xff === "string") {
-    if (xff.includes(",")) {
-      console.log("X-Forwarded-For (multiple IPs):", xff);
-    } else {
-      console.log("X-Forwarded-For (single IP):", xff);
-    }
-  } else {
-    console.log("X-Forwarded-For header missing or not a string");
-  }
-  console.log("Express req.ip:", req.ip); // Den IP Express använder
-  next();
-});
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -105,11 +89,12 @@ app.use((_req, res, next) => {
 app.use(limiter);
 app.use(express.json({ limit: "1mb" }));
 
-app.use(express.static(distPath));
-
-app.get("/health", (req: any, res: any) => {
-  res.status(200).json({ ok: true });
+// Keep runtime health independent of static files and intermediary caching.
+app.get("/health", (_req: Request, res: Response) => {
+  res.set("Cache-Control", "no-store").status(200).json({ ok: true });
 });
+
+app.use(express.static(distPath));
 
 app.get("*", (req: any, res: any) => {
   const requestedPath = path.join(distPath, req.path);
